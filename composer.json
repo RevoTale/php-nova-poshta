@@ -1,0 +1,23 @@
+{
+    "name": "awanturist/php-nova-poshta-api",
+    "description": "PHP implementation of Ukrainian delivery service Nova Poshta API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vlad Liakhovskyi"
+        }
+    ],
+    "autoload": {
+        "Awanturist\\NovaPoshtaAPI": "src"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "vimeo/psalm": "^4.6"
+    },
+    "require": {
+        "php": "^8.0"
+    }
+}
