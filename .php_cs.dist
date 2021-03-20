@@ -2,7 +2,6 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
-    ->exclude('var')
 ;
 return PhpCsFixer\Config::create()
     ->setCacheFile(__DIR__.'/.php_cs.cache')
