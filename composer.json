@@ -1,4 +1,5 @@
 {
+    "version": "0.0.1",
     "name": "awanturist/php-nova-poshta-api",
     "description": "PHP implementation of Ukrainian delivery service Nova Poshta API",
     "type": "library",
