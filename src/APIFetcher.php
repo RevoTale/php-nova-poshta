@@ -10,7 +10,9 @@ use Awanturist\NovaPoshtaAPI\Exceptions\JsonEncodeException;
 use Awanturist\NovaPoshtaAPI\Exceptions\JsonParseException;
 use Awanturist\NovaPoshtaAPI\Exceptions\QueryFailedException;
 use Awanturist\NovaPoshtaAPI\Results\ResultContainer;
+use Exception;
 use JsonException;
+use function is_bool;
 
 abstract class APIFetcher
 {
@@ -34,6 +36,9 @@ abstract class APIFetcher
                 'calledMethod' => $method,
                 'methodProperties' => $params,
             ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+            if (false === $payload) {
+                throw new JsonEncodeException(new Exception('Returned payload is false'));
+            }
         } catch (JsonException $e) {
             throw new JsonEncodeException($e);
         }
@@ -51,7 +56,7 @@ abstract class APIFetcher
         $err_no = curl_errno($curl);
         curl_close($curl);
 
-        if ($err || $err_no) {
+        if ($err || $err_no || is_bool($response)) {
             throw new CurlException($err, $err_no);
         }
         try {

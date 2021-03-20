@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Awanturist\NovaPoshtaAPI\Exceptions;
 
-
 final class ErrorResultException extends QueryFailedException
 {
     protected array $errors;

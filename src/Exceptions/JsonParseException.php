@@ -18,6 +18,6 @@ final class JsonParseException extends QueryFailedException
     public function __construct(string $payload, Throwable $prev)
     {
         $this->payload = $payload;
-        parent::__construct('АПИ вернуло некоректный формат даных', $prev);
+        parent::__construct('АПИ вернуло некоректный формат даных', $prev->getCode(), $prev);
     }
 }

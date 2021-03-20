@@ -18,10 +18,8 @@ final class ResultContainer
         return $this->response;
     }
 
-
     public function getData(): array
     {
         return $this->response['data'];
     }
-
 }
