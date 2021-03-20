@@ -4,23 +4,24 @@ declare(strict_types=1);
 
 namespace Awanturist\NovaPoshtaAPI\Exceptions;
 
-use JetBrains\PhpStorm\Pure;
 
 final class ErrorResultException extends QueryFailedException
 {
+    protected array $errors;
+
     /**
      * @param string[] $errors
      */
-    #[Pure]
-    public function __construct(protected array $errors)
+    public function __construct(array $errors)
     {
+        $this->errors = $errors;
         parent::__construct('АПИ Новой Почты вернуло негативный результат: '.implode(', ', $errors));
     }
 
     /**
      * @return string[]
      */
-    final public function getErrorMessages(): array
+    public function getErrorMessages(): array
     {
         return $this->errors;
     }

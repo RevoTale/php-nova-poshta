@@ -14,8 +14,11 @@ use JsonException;
 
 abstract class APIFetcher
 {
-    public function __construct(private string $apiKey)
+    private string $apiKey;
+
+    public function __construct(string $apiKey)
     {
+        $this->apiKey = $apiKey;
     }
 
     /**

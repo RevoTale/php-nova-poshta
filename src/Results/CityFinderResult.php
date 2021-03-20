@@ -13,6 +13,6 @@ final class CityFinderResult extends Result
      */
     public function getCities(): array
     {
-        return array_map(static fn (array $data) => new City($data), $this->container->getDataField());
+        return array_map(static fn (array $data) => new City($data), $this->container->getData());
     }
 }

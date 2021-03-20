@@ -6,7 +6,10 @@ namespace Awanturist\NovaPoshtaAPI\Results;
 
 abstract class Result
 {
-    public function __construct(protected ResultContainer $container)
+    protected ResultContainer $container;
+
+    public function __construct(ResultContainer $container)
     {
+        $this->container = $container;
     }
 }

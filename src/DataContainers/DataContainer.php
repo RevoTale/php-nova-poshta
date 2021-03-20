@@ -6,7 +6,10 @@ namespace Awanturist\NovaPoshtaAPI\DataContainers;
 
 abstract class DataContainer
 {
-    public function __construct(protected array $data)
+    protected array $data;
+
+    public function __construct(array $data)
     {
+        $this->data = $data;
     }
 }
