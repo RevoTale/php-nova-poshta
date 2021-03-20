@@ -10,7 +10,7 @@
         }
     ],
     "autoload": {
-        "Awanturist\\NovaPoshtaAPI": "src"
+        "psr-4": {"Awanturist\\NovaPoshtaAPI": "src"}
     },
     "scripts": {
         "psalm": "vendor/bin/psalm",
