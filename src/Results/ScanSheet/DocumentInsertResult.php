@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Awanturist\NovaPoshtaAPI\Results\ScanSheet;
 
 
-class DocumentInsertResult
+abstract class DocumentInsertResult
 {
     protected array $document;
 

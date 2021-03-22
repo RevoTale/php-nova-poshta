@@ -32,12 +32,12 @@ final class DocumentsInsertResult extends Result
     }
 
     /**
-     * @return DocumentInsertResult[]
+     * @return DocumentInsertSuccess[]
      */
     public function getSuccessDocuments(): array
     {
         return array_map(
-            static fn (array $doc) => new DocumentInsertResult($doc),
+            static fn (array $doc) => new DocumentInsertSuccess($doc),
             $this->getScanSheetData()['Data']['Success']
         );
     }
