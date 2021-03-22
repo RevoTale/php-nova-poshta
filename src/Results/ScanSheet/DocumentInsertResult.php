@@ -21,6 +21,6 @@ class DocumentInsertResult
 
     public function getNumber(): string
     {
-        return $this->document['Ref'];
+        return $this->document['Number'];
     }
 }
