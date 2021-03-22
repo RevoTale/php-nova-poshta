@@ -38,7 +38,7 @@ final class DocumentsInsertResult extends Result
     {
         return array_map(
             static fn (array $doc) => new DocumentInsertResult($doc),
-            $this->getScanSheetData()['Data']['Errors']
+            $this->getScanSheetData()['Data']['Success']
         );
     }
 
