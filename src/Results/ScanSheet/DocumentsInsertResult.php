@@ -32,10 +32,24 @@ final class DocumentsInsertResult extends Result
     }
 
     /**
+     * @return DocumentInsertResult[]
+     */
+    public function getSuccessDocuments(): array
+    {
+        return array_map(
+            static fn (array $doc) => new DocumentInsertResult($doc),
+            $this->getScanSheetData()['Data']['Errors']
+        );
+    }
+
+    /**
      * @return DocumentInsertError[]
      */
     public function getDocumentErrors(): array
     {
-        return array_map(static fn (array $error) => new DocumentInsertError($error), $this->getScanSheetData()['Data']['Errors']);
+        return array_map(
+            static fn (array $error) => new DocumentInsertError($error),
+            $this->getScanSheetData()['Data']['Errors']
+        );
     }
 }
