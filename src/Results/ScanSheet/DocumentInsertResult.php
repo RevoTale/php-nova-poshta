@@ -7,20 +7,20 @@ namespace Awanturist\NovaPoshtaAPI\Results\ScanSheet;
 
 class DocumentInsertResult
 {
-    protected object $document;
+    protected array $document;
 
-    public function __construct(object $document)
+    public function __construct(array $document)
     {
         $this->document = $document;
     }
 
     public function getRef(): string
     {
-        return $this->document->Ref;
+        return $this->document['Ref'];
     }
 
     public function getNumber(): string
     {
-        return $this->document->Number;
+        return $this->document['Ref'];
     }
 }

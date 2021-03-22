@@ -8,6 +8,6 @@ final class DocumentInsertError extends DocumentInsertResult
 {
     public function getError(): string
     {
-        return $this->document->Error;
+        return $this->document['Error'];
     }
 }
