@@ -7,6 +7,8 @@ namespace Awanturist\NovaPoshtaAPI;
 
 use Awanturist\NovaPoshtaAPI\Exceptions\QueryFailedException;
 use Awanturist\NovaPoshtaAPI\Results\CityFinderResult;
+use Awanturist\NovaPoshtaAPI\Results\DocumentListResult;
+use Awanturist\NovaPoshtaAPI\Results\DocumentListResultItem;
 use Awanturist\NovaPoshtaAPI\Results\ScanSheet\DocumentsInsertResult;
 
 final class APIService extends APIFetcher
@@ -33,5 +35,19 @@ final class APIService extends APIFetcher
                 'DocumentRefs' => $documentNumbers,
             ])
         );
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function getDocument(string $documentNumber): DocumentListResultItem
+    {
+        return (
+        new DocumentListResult(
+            $this->execute('InternetDocument', 'getDocumentList', [
+                'IntDocNumber' => $documentNumber,
+            ])
+        )
+        )->getDocuments()[0];
     }
 }
