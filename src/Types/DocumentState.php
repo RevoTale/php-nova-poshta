@@ -34,6 +34,21 @@ final class DocumentState
         $this->state = $state;
     }
 
+    public function isOneOf(int ...$codes): bool
+    {
+        return in_array($this->state, $codes, true);
+    }
+
+    public function exists(): bool
+    {
+        return $this->isOneOf(self::DELETED, self::NOT_FOUND);
+    }
+
+    public function getCode(): int
+    {
+        return $this->state;
+    }
+
     public function isReceived(): bool
     {
         return in_array($this->state, [
