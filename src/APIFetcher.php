@@ -10,12 +10,20 @@ use Awanturist\NovaPoshtaAPI\Exceptions\JsonEncodeException;
 use Awanturist\NovaPoshtaAPI\Exceptions\JsonParseException;
 use Awanturist\NovaPoshtaAPI\Exceptions\QueryFailedException;
 use Awanturist\NovaPoshtaAPI\Results\ResultContainer;
+use DateTimeZone;
 use Exception;
-use JsonException;
 use function is_bool;
+use JsonException;
 
 abstract class APIFetcher
 {
+    private const TIMEZONE = 'Europe/Kiev';
+
+    final public static function getTimeZone(): DateTimeZone
+    {
+        return new DateTimeZone(self::TIMEZONE);
+    }
+
     private string $apiKey;
 
     public function __construct(string $apiKey)

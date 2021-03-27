@@ -1,12 +1,14 @@
 <?php
 
-/** @noinspection PhpUnused */
 declare(strict_types=1);
 
 namespace Awanturist\NovaPoshtaAPI;
 
+use Awanturist\NovaPoshtaAPI\DataContainers\Document\TrackingInformation;
+use Awanturist\NovaPoshtaAPI\Exceptions\DocumentNotExists;
 use Awanturist\NovaPoshtaAPI\Exceptions\QueryFailedException;
 use Awanturist\NovaPoshtaAPI\Results\CityFinderResult;
+use Awanturist\NovaPoshtaAPI\Results\Document\TrackingResult;
 use Awanturist\NovaPoshtaAPI\Results\DocumentListResult;
 use Awanturist\NovaPoshtaAPI\Results\DocumentListResultItem;
 use Awanturist\NovaPoshtaAPI\Results\ScanSheet\DocumentsInsertResult;
@@ -49,5 +51,28 @@ final class APIService extends APIFetcher
             ])
         )
         )->getDocuments()[0];
+    }
+
+    /**
+     * @throws QueryFailedException
+     * @throws DocumentNotExists
+     */
+    public function trackDocument(string $documentNumber): TrackingInformation
+    {
+        $tracking = (new TrackingResult(
+            $this->execute('TrackingDocument', 'getStatusDocuments', [
+                'Documents' => [
+                    [
+                        'DocumentNumber' => $documentNumber,
+                        'Phone' => '',
+                    ],
+                ],
+            ])
+        ))->getDocumentsTracking()[0];
+        if ($tracking->getStatus()->documentExists()) {
+            throw new DocumentNotExists($tracking);
+        }
+
+        return $tracking;
     }
 }

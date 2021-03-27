@@ -6,6 +6,9 @@ namespace Awanturist\NovaPoshtaAPI\Results;
 
 class DocumentListResult extends Result
 {
+    /**
+     * @return DocumentListResultItem[]
+     */
     public function getDocuments(): array
     {
         return array_map(static fn (array $doc) => new DocumentListResultItem($doc), $this->container->getData());
