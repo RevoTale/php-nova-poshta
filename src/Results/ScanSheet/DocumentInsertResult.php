@@ -13,9 +13,9 @@ abstract class DocumentInsertResult
         $this->document = $document;
     }
 
-    public function getRef(): ?string
+    public function getRef(): string
     {
-        return $this->document['Ref'] ?: null;
+        return $this->document['Ref'];
     }
 
     public function getNumber(): ?string

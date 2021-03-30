@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Awanturist\NovaPoshtaAPI\Results;
 
-class DocumentListResult extends Result
+final class DocumentListResult extends Result
 {
     /**
      * @return DocumentListResultItem[]

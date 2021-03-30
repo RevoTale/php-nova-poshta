@@ -13,7 +13,7 @@ use Awanturist\NovaPoshtaAPI\Results\DocumentListResult;
 use Awanturist\NovaPoshtaAPI\Results\DocumentListResultItem;
 use Awanturist\NovaPoshtaAPI\Results\ScanSheet\DocumentsInsertResult;
 
-final class APIService extends APIFetcher
+class APIService extends APIFetcher
 {
     /**
      * @throws QueryFailedException

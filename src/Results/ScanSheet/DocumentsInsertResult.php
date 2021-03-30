@@ -52,4 +52,15 @@ final class DocumentsInsertResult extends Result
             $this->getScanSheetData()['Data']['Errors']
         );
     }
+
+    /**
+     * @return DocumentInsertWarning[]
+     */
+    public function getWarnings(): array
+    {
+        return array_map(
+            static fn (array $error) => new DocumentInsertWarning($error),
+            $this->getScanSheetData()['Data']['Warnings']
+        );
+    }
 }
