@@ -13,9 +13,9 @@ final class DocumentsInsertResult extends Result
         return $this->container->getData()[0];
     }
 
-    public function getScanSheetRef(): string
+    public function getScanSheetRef():? string
     {
-        return $this->getScanSheetData()['Ref'];
+        return $this->getScanSheetData()['Ref']?:null;
     }
 
     /**
@@ -26,9 +26,9 @@ final class DocumentsInsertResult extends Result
         return !empty($this->getScanSheetRef());
     }
 
-    public function getScanSheetNumber(): string
+    public function getScanSheetNumber():? string
     {
-        return $this->getScanSheetData()['Number'];
+        return $this->getScanSheetData()['Number']?:null;
     }
 
     /**
