@@ -10,7 +10,9 @@ final class DocumentInsertWarning extends DocumentInsertResult
     {
         return $this->document['Warning'];
     }
-    public function getScanSheetNumber():?string {
-        return $this->document['ScanSheetNumber']??null;
+
+    public function getScanSheetNumber(): ?string
+    {
+        return $this->document['ScanSheetNumber'] ?? null;
     }
 }
