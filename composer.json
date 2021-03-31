@@ -1,5 +1,4 @@
 {
-    "version": "1.0.3",
     "name": "bladl/nova-poshta-api",
     "description": "PHP implementation of Ukrainian delivery service Nova Poshta API 2.0",
     "type": "library",
