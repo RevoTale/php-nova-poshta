@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI;
+namespace BladL\NovaPoshta;
 
-use Awanturist\NovaPoshtaAPI\DataContainers\Document\TrackingInformation;
-use Awanturist\NovaPoshtaAPI\Exceptions\DocumentNotExists;
-use Awanturist\NovaPoshtaAPI\Exceptions\QueryFailedException;
-use Awanturist\NovaPoshtaAPI\Results\CityFinderResult;
-use Awanturist\NovaPoshtaAPI\Results\Document\TrackingResult;
-use Awanturist\NovaPoshtaAPI\Results\DocumentListResult;
-use Awanturist\NovaPoshtaAPI\Results\DocumentListResultItem;
-use Awanturist\NovaPoshtaAPI\Results\ScanSheet\DocumentsInsertResult;
+use BladL\NovaPoshta\DataContainers\Document\TrackingInformation;
+use BladL\NovaPoshta\Exceptions\DocumentNotExists;
+use BladL\NovaPoshta\Exceptions\QueryFailedException;
+use BladL\NovaPoshta\Results\CityFinderResult;
+use BladL\NovaPoshta\Results\Document\TrackingResult;
+use BladL\NovaPoshta\Results\DocumentListResult;
+use BladL\NovaPoshta\Results\DocumentListResultItem;
+use BladL\NovaPoshta\Results\ScanSheet\DocumentsInsertResult;
 
 class APIService extends APIFetcher
 {

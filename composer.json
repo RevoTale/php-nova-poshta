@@ -1,6 +1,6 @@
 {
-    "version": "1.0.2",
-    "name": "awanturist/php-nova-poshta-api",
+    "version": "1.0.3",
+    "name": "bladl/php-nova-poshta-api",
     "description": "PHP implementation of Ukrainian delivery service Nova Poshta API",
     "type": "library",
     "license": "MIT",
@@ -9,11 +9,14 @@
             "name": "Vlad Liakhovskyi"
         }
     ],
+    "keywords": ["Нова Пошта","API 2.0"],
     "autoload": {
-        "psr-4": {"Awanturist\\NovaPoshtaAPI\\": "src"}
+        "psr-4": {
+            "BladL\\NovaPoshta\\": "src"
+        }
     },
     "scripts": {
-        "psalm": "vendor/bin/psalm",
+        "psalm": "vendor/bin/psalm --show-info=true",
         "php-cs": "vendor/bin/php-cs-fixer fix",
         "test": [
             "@psalm",

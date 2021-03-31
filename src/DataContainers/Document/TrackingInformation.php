@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI\DataContainers\Document;
+namespace BladL\NovaPoshta\DataContainers\Document;
 
-use Awanturist\NovaPoshtaAPI\APIService;
-use Awanturist\NovaPoshtaAPI\Exceptions\DateParseException;
-use Awanturist\NovaPoshtaAPI\Types\DocumentState;
+use BladL\NovaPoshta\APIService;
+use BladL\NovaPoshta\Exceptions\DateParseException;
+use BladL\NovaPoshta\Types\DocumentState;
 use DateTime;
 use Exception;
 

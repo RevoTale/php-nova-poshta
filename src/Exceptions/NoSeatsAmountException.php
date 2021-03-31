@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI\Exceptions;
+namespace BladL\NovaPoshta\Exceptions;
 
 use Exception;
 

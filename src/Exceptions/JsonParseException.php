@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI\Exceptions;
+namespace BladL\NovaPoshta\Exceptions;
 
 use Throwable;
 
@@ -18,6 +18,6 @@ final class JsonParseException extends QueryFailedException
     public function __construct(string $payload, Throwable $prev)
     {
         $this->payload = $payload;
-        parent::__construct('АПИ вернуло некоректный формат даных', $prev->getCode(), $prev);
+        parent::__construct('АПИ вернуло некоректный формат даных', 0, $prev);
     }
 }

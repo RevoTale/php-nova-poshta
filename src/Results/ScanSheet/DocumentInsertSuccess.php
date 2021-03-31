@@ -1,11 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
-
-namespace Awanturist\NovaPoshtaAPI\Results\ScanSheet;
-
+namespace BladL\NovaPoshta\Results\ScanSheet;
 
 final class DocumentInsertSuccess extends DocumentInsertResult
 {
-
 }

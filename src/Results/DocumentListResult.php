@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI\Results;
+namespace BladL\NovaPoshta\Results;
 
 final class DocumentListResult extends Result
 {

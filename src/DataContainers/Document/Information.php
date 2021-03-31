@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI\DataContainers\Document;
+namespace BladL\NovaPoshta\DataContainers\Document;
 
-use Awanturist\NovaPoshtaAPI\Exceptions\NoSeatsAmountException;
+use BladL\NovaPoshta\Exceptions\NoSeatsAmountException;
 
 abstract class Information
 {

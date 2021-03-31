@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI\Exceptions;
+namespace BladL\NovaPoshta\Exceptions;
 
-use Awanturist\NovaPoshtaAPI\DataContainers\Document\TrackingInformation;
+use BladL\NovaPoshta\DataContainers\Document\TrackingInformation;
 use Exception;
 
 final class DocumentNotExists extends Exception

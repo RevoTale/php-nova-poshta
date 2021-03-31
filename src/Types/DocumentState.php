@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI\Types;
+namespace BladL\NovaPoshta\Types;
 
 use function in_array;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI\DataContainers;
+namespace BladL\NovaPoshta\DataContainers;
 
 abstract class DataContainer
 {

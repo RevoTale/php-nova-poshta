@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI\Results;
+namespace BladL\NovaPoshta\Results;
 
-use Awanturist\NovaPoshtaAPI\DataContainers\Document\Information;
-use Awanturist\NovaPoshtaAPI\Types\DocumentState;
+use BladL\NovaPoshta\DataContainers\Document\Information;
+use BladL\NovaPoshta\Types\DocumentState;
 
 final class DocumentListResultItem extends Information
 {
-
     public function getRef(): string
     {
         return $this->data['Ref'];

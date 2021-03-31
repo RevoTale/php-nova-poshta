@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI;
+namespace BladL\NovaPoshta;
 
-use Awanturist\NovaPoshtaAPI\Exceptions\CurlException;
-use Awanturist\NovaPoshtaAPI\Exceptions\ErrorResultException;
-use Awanturist\NovaPoshtaAPI\Exceptions\JsonEncodeException;
-use Awanturist\NovaPoshtaAPI\Exceptions\JsonParseException;
-use Awanturist\NovaPoshtaAPI\Exceptions\QueryFailedException;
-use Awanturist\NovaPoshtaAPI\Results\ResultContainer;
+use BladL\NovaPoshta\Exceptions\CurlException;
+use BladL\NovaPoshta\Exceptions\ErrorResultException;
+use BladL\NovaPoshta\Exceptions\JsonEncodeException;
+use BladL\NovaPoshta\Exceptions\JsonParseException;
+use BladL\NovaPoshta\Exceptions\QueryFailedException;
+use BladL\NovaPoshta\Results\ResultContainer;
 use DateTimeZone;
 use Exception;
 use function is_bool;

@@ -1,12 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
+namespace BladL\NovaPoshta\Results\Document;
 
-namespace Awanturist\NovaPoshtaAPI\Results\Document;
-
-
-use Awanturist\NovaPoshtaAPI\DataContainers\Document\TrackingInformation;
-use Awanturist\NovaPoshtaAPI\Results\Result;
+use BladL\NovaPoshta\DataContainers\Document\TrackingInformation;
+use BladL\NovaPoshta\Results\Result;
 
 final class TrackingResult extends Result
 {

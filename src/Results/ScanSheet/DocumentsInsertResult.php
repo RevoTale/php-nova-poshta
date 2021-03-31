@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI\Results\ScanSheet;
+namespace BladL\NovaPoshta\Results\ScanSheet;
 
-use Awanturist\NovaPoshtaAPI\Results\Result;
+use BladL\NovaPoshta\Results\Result;
 
 final class DocumentsInsertResult extends Result
 {

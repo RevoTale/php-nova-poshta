@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Awanturist\NovaPoshtaAPI\Results;
+namespace BladL\NovaPoshta\Results;
 
-use Awanturist\NovaPoshtaAPI\DataContainers\City;
+use BladL\NovaPoshta\DataContainers\City;
 
 final class CityFinderResult extends Result
 {
