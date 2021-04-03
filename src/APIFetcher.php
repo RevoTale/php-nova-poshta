@@ -14,6 +14,7 @@ use DateTimeZone;
 use Exception;
 use function is_bool;
 use JsonException;
+use Psr\Log\LoggerInterface;
 
 abstract class APIFetcher
 {
@@ -31,12 +32,20 @@ abstract class APIFetcher
         $this->apiKey = $apiKey;
     }
 
+    private ?LoggerInterface $logger = null;
+
+    final public function setLogger(LoggerInterface $logger): void
+    {
+        $this->logger = $logger;
+    }
+
     /**
      * @throws CurlException
      * @throws QueryFailedException
      */
     protected function execute(string $model, string $method, array $params): ResultContainer
     {
+        $logger = $this->logger;
         try {
             $payload = json_encode([
                 'apiKey' => $this->apiKey,
@@ -44,10 +53,15 @@ abstract class APIFetcher
                 'calledMethod' => $method,
                 'methodProperties' => $params,
             ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+            if ($logger) {
+                $encoded_params = json_encode($params, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+                $logger->info("Called $model->$method($encoded_params)");
+            }
             if (false === $payload) {
                 throw new JsonEncodeException(new Exception('Returned payload is false'));
             }
-        } catch (JsonException $e) {
+        } /* @noinspection PhpUndefinedClassInspection */
+        catch (JsonException $e) {
             throw new JsonEncodeException($e);
         }
         $curl = curl_init();
@@ -59,21 +73,39 @@ abstract class APIFetcher
             CURLOPT_POSTFIELDS => $payload,
             CURLOPT_HTTPHEADER => ['content-type: application/json'],
         ]);
-        $response = curl_exec($curl);
+        $result = curl_exec($curl);
         $err = curl_error($curl);
         $err_no = curl_errno($curl);
         curl_close($curl);
-
-        if ($err || $err_no || is_bool($response)) {
+        if ($err || $err_no || is_bool($result)) {
+            if ($logger) {
+                $logger->alert("Curl response error #$err_no, $err. Response: '$result'.");
+            }
             throw new CurlException($err, $err_no);
         }
-        try {
-            $resp = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
-        } catch (JsonException $e) {
-            throw new JsonParseException($response, $e);
+        if ($logger) {
+            $logger->debug("Result: $result");
         }
-        if (isset($resp['errors']) && !empty($resp['errors'])) {
-            throw new ErrorResultException($resp['errors']);
+        try {
+            $resp = json_decode($result, true, 512, JSON_THROW_ON_ERROR);
+        } /* @noinspection PhpUndefinedClassInspection */
+        catch (JsonException $e) {
+            if ($logger) {
+                $logger->critical("Bad response returned. Result: '$result'.", [
+                    'exception' => $e,
+                ]);
+            }
+            throw new JsonParseException($result, $e);
+        }
+        if (isset($resp['errors'])) {
+            $errors = $resp['errors'];
+            if (!empty($errors)) {
+                if ($logger) {
+                    $error = implode(',', $errors);
+                    $logger->error("Error returned. Description: '$error'.");
+                }
+                throw new ErrorResultException($resp['errors']);
+            }
         }
 
         return new ResultContainer($resp);
