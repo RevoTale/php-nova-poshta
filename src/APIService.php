@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta;
 
 use BladL\NovaPoshta\DataContainers\Document\TrackingInformation;
+use BladL\NovaPoshta\DataContainers\WarehouseType;
 use BladL\NovaPoshta\Exceptions\DocumentNotExists;
 use BladL\NovaPoshta\Exceptions\QueryFailedException;
 use BladL\NovaPoshta\Results\CityFinderResult;
@@ -12,6 +13,8 @@ use BladL\NovaPoshta\Results\Document\TrackingResult;
 use BladL\NovaPoshta\Results\DocumentListResult;
 use BladL\NovaPoshta\Results\DocumentListResultItem;
 use BladL\NovaPoshta\Results\ScanSheet\DocumentsInsertResult;
+use BladL\NovaPoshta\Results\WarehousesResult;
+use BladL\NovaPoshta\Results\WarehouseTypesResult;
 
 class APIService extends APIFetcher
 {
@@ -25,6 +28,55 @@ class APIService extends APIFetcher
                 'FindByString' => $city,
             ])
         );
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function getCities(int $page = 1): CityFinderResult
+    {
+        return new CityFinderResult(
+            $this->execute('Address', 'getCities', [
+                'Page' => $page,
+            ])
+        );
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function getWarehouses(int $page, int $limit): WarehousesResult
+    {
+        return new WarehousesResult($this->execute('Address', 'getWarehouses', [
+            'Page' => $page,
+            'Limit' => $limit,
+        ]));
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function getWarehouseTypes(): WarehouseTypesResult
+    {
+        return new WarehouseTypesResult($this->execute('Address', 'getWarehouseTypes', []));
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function getWarehouseTypeByRef(string $ref): WarehouseType
+    {
+        return new WarehouseType($this->execute('Address', 'getWarehouseTypes', ['Ref' => $ref])->getData()[0]);
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function getSettlementWarehouses(string $settlementRef): WarehousesResult
+    {
+        return new WarehousesResult($this->execute('Address', 'getWarehouses', [
+            'SettlementRef' => $settlementRef,
+        ]));
     }
 
     /**

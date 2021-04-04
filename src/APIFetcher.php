@@ -15,6 +15,7 @@ use Exception;
 use function is_bool;
 use JsonException;
 use Psr\Log\LoggerInterface;
+use stdClass;
 
 abstract class APIFetcher
 {
@@ -51,7 +52,7 @@ abstract class APIFetcher
                 'apiKey' => $this->apiKey,
                 'modelName' => $model,
                 'calledMethod' => $method,
-                'methodProperties' => $params,
+                'methodProperties' => empty($params) ? new stdClass() : $params,
             ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
             if ($logger) {
                 $encoded_params = json_encode($params, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
