@@ -78,6 +78,6 @@ final class Warehouse extends DataContainer
 
     public function getNumber(): int
     {
-        return $this->data['Number'];
+        return (int) $this->data['Number'];
     }
 }
