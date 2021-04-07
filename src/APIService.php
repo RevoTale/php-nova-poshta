@@ -107,6 +107,21 @@ class APIService extends APIFetcher
 
     /**
      * @throws QueryFailedException
+     */
+    public function getDocuments(int $page, int $limit): DocumentListResult
+    {
+        return
+            new DocumentListResult(
+                $this->execute('InternetDocument', 'getDocumentList', [
+                    'Page' => $page,
+                    'Limit' => $limit,
+                ])
+            )
+        ;
+    }
+
+    /**
+     * @throws QueryFailedException
      * @throws DocumentNotExists
      */
     public function trackDocument(string $documentNumber): TrackingInformation

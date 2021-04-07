@@ -44,6 +44,11 @@ final class TrackingInformation extends Information
         }
     }
 
+    public function getLastCreatedOnTheBasisNumber(): ?string
+    {
+        return $this->data['LastCreatedOnTheBasisNumber'] ?: null;
+    }
+
     public function getStatusDescription(): string
     {
         return $this->data['Status'];
