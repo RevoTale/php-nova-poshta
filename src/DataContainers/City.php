@@ -15,4 +15,8 @@ final class City extends DataContainer
     {
         return $this->data['Description'];
     }
+    public function getDescriptionRu(): string
+    {
+        return $this->data['DescriptionRu'];
+    }
 }
