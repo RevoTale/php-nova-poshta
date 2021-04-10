@@ -1,5 +1,7 @@
 <?php
 
+/** @noinspection UnknownInspectionInspection */
+/* @noinspection PhpUnused */
 declare(strict_types=1);
 
 namespace BladL\NovaPoshta;
@@ -8,11 +10,13 @@ use BladL\NovaPoshta\DataContainers\Document\TrackingInformation;
 use BladL\NovaPoshta\DataContainers\WarehouseType;
 use BladL\NovaPoshta\Exceptions\DocumentNotExists;
 use BladL\NovaPoshta\Exceptions\QueryFailedException;
+use BladL\NovaPoshta\Parameters\WarehouseSearch;
 use BladL\NovaPoshta\Results\CityFinderResult;
 use BladL\NovaPoshta\Results\Document\TrackingResult;
 use BladL\NovaPoshta\Results\DocumentListResult;
 use BladL\NovaPoshta\Results\DocumentListResultItem;
 use BladL\NovaPoshta\Results\ScanSheet\DocumentsInsertResult;
+use BladL\NovaPoshta\Results\SettlementsResult;
 use BladL\NovaPoshta\Results\WarehousesResult;
 use BladL\NovaPoshta\Results\WarehouseTypesResult;
 
@@ -44,6 +48,8 @@ class APIService extends APIFetcher
 
     /**
      * @throws QueryFailedException
+     *
+     * @deprecated use findWarehouses instead
      */
     public function getWarehouses(int $page, int $limit): WarehousesResult
     {
@@ -51,6 +57,14 @@ class APIService extends APIFetcher
             'Page' => $page,
             'Limit' => $limit,
         ]));
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function findWarehouses(WarehouseSearch $parameters): WarehousesResult
+    {
+        return new WarehousesResult($this->execute('Address', 'getWarehouses', $parameters->getProperties()));
     }
 
     /**
@@ -116,8 +130,7 @@ class APIService extends APIFetcher
                     'Page' => $page,
                     'Limit' => $limit,
                 ])
-            )
-        ;
+            );
     }
 
     /**
@@ -141,5 +154,18 @@ class APIService extends APIFetcher
         }
 
         return $tracking;
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function getSettlements(int $page, int $limit): SettlementsResult
+    {
+        return new SettlementsResult(
+            $this->execute('AddressGeneral', 'getSettlements', [
+                'Page' => $page,
+                'Limit' => $limit,
+            ])
+        );
     }
 }

@@ -44,7 +44,7 @@ abstract class APIFetcher
      * @throws CurlException
      * @throws QueryFailedException
      */
-    public function execute(string $model, string $method, array $params): ResultContainer
+    protected function execute(string $model, string $method, array $params): ResultContainer
     {
         $logger = $this->logger;
         try {
