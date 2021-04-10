@@ -4,57 +4,37 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-final class WarehouseSearch
+final class WarehouseSearch extends SearchParameters
 {
-    private static function boolParam(bool $true): string
-    {
-        return $true ? '1' : '0';
-    }
-
-    private array $data = [];
-
-    public function setPage(int $page): void
-    {
-        $this->data['Page'] = $page;
-    }
-
-    public function setRecordsPerPage(int $limit): void
-    {
-        $this->data['Limit'] = $limit;
-    }
+    use Pages;
 
     public function satHasBicycleParking(bool $true): void
     {
-        $this->data['BicycleParking'] = self::boolParam($true);
+        $this->setBool('BicycleParking', $true);
     }
 
     public function setTypeOfWarehouseRef(string $ref): void
     {
-        $this->data['TypeOfWarehouseRef'] = $ref;
+        $this->setStr('TypeOfWarehouseRef', $ref);
     }
 
     public function setCityName(string $string): void
     {
-        $this->data['CityName'] = $string;
+        $this->setStr('CityName', $string);
     }
 
     public function setSettlementRef(string $ref): void
     {
-        $this->data['SettlementRef'] = $ref;
+        $this->setStr('SettlementRef', $ref);
     }
 
     public function setCityRef(string $ref): void
     {
-        $this->data['CityRef'] = $ref;
+        $this->setStr('CityRef', $ref);
     }
 
     public function setHasPostFinance(bool $true): void
     {
-        $this->data['PostFinance'] = self::boolParam($true);
-    }
-
-    public function getProperties(): array
-    {
-        return $this->data;
+        $this->setBool('PostFinance', $true);
     }
 }

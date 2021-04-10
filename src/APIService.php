@@ -10,6 +10,7 @@ use BladL\NovaPoshta\DataContainers\Document\TrackingInformation;
 use BladL\NovaPoshta\DataContainers\WarehouseType;
 use BladL\NovaPoshta\Exceptions\DocumentNotExists;
 use BladL\NovaPoshta\Exceptions\QueryFailedException;
+use BladL\NovaPoshta\Parameters\CitiesSearch;
 use BladL\NovaPoshta\Parameters\WarehouseSearch;
 use BladL\NovaPoshta\Results\CityFinderResult;
 use BladL\NovaPoshta\Results\Document\TrackingResult;
@@ -25,38 +26,11 @@ class APIService extends APIFetcher
     /**
      * @throws QueryFailedException
      */
-    public function findCityByString(string $city): CityFinderResult
+    public function findCities(CitiesSearch $parameters): CityFinderResult
     {
         return new CityFinderResult(
-            $this->execute('Address', 'getCities', [
-                'FindByString' => $city,
-            ])
+            $this->execute('Address', 'getCities', $parameters->getProperties())
         );
-    }
-
-    /**
-     * @throws QueryFailedException
-     */
-    public function getCities(int $page = 1): CityFinderResult
-    {
-        return new CityFinderResult(
-            $this->execute('Address', 'getCities', [
-                'Page' => $page,
-            ])
-        );
-    }
-
-    /**
-     * @throws QueryFailedException
-     *
-     * @deprecated use findWarehouses instead
-     */
-    public function getWarehouses(int $page, int $limit): WarehousesResult
-    {
-        return new WarehousesResult($this->execute('Address', 'getWarehouses', [
-            'Page' => $page,
-            'Limit' => $limit,
-        ]));
     }
 
     /**
