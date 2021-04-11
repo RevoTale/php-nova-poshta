@@ -4,20 +4,16 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataContainers;
 
+use BladL\NovaPoshta\DataContainers\Traits\Describable;
+use BladL\NovaPoshta\DataContainers\Traits\Referencable;
+
 final class Counterparty extends DataContainer
 {
-    public function getRef(): string
-    {
-        return $this->data['Ref'];
-    }
-
-    public function getDescription(): string
-    {
-        return $this->data['Description'];
-    }
+    use Referencable;
+    use Describable;
 
     public function getCityRef(): string
     {
-        return $this->data['City'];
+        return $this->getStr('City');
     }
 }

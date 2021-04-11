@@ -4,80 +4,71 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataContainers;
 
+use BladL\NovaPoshta\DataContainers\Traits\DescriptionMulti;
+use BladL\NovaPoshta\DataContainers\Traits\Referencable;
+
 final class Warehouse extends DataContainer
 {
-    public function getRef(): string
-    {
-        return $this->data['Ref'];
-    }
-
-    public function getDescription(): string
-    {
-        return $this->data['Description'];
-    }
-
-    public function getDescriptionRu(): string
-    {
-        return $this->data['DescriptionRu'];
-    }
+    use Referencable;
+    use DescriptionMulti;
 
     public function getWarehouseTypeRef(): string
     {
-        return $this->data['TypeOfWarehouse'];
+        return $this->getStr('TypeOfWarehouse');
     }
 
     public function getSettlementRef(): string
     {
-        return $this->data['SettlementRef'];
+        return $this->getStr('SettlementRef');
     }
 
     public function getSettlementDescription(): string
     {
-        return $this->data['SettlementDescription'];
+        return $this->getStr('SettlementDescription');
     }
 
     public function getSettlementAreaDescription(): string
     {
-        return $this->data['SettlementAreaDescription'];
+        return $this->getStr('SettlementAreaDescription');
     }
 
     public function getSettlementRegionDescription(): string
     {
-        return $this->data['SettlementRegionsDescription'];
+        return $this->getStr('SettlementRegionsDescription');
     }
 
     public function getSettlementTypeDescription(): string
     {
-        return $this->data['SettlementTypeDescription'];
+        return $this->getStr('SettlementTypeDescription');
     }
 
     public function getRegionCity(): string
     {
-        return $this->data['RegionCity'];
+        return $this->getStr('RegionCity');
     }
 
     public function getDistrictCode(): string
     {
-        return $this->data['DistrictCode'];
+        return $this->getStr('DistrictCode');
     }
 
     public function getCityRef(): string
     {
-        return $this->data['CityRef'];
+        return $this->getStr('CityRef');
     }
 
     public function getCityDescriptionRu(): string
     {
-        return $this->data['CityDescriptionRu'];
+        return $this->getStr('CityDescriptionRu');
     }
 
     public function getCityDescription(): string
     {
-        return $this->data['CityDescription'];
+        return $this->getStr('CityDescription');
     }
 
     public function getNumber(): int
     {
-        return (int) $this->data['Number'];
+        return (int) $this->getStr('Number');
     }
 }
