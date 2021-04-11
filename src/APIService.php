@@ -15,6 +15,7 @@ use BladL\NovaPoshta\Parameters\CounterpartiesSearch;
 use BladL\NovaPoshta\Parameters\WarehouseSearch;
 use BladL\NovaPoshta\Results\CityFinderResult;
 use BladL\NovaPoshta\Results\CounterpartiesResult;
+use BladL\NovaPoshta\Results\Counterparty\ContactPersonsResult;
 use BladL\NovaPoshta\Results\Document\TrackingResult;
 use BladL\NovaPoshta\Results\DocumentListResult;
 use BladL\NovaPoshta\Results\DocumentListResultItem;
@@ -151,5 +152,16 @@ class APIService extends APIFetcher
     public function findCounterparties(CounterpartiesSearch $params): CounterpartiesResult
     {
         return new CounterpartiesResult($this->execute('Counterparty', 'getCounterparties', $params->getProperties()));
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function getCounterpartyContactPerson(string $ref, int $page): ContactPersonsResult
+    {
+        return new ContactPersonsResult($this->execute('Counterparty', 'getCounterpartyContactPersons', [
+            'Ref' => $ref,
+            'Page' => $page,
+        ]));
     }
 }
