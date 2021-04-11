@@ -37,4 +37,9 @@ final class WarehouseSearch extends SearchParameters
     {
         $this->setBool('PostFinance', $true);
     }
+
+    public function findByString(string $string): void
+    {
+        $this->setStr('FindByString', $string);
+    }
 }
