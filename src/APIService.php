@@ -11,8 +11,10 @@ use BladL\NovaPoshta\DataContainers\WarehouseType;
 use BladL\NovaPoshta\Exceptions\DocumentNotExists;
 use BladL\NovaPoshta\Exceptions\QueryFailedException;
 use BladL\NovaPoshta\Parameters\CitiesSearch;
+use BladL\NovaPoshta\Parameters\CounterpartiesSearch;
 use BladL\NovaPoshta\Parameters\WarehouseSearch;
 use BladL\NovaPoshta\Results\CityFinderResult;
+use BladL\NovaPoshta\Results\CounterpartiesResult;
 use BladL\NovaPoshta\Results\Document\TrackingResult;
 use BladL\NovaPoshta\Results\DocumentListResult;
 use BladL\NovaPoshta\Results\DocumentListResultItem;
@@ -141,5 +143,13 @@ class APIService extends APIFetcher
                 'Limit' => $limit,
             ])
         );
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function findCounterparties(CounterpartiesSearch $params): CounterpartiesResult
+    {
+        return new CounterpartiesResult($this->execute('Counterparty', 'getCounterparties', $params->getProperties()));
     }
 }

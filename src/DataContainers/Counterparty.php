@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataContainers;
 
-final class City extends DataContainer
+final class Counterparty extends DataContainer
 {
     public function getRef(): string
     {
@@ -16,8 +16,8 @@ final class City extends DataContainer
         return $this->data['Description'];
     }
 
-    public function getDescriptionRu(): string
+    public function getCityRef(): string
     {
-        return $this->data['DescriptionRu'];
+        return $this->data['City'];
     }
 }
