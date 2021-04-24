@@ -19,6 +19,9 @@ final class CounterpartyKind
         $this->type = $type;
     }
 
+    /**
+     * @throws UnexpectedCounterpartyKind
+     */
     public static function fromString(string $type): self
     {
         if (in_array($type, [self::SENDER, self::RECIPIENT, self::THIRD_PERSON], true)) {
