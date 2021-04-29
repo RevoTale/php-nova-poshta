@@ -93,7 +93,7 @@ abstract class APIFetcher implements LoggerAwareInterface
             $errors = $resp['errors'];
             if (!empty($errors)) {
                 $logger->error(implode(',', $errors), ['Logical errors']);
-                throw new ErrorResultException($resp['errors']);
+                throw new ErrorResultException($resp['errors'], $resp['errorCodes']);
             }
         }
 
