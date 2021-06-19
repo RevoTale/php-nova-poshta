@@ -21,6 +21,11 @@ abstract class DataContainer
         return $this->data[$key];
     }
 
+    protected function getBool(string $key): bool
+    {
+        return $this->data[$key];
+    }
+
     protected function getStr(string $key): string
     {
         return $this->data[$key];

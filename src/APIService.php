@@ -12,6 +12,7 @@ use BladL\NovaPoshta\Exceptions\DocumentNotExists;
 use BladL\NovaPoshta\Exceptions\QueryFailedException;
 use BladL\NovaPoshta\Parameters\CitiesSearch;
 use BladL\NovaPoshta\Parameters\CounterpartiesSearch;
+use BladL\NovaPoshta\Parameters\SettlementsSearch;
 use BladL\NovaPoshta\Parameters\WarehouseSearch;
 use BladL\NovaPoshta\Results\CityFinderResult;
 use BladL\NovaPoshta\Results\CounterpartiesResult;
@@ -20,6 +21,7 @@ use BladL\NovaPoshta\Results\Document\TrackingResult;
 use BladL\NovaPoshta\Results\DocumentListResult;
 use BladL\NovaPoshta\Results\DocumentListResultItem;
 use BladL\NovaPoshta\Results\ScanSheet\DocumentsInsertResult;
+use BladL\NovaPoshta\Results\SettlementSearchResult;
 use BladL\NovaPoshta\Results\SettlementsResult;
 use BladL\NovaPoshta\Results\WarehousesResult;
 use BladL\NovaPoshta\Results\WarehouseTypesResult;
@@ -163,5 +165,15 @@ class APIService extends APIFetcher
             'Ref' => $ref,
             'Page' => $page,
         ]));
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function searchSettlements(SettlementsSearch $search): SettlementSearchResult
+    {
+        return new SettlementSearchResult(
+            $this->execute('Address', 'searchSettlements', $search->getProperties())
+        );
     }
 }
