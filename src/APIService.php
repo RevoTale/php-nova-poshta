@@ -178,6 +178,10 @@ class APIService extends APIFetcher
         );
     }
 
+    /**
+     * @throws Exceptions\CurlException
+     * @throws QueryFailedException
+     */
     public function searchSettlementStreets(string $streetName, string $settlementRef, int $limit, int $page = 1): SearchSettlementResult
     {
         return new SearchSettlementResult($this->execute('Address', 'searchSettlementStreets', [
