@@ -21,6 +21,7 @@ use BladL\NovaPoshta\Results\Document\TrackingResult;
 use BladL\NovaPoshta\Results\DocumentListResult;
 use BladL\NovaPoshta\Results\DocumentListResultItem;
 use BladL\NovaPoshta\Results\ScanSheet\DocumentsInsertResult;
+use BladL\NovaPoshta\Results\SearchSettlementResult;
 use BladL\NovaPoshta\Results\SettlementSearchResult;
 use BladL\NovaPoshta\Results\SettlementsResult;
 use BladL\NovaPoshta\Results\WarehousesResult;
@@ -175,5 +176,15 @@ class APIService extends APIFetcher
         return new SettlementSearchResult(
             $this->execute('Address', 'searchSettlements', $search->getProperties())
         );
+    }
+
+    public function searchSettlementStreets(string $streetName, string $settlementRef, int $limit, int $page = 1): SearchSettlementResult
+    {
+        return new SearchSettlementResult($this->execute('Address', 'searchSettlementStreets', [
+            'StreetName' => $streetName,
+            'SettlementRef' => $settlementRef,
+            'Limit' => $limit,
+            'Page' => $page,
+        ]));
     }
 }
