@@ -13,11 +13,11 @@ final class SettlementSearchResult extends Result
      */
     public function getSettlements(): array
     {
-        return array_map(static fn (array $data) => new SettlementSearchItem($data), $this->container->getData()[0]->Addresses);
+        return array_map(static fn (array $data) => new SettlementSearchItem($data), $this->container->getData()[0]['Addresses']);
     }
 
     public function getTotalCount(): int
     {
-        return $this->container->getData()[0]->TotalCount;
+        return $this->container->getData()[0]['TotalCount'];
     }
 }
