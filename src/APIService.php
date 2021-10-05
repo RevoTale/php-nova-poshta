@@ -191,4 +191,9 @@ class APIService extends APIFetcher
             'Page' => $page,
         ]));
     }
+
+    public function getDocumentNumByBarcode(string $barcode): string
+    {
+        return substr($barcode, 0, 14);
+    }
 }
