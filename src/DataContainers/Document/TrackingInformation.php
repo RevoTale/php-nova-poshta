@@ -59,6 +59,31 @@ final class TrackingInformation extends Information
         }
     }
 
+    public function getRedeliverySum(): float
+    {
+        return (float) $this->data['RedeliverySum'];
+    }
+
+    public function getAfterpaymentSum(): float
+    {
+        return (float) $this->data['AfterpaymentOnGoodsCost'];
+    }
+
+    public function getAmountToPay(): float
+    {
+        return (float) $this->data['AmountToPay'];
+    }
+
+    public function getAmountPaid(): float
+    {
+        return (float) $this->data['AmountPaid'];
+    }
+
+    public function getOwnerDocumentType(): ?string
+    {
+        return $this->data['OwnerDocumentType'] ?: null;
+    }
+
     public function getLastCreatedOnTheBasisNumber(): ?string
     {
         return $this->data['LastCreatedOnTheBasisNumber'] ?: null;
