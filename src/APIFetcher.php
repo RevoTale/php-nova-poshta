@@ -53,10 +53,7 @@ abstract class APIFetcher implements LoggerAwareInterface
                 'calledMethod' => $method,
                 'methodProperties' => empty($params) ? new stdClass() : $params,
             ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
-            if (!($logger instanceof NullLogger)) {//Do not expensive json_encode
-                $encoded_params = json_encode($params, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
-                $logger->info("Called $model->$method($encoded_params)");
-            }
+            $logger->info('Requested NovaPoshta service', compact('model', 'method', 'params'));
             if (false === $payload) {
                 throw new JsonEncodeException(new Exception('Returned payload is false'));
             }
@@ -77,22 +74,29 @@ abstract class APIFetcher implements LoggerAwareInterface
         $err_no = curl_errno($curl);
         curl_close($curl);
         if ($err || $err_no || is_bool($result)) {
-            $logger->alert("Curl response error #$err_no, $err. Response: '$result'.");
+            $logger->alert('NovaPoshta cURl error', [
+                'curlErr' => $err,
+                'curlErrNo' => $err_no,
+                'output' => $result,
+            ]);
             throw new CurlException($err, $err_no);
         }
-        $logger->debug($result, ['result']);
+        $logger->debug('NovaPoshta service responded', ['output' => $result]);
         try {
             $resp = json_decode($result, true, 512, JSON_THROW_ON_ERROR);
         } catch (JsonException $e) {
-            $logger->critical("Bad response returned. Result: '$result'.", [
-                'exception' => $e,
+            $logger->critical('Failed to decode response.', [
+                'output' => $result,
+                'jsonMsg' => $e->getMessage(),
             ]);
             throw new JsonParseException($result, $e);
         }
         if (isset($resp['errors'])) {
             $errors = $resp['errors'];
             if (!empty($errors)) {
-                $logger->error(implode(',', $errors), ['Logical errors']);
+                $logger->error('NovaPoshta logical error', [
+                    'errors' => $errors,
+                ]);
                 throw new ErrorResultException($resp['errors'], $resp['errorCodes']);
             }
         }
