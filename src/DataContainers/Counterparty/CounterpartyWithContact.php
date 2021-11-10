@@ -9,7 +9,7 @@ use BladL\NovaPoshta\Results\ResultContainer;
 
 final class CounterpartyWithContact extends Counterparty
 {
-    public function getContactPerson(): ContactPersonResult
+    public function getContactPersonResult(): ContactPersonResult
     {
         return new ContactPersonResult(new ResultContainer($this->getArray('ContactPerson')));
     }

@@ -10,6 +10,6 @@ final class ContactPersonResult extends Result
 {
     public function getContactPerson(): ContactPerson
     {
-        return new ContactPerson($this->container->getData());
+        return new ContactPerson($this->container->getData()[0]);
     }
 }
