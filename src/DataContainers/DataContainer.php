@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\DataContainers;
 
 use BladL\NovaPoshta\DataContainers\Traits\StringAccess;
+use stdClass;
 
 abstract class DataContainer
 {

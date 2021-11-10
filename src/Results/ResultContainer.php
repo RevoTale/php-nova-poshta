@@ -13,6 +13,11 @@ final class ResultContainer
         $this->response = $response;
     }
 
+    public function isSuccess(): bool
+    {
+        return $this->response['success'];
+    }
+
     public function getResponse(): array
     {
         return $this->response;

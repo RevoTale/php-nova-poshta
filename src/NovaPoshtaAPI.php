@@ -1,7 +1,5 @@
 <?php
-
 /** @noinspection PhpMultipleClassDeclarationsInspection */
-
 declare(strict_types=1);
 
 namespace BladL\NovaPoshta;
@@ -14,36 +12,35 @@ use BladL\NovaPoshta\Exceptions\QueryFailedException;
 use BladL\NovaPoshta\Results\ResultContainer;
 use DateTimeZone;
 use Exception;
-use function is_bool;
+use JetBrains\PhpStorm\Pure;
 use JsonException;
 use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use stdClass;
+use function is_bool;
 
-abstract class APIFetcher implements LoggerAwareInterface
+class NovaPoshtaAPI implements LoggerAwareInterface
 {
-    use LoggerAwareTrait;
     private const TIMEZONE = 'Europe/Kiev';
+    private LoggerInterface $logger;
 
     final public static function getTimeZone(): DateTimeZone
     {
         return new DateTimeZone(self::TIMEZONE);
     }
 
-    private string $apiKey;
-
-    public function __construct(string $apiKey)
-    {
-        $this->apiKey = $apiKey;
-        $this->logger = new NullLogger();
-    }
+    #[Pure]
+     public function __construct(private string $apiKey)
+     {
+         $this->logger = new NullLogger();
+     }
 
     /**
      * @throws CurlException
      * @throws QueryFailedException
      */
-    protected function execute(string $model, string $method, array $params): ResultContainer
+    public function fetch(string $model, string $method, array $params): ResultContainer
     {
         $logger = $this->logger;
         try {
@@ -102,5 +99,10 @@ abstract class APIFetcher implements LoggerAwareInterface
         }
 
         return new ResultContainer($resp);
+    }
+
+    public function setLogger(LoggerInterface $logger): void
+    {
+        $this->logger = $logger;
     }
 }

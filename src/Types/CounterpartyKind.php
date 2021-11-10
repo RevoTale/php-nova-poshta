@@ -1,11 +1,15 @@
 <?php
-
+/**
+ * @noinspection UnknownInspectionInspection
+ * @noinspection PhpUnused
+ */
 declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Types;
 
 use BladL\NovaPoshta\Exceptions\UnexpectedCounterpartyKind;
 use function in_array;
+use JetBrains\PhpStorm\Pure;
 
 final class CounterpartyKind
 {
@@ -30,20 +34,23 @@ final class CounterpartyKind
         throw new UnexpectedCounterpartyKind($type);
     }
 
-    public static function sender(): self
-    {
-        return new self(self::SENDER);
-    }
+    #[Pure]
+     public static function sender(): self
+     {
+         return new self(self::SENDER);
+     }
 
+    #[Pure]
     public static function recipient(): self
     {
         return new self(self::RECIPIENT);
     }
 
-    public static function thirdPerson(): self
-    {
-        return new self(self::THIRD_PERSON);
-    }
+    #[Pure]
+     public static function thirdPerson(): self
+     {
+         return new self(self::THIRD_PERSON);
+     }
 
     public function toString(): string
     {

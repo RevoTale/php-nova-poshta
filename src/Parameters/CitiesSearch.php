@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-final class CitiesSearch extends SearchParameters
+final class CitiesSearch extends ParametersBuilder
 {
     use Pages;
 

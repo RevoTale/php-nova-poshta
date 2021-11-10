@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-abstract class SearchParameters
+abstract class ParametersBuilder
 {
     private array $data = [];
 

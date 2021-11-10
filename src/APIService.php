@@ -1,6 +1,8 @@
 <?php
-
-/** @noinspection UnknownInspectionInspection */
+/**
+ * @noinspection UnknownInspectionInspection
+ * @noinspection EfferentObjectCouplingInspection
+ */
 /* @noinspection PhpUnused */
 declare(strict_types=1);
 
@@ -26,16 +28,28 @@ use BladL\NovaPoshta\Results\SettlementSearchResult;
 use BladL\NovaPoshta\Results\SettlementsResult;
 use BladL\NovaPoshta\Results\WarehousesResult;
 use BladL\NovaPoshta\Results\WarehouseTypesResult;
+use JetBrains\PhpStorm\Pure;
 
-class APIService extends APIFetcher
+/**
+ * @deprecated use BladL\NovaPoshta\Services
+ */
+class APIService
 {
+    private NovaPoshtaAPI $service;
+
+    #[Pure]
+    public function __construct(string $apiKey)
+    {
+        $this->service = new NovaPoshtaAPI($apiKey);
+    }
+
     /**
      * @throws QueryFailedException
      */
     public function findCities(CitiesSearch $parameters): CityFinderResult
     {
         return new CityFinderResult(
-            $this->execute('Address', 'getCities', $parameters->getProperties())
+            $this->service->fetch('Address', 'getCities', $parameters->getProperties())
         );
     }
 
@@ -44,7 +58,7 @@ class APIService extends APIFetcher
      */
     public function findWarehouses(WarehouseSearch $parameters): WarehousesResult
     {
-        return new WarehousesResult($this->execute('Address', 'getWarehouses', $parameters->getProperties()));
+        return new WarehousesResult($this->service->fetch('Address', 'getWarehouses', $parameters->getProperties()));
     }
 
     /**
@@ -52,7 +66,7 @@ class APIService extends APIFetcher
      */
     public function getWarehouseTypes(): WarehouseTypesResult
     {
-        return new WarehouseTypesResult($this->execute('Address', 'getWarehouseTypes', []));
+        return new WarehouseTypesResult($this->service->fetch('Address', 'getWarehouseTypes', []));
     }
 
     /**
@@ -60,7 +74,7 @@ class APIService extends APIFetcher
      */
     public function getWarehouseTypeByRef(string $ref): WarehouseType
     {
-        return new WarehouseType($this->execute('Address', 'getWarehouseTypes', ['Ref' => $ref])->getData()[0]);
+        return new WarehouseType($this->service->fetch('Address', 'getWarehouseTypes', ['Ref' => $ref])->getData()[0]);
     }
 
     /**
@@ -68,7 +82,7 @@ class APIService extends APIFetcher
      */
     public function getSettlementWarehouses(string $settlementRef): WarehousesResult
     {
-        return new WarehousesResult($this->execute('Address', 'getWarehouses', [
+        return new WarehousesResult($this->service->fetch('Address', 'getWarehouses', [
             'SettlementRef' => $settlementRef,
         ]));
     }
@@ -79,7 +93,7 @@ class APIService extends APIFetcher
     public function createScanSheetWithDocuments(string ...$documentNumbers): DocumentsInsertResult
     {
         return new DocumentsInsertResult(
-            $this->execute('ScanSheet', 'insertDocuments', [
+            $this->service->fetch('ScanSheet', 'insertDocuments', [
                 'DocumentRefs' => $documentNumbers,
             ])
         );
@@ -92,7 +106,7 @@ class APIService extends APIFetcher
     {
         return (
         new DocumentListResult(
-            $this->execute('InternetDocument', 'getDocumentList', [
+            $this->service->fetch('InternetDocument', 'getDocumentList', [
                 'IntDocNumber' => $documentNumber,
             ])
         )
@@ -106,7 +120,7 @@ class APIService extends APIFetcher
     {
         return
             new DocumentListResult(
-                $this->execute('InternetDocument', 'getDocumentList', [
+                $this->service->fetch('InternetDocument', 'getDocumentList', [
                     'Page' => $page,
                     'Limit' => $limit,
                 ])
@@ -120,7 +134,7 @@ class APIService extends APIFetcher
     public function trackDocument(string $documentNumber): TrackingInformation
     {
         $tracking = (new TrackingResult(
-            $this->execute('TrackingDocument', 'getStatusDocuments', [
+            $this->service->fetch('TrackingDocument', 'getStatusDocuments', [
                 'Documents' => [
                     [
                         'DocumentNumber' => $documentNumber,
@@ -142,7 +156,7 @@ class APIService extends APIFetcher
     public function getSettlements(int $page, int $limit): SettlementsResult
     {
         return new SettlementsResult(
-            $this->execute('AddressGeneral', 'getSettlements', [
+            $this->service->fetch('AddressGeneral', 'getSettlements', [
                 'Page' => $page,
                 'Limit' => $limit,
             ])
@@ -154,7 +168,7 @@ class APIService extends APIFetcher
      */
     public function findCounterparties(CounterpartiesSearch $params): CounterpartiesResult
     {
-        return new CounterpartiesResult($this->execute('Counterparty', 'getCounterparties', $params->getProperties()));
+        return new CounterpartiesResult($this->service->fetch('Counterparty', 'getCounterparties', $params->getProperties()));
     }
 
     /**
@@ -162,7 +176,7 @@ class APIService extends APIFetcher
      */
     public function getCounterpartyContactPerson(string $ref, int $page): ContactPersonsResult
     {
-        return new ContactPersonsResult($this->execute('Counterparty', 'getCounterpartyContactPersons', [
+        return new ContactPersonsResult($this->service->fetch('Counterparty', 'getCounterpartyContactPersons', [
             'Ref' => $ref,
             'Page' => $page,
         ]));
@@ -174,7 +188,7 @@ class APIService extends APIFetcher
     public function searchSettlements(SettlementsSearch $search): SettlementSearchResult
     {
         return new SettlementSearchResult(
-            $this->execute('Address', 'searchSettlements', $search->getProperties())
+            $this->service->fetch('Address', 'searchSettlements', $search->getProperties())
         );
     }
 
@@ -184,7 +198,7 @@ class APIService extends APIFetcher
      */
     public function searchSettlementStreets(string $streetName, string $settlementRef, int $limit, int $page = 1): SearchSettlementResult
     {
-        return new SearchSettlementResult($this->execute('Address', 'searchSettlementStreets', [
+        return new SearchSettlementResult($this->service->fetch('Address', 'searchSettlementStreets', [
             'StreetName' => $streetName,
             'SettlementRef' => $settlementRef,
             'Limit' => $limit,

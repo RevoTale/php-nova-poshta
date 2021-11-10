@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Results\Counterparty;
 
-use BladL\NovaPoshta\DataContainers\Counteparty\ContactPerson;
+use BladL\NovaPoshta\DataContainers\Counterparty\ContactPerson;
 use BladL\NovaPoshta\Results\Result;
 
 final class ContactPersonsResult extends Result

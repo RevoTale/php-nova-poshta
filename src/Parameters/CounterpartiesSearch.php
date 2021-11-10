@@ -6,7 +6,7 @@ namespace BladL\NovaPoshta\Parameters;
 
 use BladL\NovaPoshta\Types\CounterpartyKind;
 
-final class CounterpartiesSearch extends SearchParameters
+final class CounterpartiesSearch extends ParametersBuilder
 {
     use Pages;
 

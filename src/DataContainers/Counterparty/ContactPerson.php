@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataContainers\Counteparty;
+namespace BladL\NovaPoshta\DataContainers\Counterparty;
 
 use BladL\NovaPoshta\DataContainers\DataContainer;
 use BladL\NovaPoshta\DataContainers\Traits\Describable;
