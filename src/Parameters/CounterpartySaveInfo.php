@@ -34,6 +34,11 @@ final class CounterpartySaveInfo extends ParametersBuilder
         $this->setStr('CounterpartyType', $type->toString());
     }
 
+    public function setEDRPOU(string $EDRPOU): void
+    {
+        $this->setStr('EDRPOU', $EDRPOU);
+    }
+
     public function setCounterpartyKind(CounterpartyKind $property): void
     {
         $this->setStr('CounterpartyProperty', $property->toString());
