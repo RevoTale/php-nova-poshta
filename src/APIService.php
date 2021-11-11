@@ -35,7 +35,7 @@ use JetBrains\PhpStorm\Pure;
  */
 class APIService
 {
-    private NovaPoshtaAPI $service;
+    protected NovaPoshtaAPI $service;
 
     #[Pure]
     public function __construct(string $apiKey)
