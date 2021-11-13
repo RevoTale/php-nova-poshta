@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\Exceptions;
 
 use function count;
+use JetBrains\PhpStorm\Pure;
 
 final class ErrorResultException extends QueryFailedException
 {
@@ -15,12 +16,13 @@ final class ErrorResultException extends QueryFailedException
      * @param string[] $errors
      * @param string[] $errorCodes
      */
-    public function __construct(array $errors, array $errorCodes)
-    {
-        $this->errors = $errors;
-        $this->errorCodes = $errorCodes;
-        parent::__construct('АПИ Новой Почты вернуло негативный результат: '.implode(', ', $errors));
-    }
+    #[Pure]
+ public function __construct(array $errors, array $errorCodes)
+ {
+     $this->errors = $errors;
+     $this->errorCodes = $errorCodes;
+     parent::__construct('АПИ Новой Почты вернуло негативный результат: '.implode(', ', $errors));
+ }
 
     /**
      * @return string[]

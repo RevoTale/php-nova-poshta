@@ -6,6 +6,7 @@ namespace BladL\NovaPoshta\Results;
 
 use BladL\NovaPoshta\DataContainers\Document\Information;
 use BladL\NovaPoshta\Types\DocumentState;
+use JetBrains\PhpStorm\Pure;
 
 final class DocumentListResultItem extends Information
 {
@@ -39,10 +40,11 @@ final class DocumentListResultItem extends Information
         return (float) $this->data['Cost'];
     }
 
-    public function getState(): DocumentState
-    {
-        return new DocumentState((int) $this->data['StateId']);
-    }
+    #[Pure]
+     public function getState(): DocumentState
+     {
+         return new DocumentState((int) $this->data['StateId']);
+     }
 
     public function getStateName(): string
     {
