@@ -48,14 +48,14 @@ class DocumentService extends Service
      * @throws QueryFailedException
      * @throws DocumentNotExists
      */
-    public function trackDocument(string $documentNumber): TrackingInformation
+    public function trackDocument(string $documentNumber,string $phone=''): TrackingInformation
     {
         $tracking = (new TrackingResult(
             $this->api->fetch('TrackingDocument', 'getStatusDocuments', [
                 'Documents' => [
                     [
                         'DocumentNumber' => $documentNumber,
-                        'Phone' => '',
+                        'Phone' => $phone,
                     ],
                 ],
             ])
