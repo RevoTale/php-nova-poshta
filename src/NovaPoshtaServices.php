@@ -9,6 +9,9 @@ use BladL\NovaPoshta\Services\CounterpartyService;
 use BladL\NovaPoshta\Services\DocumentService;
 use BladL\NovaPoshta\Services\ScanSheetService;
 
+/**
+ * @deprecated use NovaPoshtaAPI->getService()
+ */
 class NovaPoshtaServices
 {
     public function __construct(private NovaPoshtaAPI $api)
@@ -17,21 +20,21 @@ class NovaPoshtaServices
 
     public function getAddressService(): AddressService
     {
-        return new AddressService($this->api);
+        return $this->api->getService(AddressService::class);
     }
 
     public function getCounterpartyService(): CounterpartyService
     {
-        return new CounterpartyService($this->api);
+        return $this->api->getService(CounterpartyService::class);
     }
 
     public function getDocumentService(): DocumentService
     {
-        return new DocumentService($this->api);
+        return $this->api->getService(DocumentService::class);
     }
 
     public function getScanSheetService(): ScanSheetService
     {
-        return new ScanSheetService($this->api);
+        return $this->api->getService(ScanSheetService::class);
     }
 }
