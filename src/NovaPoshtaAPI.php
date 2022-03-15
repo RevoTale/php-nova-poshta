@@ -13,7 +13,6 @@ use BladL\NovaPoshta\Results\ResultContainer;
 use BladL\NovaPoshta\Services\Service;
 use DateTimeZone;
 use Exception;
-use JetBrains\PhpStorm\Pure;
 use JsonException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
@@ -31,7 +30,6 @@ class NovaPoshtaAPI implements LoggerAwareInterface
         return new DateTimeZone(self::TIMEZONE);
     }
 
-    #[Pure]
     public function __construct(private string $apiKey)
     {
         $this->logger = new NullLogger();

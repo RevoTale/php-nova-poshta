@@ -28,7 +28,6 @@ use BladL\NovaPoshta\Results\SettlementSearchResult;
 use BladL\NovaPoshta\Results\SettlementsResult;
 use BladL\NovaPoshta\Results\WarehousesResult;
 use BladL\NovaPoshta\Results\WarehouseTypesResult;
-use JetBrains\PhpStorm\Pure;
 
 /**
  * @deprecated use BladL\NovaPoshta\Services
@@ -37,7 +36,6 @@ class APIService
 {
     protected NovaPoshtaAPI $service;
 
-    #[Pure]
     public function __construct(string $apiKey)
     {
         $this->service = new NovaPoshtaAPI($apiKey);

@@ -9,7 +9,6 @@ namespace BladL\NovaPoshta\Types;
 
 use BladL\NovaPoshta\Exceptions\UnexpectedCounterpartyKind;
 use function in_array;
-use JetBrains\PhpStorm\Pure;
 
 final class CounterpartyKind
 {
@@ -34,23 +33,20 @@ final class CounterpartyKind
         throw new UnexpectedCounterpartyKind($type);
     }
 
-    #[Pure]
-     public static function sender(): self
-     {
-         return new self(self::SENDER);
-     }
+    public static function sender(): self
+    {
+        return new self(self::SENDER);
+    }
 
-    #[Pure]
     public static function recipient(): self
     {
         return new self(self::RECIPIENT);
     }
 
-    #[Pure]
-     public static function thirdPerson(): self
-     {
-         return new self(self::THIRD_PERSON);
-     }
+    public static function thirdPerson(): self
+    {
+        return new self(self::THIRD_PERSON);
+    }
 
     public function toString(): string
     {

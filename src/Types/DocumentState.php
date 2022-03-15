@@ -8,7 +8,6 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\Types;
 
 use function in_array;
-use JetBrains\PhpStorm\Pure;
 
 final class DocumentState
 {
@@ -43,11 +42,10 @@ final class DocumentState
         return in_array($this->state, $codes, true);
     }
 
-    #[Pure]
-     public function documentExists(): bool
-     {
-         return $this->isOneOf(self::DELETED, self::NOT_FOUND);
-     }
+    public function documentExists(): bool
+    {
+        return $this->isOneOf(self::DELETED, self::NOT_FOUND);
+    }
 
     public function getCode(): int
     {

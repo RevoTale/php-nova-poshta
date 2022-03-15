@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Exceptions;
 
-use JetBrains\PhpStorm\Pure;
 use Throwable;
 
 final class JsonParseException extends QueryFailedException
@@ -16,10 +15,9 @@ final class JsonParseException extends QueryFailedException
         return $this->payload;
     }
 
-    #[Pure]
-     public function __construct(string $payload, Throwable $prev)
-     {
-         $this->payload = $payload;
-         parent::__construct('АПИ вернуло некорректный формат данных', 0, $prev);
-     }
+    public function __construct(string $payload, Throwable $prev)
+    {
+        $this->payload = $payload;
+        parent::__construct('АПИ вернуло некорректный формат данных', 0, $prev);
+    }
 }

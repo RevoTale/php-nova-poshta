@@ -15,7 +15,7 @@
         }
     },
     "scripts": {
-        "psalm": "vendor/bin/psalm --show-info=true",
+        "psalm": "vendor/bin/psalm --output-format=phpstorm",
         "php-cs": "vendor/bin/php-cs-fixer fix",
         "test": [
             "@psalm",

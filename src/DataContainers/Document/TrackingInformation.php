@@ -11,14 +11,12 @@ use BladL\NovaPoshta\Types\CounterpartyKind;
 use BladL\NovaPoshta\Types\DocumentState;
 use DateTime;
 use Exception;
-use JetBrains\PhpStorm\Pure;
 
 final class TrackingInformation extends Information
 {
-    #[Pure]
     public function getStatus(): DocumentState
     {
-        return new DocumentState((int) $this->data['StatusCode']);
+        return new DocumentState((int)$this->data['StatusCode']);
     }
 
     public function getScanDateStr(): string
@@ -46,7 +44,7 @@ final class TrackingInformation extends Information
 
     public function getDocumentCost(): float
     {
-        return (float) $this->data['DocumentCost'];
+        return (float)$this->data['DocumentCost'];
     }
 
     /**
@@ -63,22 +61,22 @@ final class TrackingInformation extends Information
 
     public function getRedeliverySum(): float
     {
-        return (float) $this->data['RedeliverySum'];
+        return (float)$this->data['RedeliverySum'];
     }
 
     public function getAfterpaymentSum(): float
     {
-        return (float) $this->data['AfterpaymentOnGoodsCost'];
+        return (float)$this->data['AfterpaymentOnGoodsCost'];
     }
 
     public function getAmountToPay(): float
     {
-        return (float) $this->data['AmountToPay'];
+        return (float)$this->data['AmountToPay'];
     }
 
     public function getAmountPaid(): float
     {
-        return (float) $this->data['AmountPaid'];
+        return (float)$this->data['AmountPaid'];
     }
 
     public function getOwnerDocumentType(): ?string

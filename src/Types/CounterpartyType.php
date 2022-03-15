@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Types;
 
-use JetBrains\PhpStorm\Pure;
 use UnexpectedValueException;
 use function in_array;
 
@@ -30,13 +29,11 @@ final class CounterpartyType
         throw new UnexpectedValueException($type);
     }
 
-    #[Pure]
     public static function privatePerson(): self
     {
         return new self(self::PRIVATE_PERSON);
     }
 
-    #[Pure]
     public static function organization(): self
     {
         return new self(self::ORGANIZATION);
