@@ -7,7 +7,7 @@ use BladL\NovaPoshta\NovaPoshtaAPI;
 
 abstract class Service
 {
-    public function __construct(protected NovaPoshtaAPI $api)
+    final public function __construct(protected NovaPoshtaAPI $api)
     {
     }
 }

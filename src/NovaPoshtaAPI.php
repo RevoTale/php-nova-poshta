@@ -10,6 +10,7 @@ use BladL\NovaPoshta\Exceptions\JsonEncodeException;
 use BladL\NovaPoshta\Exceptions\JsonParseException;
 use BladL\NovaPoshta\Exceptions\QueryFailedException;
 use BladL\NovaPoshta\Results\ResultContainer;
+use BladL\NovaPoshta\Services\Service;
 use DateTimeZone;
 use Exception;
 use JetBrains\PhpStorm\Pure;
@@ -31,10 +32,10 @@ class NovaPoshtaAPI implements LoggerAwareInterface
     }
 
     #[Pure]
-     public function __construct(private string $apiKey)
-     {
-         $this->logger = new NullLogger();
-     }
+    public function __construct(private string $apiKey)
+    {
+        $this->logger = new NullLogger();
+    }
 
     /**
      * @throws CurlException
@@ -101,8 +102,43 @@ class NovaPoshtaAPI implements LoggerAwareInterface
         return new ResultContainer($resp);
     }
 
+    /**
+     * @throws CurlException
+     */
+    public function fetchFile(string $path): string
+    {
+        $ch = curl_init(
+            "https://my.novaposhta.ua/$path/apiKey/$this->apiKey");
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        $err_no = curl_errno($ch);
+        $err = curl_error($ch);
+        $logger = $this->logger;
+        if ($err || $err_no || is_bool($result)) {
+            $logger->alert('NovaPoshta cURl file error', [
+                'curlErr' => $err,
+                'curlErrNo' => $err_no,
+                'output' => $result,
+            ]);
+            throw new CurlException($err, $err_no);
+        }
+        curl_close($ch);
+        return $result;
+    }
+
     public function setLogger(LoggerInterface $logger): void
     {
         $this->logger = $logger;
+    }
+
+    /**
+     * @param class-string<T> $class
+     * @return T
+     *
+     * @template T of Service
+     */
+    public function getService(string $class):Service {
+        return new $class($this);
     }
 }
