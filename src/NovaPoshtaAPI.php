@@ -1,4 +1,5 @@
 <?php
+
 /** @noinspection PhpMultipleClassDeclarationsInspection */
 declare(strict_types=1);
 
@@ -106,7 +107,8 @@ class NovaPoshtaAPI implements LoggerAwareInterface
     public function fetchFile(string $path): string
     {
         $ch = curl_init(
-            "https://my.novaposhta.ua/$path/apiKey/$this->apiKey");
+            "https://my.novaposhta.ua/$path/apiKey/$this->apiKey"
+        );
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
@@ -136,7 +138,8 @@ class NovaPoshtaAPI implements LoggerAwareInterface
      *
      * @template T of Service
      */
-    public function getService(string $class):Service {
+    public function getService(string $class): Service
+    {
         return new $class($this);
     }
 }

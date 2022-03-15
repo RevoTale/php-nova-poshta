@@ -39,10 +39,10 @@ final class DocumentListResultItem extends Information
         return (float) $this->data['Cost'];
     }
 
-     public function getState(): DocumentState
-     {
-         return new DocumentState((int) $this->data['StateId']);
-     }
+    public function getState(): DocumentState
+    {
+        return new DocumentState((int) $this->data['StateId']);
+    }
 
     public function getStateName(): string
     {

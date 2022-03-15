@@ -51,7 +51,7 @@ class DocumentService extends Service
      * @throws QueryFailedException
      * @throws DocumentNotExists
      */
-    public function trackDocument(string $documentNumber,string $phone=''): TrackingInformation
+    public function trackDocument(string $documentNumber, string $phone=''): TrackingInformation
     {
         $tracking = (new TrackingResult(
             $this->api->fetch('TrackingDocument', 'getStatusDocuments', [
@@ -80,14 +80,15 @@ class DocumentService extends Service
      * @throws CurlException
      * @throws FileSaveException
      */
-    public function saveDocumentsFile(string $destination,array $documents,DocumentPrintType $type):void{
+    public function saveDocumentsFile(string $destination, array $documents, DocumentPrintType $type): void
+    {
         $content = $this->api->fetchFile('orders/printMarking85x85/orders/'
             .implode(',', $documents)
             .'/type/'.$type->value);
         if (empty($content)) {
             throw new FileSaveException('Empty content returned');
         }
-        if (false === file_put_contents($destination,$content)) {
+        if (false === file_put_contents($destination, $content)) {
             throw new FileSaveException('Failed to save content in filesystem');
         }
     }
