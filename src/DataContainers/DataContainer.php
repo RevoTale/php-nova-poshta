@@ -9,6 +9,7 @@ use BladL\NovaPoshta\DataContainers\Traits\StringAccess;
 abstract class DataContainer
 {
     use StringAccess;
+
     private array $data;
 
     final public function __construct(array $data)
@@ -25,10 +26,12 @@ abstract class DataContainer
     {
         return $this->data[$key];
     }
-    protected function getForceBool(string $key): bool
+
+    protected function getForceBool(string $key):? bool
     {
-        return (bool)$this->data[$key];
+        return isset($this->data[$key]) ? (bool)$this->data[$key] : null;
     }
+
     protected function getBool(string $key): bool
     {
         return $this->data[$key];
