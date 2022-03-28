@@ -113,6 +113,16 @@ final class TrackingInformation extends Information
         return $days?(int)$days:null;
     }
 
+    public function isRedelivery():?bool {
+        $yes = $this->data['Redelivery'];
+        return '' === $yes ?null:(bool)$yes;
+    }
+
+    public function getRedeliveryNumber():?string {
+        $num = $this->data['RedeliveryNum'];
+        return $num?(string)$num:null;
+    }
+
     public function getStoragePrice(): ?float
     {
         $price = $this->data['StoragePrice'];
