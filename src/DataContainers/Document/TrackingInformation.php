@@ -107,4 +107,15 @@ final class TrackingInformation extends Information
     {
         return $this->data['Status'];
     }
+
+    public function getDaysStorageCargo():?int {
+        $days = $this->data['DaysStorageCargo'];
+        return $days?(int)$days:null;
+    }
+
+    public function getStoragePrice(): ?float
+    {
+        $price = $this->data['StoragePrice'];
+        return $price ? (float)$price : null;
+    }
 }
