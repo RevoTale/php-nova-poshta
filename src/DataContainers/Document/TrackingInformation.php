@@ -7,8 +7,10 @@ namespace BladL\NovaPoshta\DataContainers\Document;
 use BladL\NovaPoshta\Exceptions\DateParseException;
 use BladL\NovaPoshta\Exceptions\UnexpectedCounterpartyKind;
 use BladL\NovaPoshta\NovaPoshtaAPI;
+use BladL\NovaPoshta\NovaPoshtaTimeZone;
 use BladL\NovaPoshta\Types\CounterpartyKind;
 use BladL\NovaPoshta\Types\DocumentState;
+use BladL\Time\Moment;
 use DateTime;
 use Exception;
 
@@ -87,6 +89,18 @@ final class TrackingInformation extends Information
     public function getLastCreatedOnTheBasisNumber(): ?string
     {
         return $this->data['LastCreatedOnTheBasisNumber'] ?: null;
+    }
+
+    public function getTrackingUpdateTime(): ?Moment
+    {
+        $date = $this->data['TrackingUpdateDate'];
+        return $date ? (new NovaPoshtaTimeZone())->timeFromFormat('Y-m-d H:i:s', $date) : null;
+    }
+
+    public function getActualDeliveryTime(): ?Moment
+    {
+        $date = $this->data['ActualDeliveryDate'];
+        return $date ? (new NovaPoshtaTimeZone())->timeFromFormat('Y-m-d H:i:s', $date) : null;
     }
 
     public function getStatusDescription(): string

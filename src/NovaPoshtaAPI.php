@@ -133,6 +133,7 @@ class NovaPoshtaAPI implements LoggerAwareInterface
         $this->logger = $logger;
     }
 
+
     /**
      * @param class-string<T> $class
      * @return T
