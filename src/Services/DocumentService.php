@@ -10,6 +10,7 @@ namespace BladL\NovaPoshta\Services;
 use BladL\NovaPoshta\DataContainers\Document\TrackingInformation;
 use BladL\NovaPoshta\Exceptions\CurlException;
 use BladL\NovaPoshta\Exceptions\DocumentNotExists;
+use BladL\NovaPoshta\Exceptions\DocumentNotFoundException;
 use BladL\NovaPoshta\Exceptions\FileSaveException;
 use BladL\NovaPoshta\Exceptions\QueryFailedException;
 use BladL\NovaPoshta\Results\Document\TrackingResult;
@@ -20,7 +21,7 @@ use BladL\NovaPoshta\Types\DocumentPrintType;
 class DocumentService extends Service
 {
     /**
-     * @throws QueryFailedException
+     * @throws QueryFailedException|DocumentNotFoundException
      */
     public function getDocument(string $documentNumber): DocumentListResultItem
     {
@@ -30,7 +31,7 @@ class DocumentService extends Service
                 'IntDocNumber' => $documentNumber,
             ])
         )
-        )->getDocuments()[0];
+        )->getDocuments()[0]??throw new DocumentNotFoundException();
     }
 
     /**
