@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-use BladL\NovaPoshta\Types\CounterpartyKind;
+use BladL\NovaPoshta\Types\CounterpartyPersonType;
 use BladL\NovaPoshta\Types\CounterpartyType;
 
 final class CounterpartySaveInfo extends ParametersBuilder
@@ -39,7 +39,7 @@ final class CounterpartySaveInfo extends ParametersBuilder
         $this->setStr('EDRPOU', $EDRPOU);
     }
 
-    public function setCounterpartyKind(CounterpartyKind $property): void
+    public function setCounterpartyKind(CounterpartyPersonType $property): void
     {
         $this->setStr('CounterpartyProperty', $property->toString());
     }

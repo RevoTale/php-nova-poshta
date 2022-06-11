@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Exceptions;
 
-use Exception;
+use UnexpectedValueException;
 
-final class UnexpectedCounterpartyKind extends Exception
+/**
+ * Thrown in case bad NovaPoshta response, normally this  should not happen
+ */
+final class UnexpectedCounterpartyException extends UnexpectedValueException
 {
     public function __construct(string $type)
     {

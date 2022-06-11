@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\DataContainers\Document;
 
 use BladL\NovaPoshta\Exceptions\DateParseException;
-use BladL\NovaPoshta\Exceptions\UnexpectedCounterpartyKind;
+use BladL\NovaPoshta\Exceptions\UnexpectedCounterpartyException;
 use BladL\NovaPoshta\NovaPoshtaAPI;
 use BladL\NovaPoshta\NovaPoshtaTimeZone;
-use BladL\NovaPoshta\Types\CounterpartyKind;
+use BladL\NovaPoshta\Types\CounterpartyPersonType;
 use BladL\NovaPoshta\Types\DocumentState;
 use BladL\Time\Moment;
 use DateTime;
@@ -37,11 +37,12 @@ final class TrackingInformation extends Information
     }
 
     /**
-     * @throws UnexpectedCounterpartyKind
+     * @throws UnexpectedCounterpartyException
      */
-    public function getPayerType(): CounterpartyKind
+    public function getPayerType(): CounterpartyPersonType
     {
-        return CounterpartyKind::fromString($this->data['PayerType']);
+        $type = $this->data['PayerType'];
+        return CounterpartyPersonType::tryFrom($type) ?: throw new UnexpectedCounterpartyException($type);
     }
 
     public function getDocumentCost(): float
