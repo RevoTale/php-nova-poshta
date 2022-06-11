@@ -4,84 +4,84 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataContainers;
 
-use BladL\NovaPoshta\DataContainers\Traits\DescriptionMulti;
-use BladL\NovaPoshta\DataContainers\Traits\Referencable;
+use BladL\NovaPoshta\DataContainers\Traits\DescriptionWithRu;
+use BladL\NovaPoshta\DataContainers\Traits\Ref;
 
 /**
  * @internal
  */
 final class Warehouse extends DataContainer
 {
-    use Referencable;
-    use DescriptionMulti;
+    use Ref;
+    use DescriptionWithRu;
 
     public function getWarehouseTypeRef(): string
     {
-        return $this->getStr('TypeOfWarehouse');
+        return $this->data->string('TypeOfWarehouse');
     }
 
     public function getSettlementRef(): string
     {
-        return $this->getStr('SettlementRef');
+        return $this->data->string('SettlementRef');
     }
 
     public function getSettlementDescription(): string
     {
-        return $this->getStr('SettlementDescription');
+        return $this->data->string('SettlementDescription');
     }
 
     public function getSettlementAreaDescription(): string
     {
-        return $this->getStr('SettlementAreaDescription');
+        return $this->data->string('SettlementAreaDescription');
     }
 
     public function getSettlementRegionDescription(): string
     {
-        return $this->getStr('SettlementRegionsDescription');
+        return $this->data->string('SettlementRegionsDescription');
     }
 
     public function getSettlementTypeDescription(): string
     {
-        return $this->getStr('SettlementTypeDescription');
+        return $this->data->string('SettlementTypeDescription');
     }
 
     public function getRegionCity(): string
     {
-        return $this->getStr('RegionCity');
+        return $this->data->string('RegionCity');
     }
 
     public function getDistrictCode(): string
     {
-        return $this->getStr('DistrictCode');
+        return $this->data->string('DistrictCode');
     }
 
     public function getCityRef(): string
     {
-        return $this->getStr('CityRef');
+        return $this->data->string('CityRef');
     }
 
     public function isDenyToSelect(): ?bool
     {
-        return $this->getForceBool('DenyToSelect');
+        return $this->data->bool('DenyToSelect');
     }
 
     public function isWorking(): bool
     {
-        return 'Working' === $this->getStr('WarehouseStatus');
+        return 'Working' === $this->data->string('WarehouseStatus');
     }
 
     public function getCityDescriptionRu(): string
     {
-        return $this->getStr('CityDescriptionRu');
+        return $this->data->string('CityDescriptionRu');
     }
 
     public function getCityDescription(): string
     {
-        return $this->getStr('CityDescription');
+        return $this->data->string('CityDescription');
     }
 
     public function getNumber(): int
     {
-        return (int) $this->getStr('Number');
+        return (int) $this->data->string('Number');
     }
 }

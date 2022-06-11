@@ -7,7 +7,10 @@ namespace BladL\NovaPoshta\DataContainers\Traits;
 /**
  * @internal
  */
-trait StringAccess
+trait Ref
 {
-    abstract protected function getStr(string $key): string;
+    public function getRef(): string
+    {
+        return $this->data->string('Ref');
+    }
 }

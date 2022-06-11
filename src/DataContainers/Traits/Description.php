@@ -7,12 +7,10 @@ namespace BladL\NovaPoshta\DataContainers\Traits;
 /**
  * @internal
  */
-trait Describable
+trait Description
 {
-    use StringAccess;
-
     public function getDescription(): string
     {
-        return $this->getStr('Description');
+        return $this->data->string('Description');
     }
 }

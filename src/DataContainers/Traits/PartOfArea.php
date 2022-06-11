@@ -9,15 +9,13 @@ namespace BladL\NovaPoshta\DataContainers\Traits;
  */
 trait PartOfArea
 {
-    use StringAccess;
-
     public function getAreaDescription(): string
     {
-        return $this->getStr('AreaDescription');
+        return $this->data->string('AreaDescription');
     }
 
     public function getAreaDescriptionRu(): string
     {
-        return $this->getStr('AreaDescriptionRu');
+        return $this->data->string('AreaDescriptionRu');
     }
 }

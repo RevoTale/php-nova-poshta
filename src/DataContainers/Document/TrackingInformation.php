@@ -18,22 +18,22 @@ final class TrackingInformation extends Information
 {
     public function getStatus(): DocumentState
     {
-        return new DocumentState((int)$this->data['StatusCode']);
+        return new DocumentState((int)$this->data->string('StatusCode'));
     }
 
     public function getScanDateStr(): string
     {
-        return $this->data['DateScan'];
+        return $this->data->string('DateScan');
     }
 
     public function getNumber(): string
     {
-        return $this->data['Number'];
+        return $this->data->string('Number');
     }
 
     public function getDocumentWeight(): float
     {
-        return $this->data['DocumentWeight'];
+        return $this->data->float('DocumentWeight');
     }
 
     /**
@@ -41,13 +41,13 @@ final class TrackingInformation extends Information
      */
     public function getPayerType(): CounterpartyPersonType
     {
-        $type = $this->data['PayerType'];
-        return CounterpartyPersonType::tryFrom($type) ?: throw new UnexpectedCounterpartyException($type);
+        $type = $this->data->string('PayerType');
+        return CounterpartyPersonType::tryFrom($type) ?? throw new UnexpectedCounterpartyException($type);
     }
 
     public function getDocumentCost(): float
     {
-        return (float)$this->data['DocumentCost'];
+        return $this->data->float('DocumentCost');
     }
 
     /**
@@ -64,72 +64,69 @@ final class TrackingInformation extends Information
 
     public function getRedeliverySum(): float
     {
-        return (float)$this->data['RedeliverySum'];
+        return $this->data->float('RedeliverySum');
     }
 
     public function getAfterpaymentSum(): float
     {
-        return (float)$this->data['AfterpaymentOnGoodsCost'];
+        return $this->data->float('AfterpaymentOnGoodsCost');
     }
 
     public function getAmountToPay(): float
     {
-        return (float)$this->data['AmountToPay'];
+        return $this->data->float('AmountToPay');
     }
 
     public function getAmountPaid(): float
     {
-        return (float)$this->data['AmountPaid'];
+        return $this->data->float('AmountPaid');
     }
 
     public function getOwnerDocumentType(): ?string
     {
-        return $this->data['OwnerDocumentType'] ?: null;
+        return $this->data->nullOrString('OwnerDocumentType');
     }
 
     public function getLastCreatedOnTheBasisNumber(): ?string
     {
-        return $this->data['LastCreatedOnTheBasisNumber'] ?: null;
+        return $this->data->nullOrString('LastCreatedOnTheBasisNumber');
     }
 
     public function getTrackingUpdateTime(): ?Moment
     {
-        $date = $this->data['TrackingUpdateDate'];
+        $date = $this->data->nullOrString('TrackingUpdateDate');
         return $date ? (new NovaPoshtaTimeZone())->timeFromFormat('Y-m-d H:i:s', $date) : null;
     }
 
     public function getActualDeliveryTime(): ?Moment
     {
-        $date = $this->data['ActualDeliveryDate'];
+        $date = $this->data->nullOrString('ActualDeliveryDate');
         return $date ? (new NovaPoshtaTimeZone())->timeFromFormat('Y-m-d H:i:s', $date) : null;
     }
 
     public function getStatusDescription(): string
     {
-        return $this->data['Status'];
+        return $this->data->string('Status');
     }
 
     public function getDaysStorageCargo(): ?int
     {
-        $days = $this->data['DaysStorageCargo'];
-        return $days ? (int)$days : null;
+        return $this->data->nullOrInt('DaysStorageCargo');
     }
 
     public function isRedelivery(): ?bool
     {
-        $yes = $this->data['Redelivery'];
-        return '' === $yes ? null : (bool)$yes;
+        return $this->data->nullOrBool('Redelivery');
     }
 
     public function getRedeliveryNumber(): ?string
     {
-        $num = $this->data['RedeliveryNum'];
-        return $num ? (string)$num : null;
+        return $this->data->nullOrString('RedeliveryNum') ?: null;
     }
 
     public function getStoragePrice(): ?float
     {
-        $price = $this->data['StoragePrice'];
-        return $price ? (float)$price : null;
+        $price = $this->data->nullOrFloat('StoragePrice');
+        return $price ? $price : null;
     }
 }

@@ -12,9 +12,9 @@ namespace BladL\NovaPoshta\Types;
  */
 enum CounterpartyPersonType: string
 {
-    private const Sender = 'Sender';
-    private const Recipient = 'Recipient';
-    private const ThirdPerson = 'ThirdPerson';
+    case Sender = 'Sender';
+    case Recipient = 'Recipient';
+    case ThirdPerson = 'ThirdPerson';
     public function toString(): string
     {
         return $this->value;

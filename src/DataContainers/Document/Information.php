@@ -4,30 +4,24 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataContainers\Document;
 
+use BladL\NovaPoshta\DataContainers\DataContainer;
 use BladL\NovaPoshta\Exceptions\NoSeatsAmountException;
 
 /**
  * @internal
  */
-abstract class Information
+abstract class Information extends DataContainer
 {
-    protected array $data;
-
-    public function __construct(array $data)
-    {
-        $this->data = $data;
-    }
-
     /**
      * @throws NoSeatsAmountException
      */
     public function getSeatsAmount(): int
     {
-        $seats = $this->data['SeatsAmount'];
-        if (empty($seats)) {
+        $seats = $this->data->nullOrInt('SeatsAmount');
+        if (null === $seats || 0 === $seats) {
             throw new NoSeatsAmountException();
         }
 
-        return (int) $seats;
+        return $seats;
     }
 }

@@ -7,12 +7,12 @@ namespace BladL\NovaPoshta\DataContainers\Traits;
 /**
  * @internal
  */
-trait DescriptionMulti
+trait DescriptionWithRu
 {
-    use Describable;
+    use Description;
 
     public function getDescriptionRu(): string
     {
-        return $this->getStr('DescriptionRu');
+        return $this->data->string('DescriptionRu');
     }
 }
