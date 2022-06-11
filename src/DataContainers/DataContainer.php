@@ -27,7 +27,7 @@ abstract class DataContainer
         return $this->data[$key];
     }
 
-    protected function getForceBool(string $key):? bool
+    protected function getForceBool(string $key): ?bool
     {
         return isset($this->data[$key]) ? (bool)$this->data[$key] : null;
     }

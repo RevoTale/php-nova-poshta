@@ -81,11 +81,11 @@ class DocumentService extends Service
      * @throws CurlException
      * @throws FileSaveException
      */
-    public function saveDocumentsFile(string $destination, array $documents, DocumentPrintType $type,int $timeout = 5): void
+    public function saveDocumentsFile(string $destination, array $documents, DocumentPrintType $type, int $timeout = 5): void
     {
         $content = $this->api->fetchFile('orders/printMarking85x85/orders/'
             .implode(',', $documents)
-            .'/type/'.$type->value,$timeout);
+            .'/type/'.$type->value, $timeout);
         if (empty($content)) {
             throw new FileSaveException('Empty content returned');
         }

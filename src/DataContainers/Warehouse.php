@@ -57,11 +57,13 @@ final class Warehouse extends DataContainer
         return $this->getStr('CityRef');
     }
 
-    public function isDenyToSelect():?bool {
+    public function isDenyToSelect(): ?bool
+    {
         return $this->getForceBool('DenyToSelect');
     }
 
-    public function isWorking():bool {
+    public function isWorking(): bool
+    {
         return 'Working' === $this->getStr('WarehouseStatus');
     }
 

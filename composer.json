@@ -18,7 +18,9 @@
         "psalm": "vendor/bin/psalm --output-format=phpstorm",
         "php-cs": "vendor/bin/php-cs-fixer fix",
         "test": [
-            "@psalm",
+            "@psalm"
+        ],
+        "fix": [
             "@php-cs"
         ]
     },

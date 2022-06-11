@@ -104,7 +104,7 @@ class NovaPoshtaAPI implements LoggerAwareInterface
     /**
      * @throws CurlException
      */
-    public function fetchFile(string $path,int $timeout): string
+    public function fetchFile(string $path, int $timeout): string
     {
         $ch = curl_init(
             "https://my.novaposhta.ua/$path/apiKey/$this->apiKey"

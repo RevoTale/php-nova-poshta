@@ -108,19 +108,22 @@ final class TrackingInformation extends Information
         return $this->data['Status'];
     }
 
-    public function getDaysStorageCargo():?int {
+    public function getDaysStorageCargo(): ?int
+    {
         $days = $this->data['DaysStorageCargo'];
-        return $days?(int)$days:null;
+        return $days ? (int)$days : null;
     }
 
-    public function isRedelivery():?bool {
+    public function isRedelivery(): ?bool
+    {
         $yes = $this->data['Redelivery'];
-        return '' === $yes ?null:(bool)$yes;
+        return '' === $yes ? null : (bool)$yes;
     }
 
-    public function getRedeliveryNumber():?string {
+    public function getRedeliveryNumber(): ?string
+    {
         $num = $this->data['RedeliveryNum'];
-        return $num?(string)$num:null;
+        return $num ? (string)$num : null;
     }
 
     public function getStoragePrice(): ?float
