@@ -22,7 +22,7 @@ use BladL\NovaPoshta\Results\WarehouseTypesResult;
 /**
  * @internal
  */
-class AddressService extends Service
+final class AddressService extends Service
 {
     /**
      * @throws QueryFailedException

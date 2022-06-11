@@ -17,7 +17,7 @@ use BladL\NovaPoshta\Results\Counterparty\CounterpartySaveResult;
 /**
  * @internal
  */
-class CounterpartyService extends Service
+final class CounterpartyService extends Service
 {
     /**
      * @throws QueryFailedException

@@ -21,7 +21,7 @@ use BladL\NovaPoshta\Types\DocumentPrintType;
 /**
  * @internal
  */
-class DocumentService extends Service
+final class DocumentService extends Service
 {
     /**
      * @throws QueryFailedException|DocumentNotFoundException

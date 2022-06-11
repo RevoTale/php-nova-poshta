@@ -13,7 +13,7 @@ use BladL\NovaPoshta\Results\ScanSheet\DocumentsInsertResult;
 /**
  * @internal
  */
-class ScanSheetService extends Service
+final class ScanSheetService extends Service
 {
     /**
      * @throws QueryFailedException
