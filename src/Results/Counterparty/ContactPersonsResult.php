@@ -7,6 +7,9 @@ namespace BladL\NovaPoshta\Results\Counterparty;
 use BladL\NovaPoshta\DataContainers\Counterparty\ContactPerson;
 use BladL\NovaPoshta\Results\Result;
 
+/**
+ * @internal
+ */
 final class ContactPersonsResult extends Result
 {
     /**

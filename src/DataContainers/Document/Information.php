@@ -6,6 +6,9 @@ namespace BladL\NovaPoshta\DataContainers\Document;
 
 use BladL\NovaPoshta\Exceptions\NoSeatsAmountException;
 
+/**
+ * @internal
+ */
 abstract class Information
 {
     protected array $data;

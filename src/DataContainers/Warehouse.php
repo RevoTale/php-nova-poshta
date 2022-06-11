@@ -7,6 +7,9 @@ namespace BladL\NovaPoshta\DataContainers;
 use BladL\NovaPoshta\DataContainers\Traits\DescriptionMulti;
 use BladL\NovaPoshta\DataContainers\Traits\Referencable;
 
+/**
+ * @internal
+ */
 final class Warehouse extends DataContainer
 {
     use Referencable;

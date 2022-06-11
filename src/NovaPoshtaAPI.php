@@ -21,6 +21,9 @@ use Psr\Log\NullLogger;
 use stdClass;
 use function is_bool;
 
+/**
+ * Entry class for all library services
+ */
 class NovaPoshtaAPI implements LoggerAwareInterface
 {
     private const TIMEZONE = 'Europe/Kiev';

@@ -6,6 +6,9 @@ namespace BladL\NovaPoshta\DataContainers;
 
 use BladL\NovaPoshta\DataContainers\Traits\Referencable;
 
+/**
+ * @internal
+ */
 final class SettlementSearchItem extends DataContainer
 {
     use Referencable;

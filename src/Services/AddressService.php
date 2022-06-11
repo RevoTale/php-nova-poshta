@@ -19,6 +19,9 @@ use BladL\NovaPoshta\Results\SettlementsResult;
 use BladL\NovaPoshta\Results\WarehousesResult;
 use BladL\NovaPoshta\Results\WarehouseTypesResult;
 
+/**
+ * @internal
+ */
 class AddressService extends Service
 {
     /**
@@ -91,7 +94,12 @@ class AddressService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function searchSettlementStreets(string $streetName, string $settlementRef, int $limit, int $page = 1): SearchSettlementResult
+    public function searchSettlementStreets(
+        string $streetName,
+        string $settlementRef,
+        int $limit,
+        int $page = 1
+    ): SearchSettlementResult
     {
         return new SearchSettlementResult($this->api->fetch('Address', 'searchSettlementStreets', [
             'StreetName' => $streetName,

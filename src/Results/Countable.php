@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Results;
 
+/**
+ * @internal
+ */
 trait Countable
 {
     public function getTotalCount(): int

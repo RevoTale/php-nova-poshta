@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
+/**
+ * @internal
+ */
 abstract class ParametersBuilder
 {
     private array $data = [];

@@ -1,39 +1,42 @@
 {
-    "name": "bladl/nova-poshta-api",
-    "description": "PHP implementation of Ukrainian delivery service Nova Poshta API 2.0",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "BladL"
-        }
-    ],
-    "keywords": ["Нова Пошта","API 2.0"],
-    "autoload": {
-        "psr-4": {
-            "BladL\\NovaPoshta\\": "src"
-        }
-    },
-    "scripts": {
-        "psalm": "vendor/bin/psalm --output-format=phpstorm",
-        "php-cs": "vendor/bin/php-cs-fixer fix",
-        "test": [
-            "@psalm"
-        ],
-        "fix": [
-            "@php-cs"
-        ]
-    },
-    "prefer-stable": true,
-    "minimum-stability": "dev",
-    "require-dev": {
-        "friendsofphp/php-cs-fixer": ">=3.6",
-        "vimeo/psalm": ">=4.6"
-    },
-    "require": {
-        "php": ">=8.1",
-        "ext-curl": "*",
-        "ext-json": "*",
-        "bladl/time": "dev-main"
+  "name": "bladl/nova-poshta-api",
+  "description": "PHP implementation of Ukrainian delivery service Nova Poshta API 2.0",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "BladL"
     }
+  ],
+  "keywords": [
+    "Нова Пошта",
+    "API 2.0"
+  ],
+  "autoload": {
+    "psr-4": {
+      "BladL\\NovaPoshta\\": "src"
+    }
+  },
+  "scripts": {
+    "psalm": "vendor/bin/psalm --output-format=phpstorm",
+    "php-cs": "vendor/bin/php-cs-fixer fix",
+    "test": [
+      "@psalm"
+    ],
+    "fix": [
+      "@php-cs"
+    ]
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": ">=3.6",
+    "vimeo/psalm": ">=4.6"
+  },
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "bladl/time": "dev-main"
+  }
 }

@@ -18,6 +18,9 @@ use BladL\NovaPoshta\Results\DocumentListResult;
 use BladL\NovaPoshta\Results\DocumentListResultItem;
 use BladL\NovaPoshta\Types\DocumentPrintType;
 
+/**
+ * @internal
+ */
 class DocumentService extends Service
 {
     /**
@@ -26,12 +29,12 @@ class DocumentService extends Service
     public function getDocument(string $documentNumber): DocumentListResultItem
     {
         return (
-        new DocumentListResult(
-            $this->api->fetch('InternetDocument', 'getDocumentList', [
-                'IntDocNumber' => $documentNumber,
-            ])
-        )
-        )->getDocuments()[0]??throw new DocumentNotFoundException();
+            new DocumentListResult(
+                $this->api->fetch('InternetDocument', 'getDocumentList', [
+                    'IntDocNumber' => $documentNumber,
+                ])
+            )
+            )->getDocuments()[0] ?? throw new DocumentNotFoundException();
     }
 
     /**
@@ -52,7 +55,7 @@ class DocumentService extends Service
      * @throws QueryFailedException
      * @throws DocumentNotExists
      */
-    public function trackDocument(string $documentNumber, string $phone=''): TrackingInformation
+    public function trackDocument(string $documentNumber, string $phone = ''): TrackingInformation
     {
         $tracking = (new TrackingResult(
             $this->api->fetch('TrackingDocument', 'getStatusDocuments', [
@@ -81,11 +84,15 @@ class DocumentService extends Service
      * @throws CurlException
      * @throws FileSaveException
      */
-    public function saveDocumentsFile(string $destination, array $documents, DocumentPrintType $type, int $timeout = 5): void
-    {
+    public function saveDocumentsFile(
+        string $destination,
+        array $documents,
+        DocumentPrintType $type,
+        int $timeout = 5
+    ): void {
         $content = $this->api->fetchFile('orders/printMarking85x85/orders/'
-            .implode(',', $documents)
-            .'/type/'.$type->value, $timeout);
+            . implode(',', $documents)
+            . '/type/' . $type->value, $timeout);
         if (empty($content)) {
             throw new FileSaveException('Empty content returned');
         }

@@ -7,6 +7,9 @@ namespace BladL\NovaPoshta\Exceptions;
 use Exception;
 use Throwable;
 
+/**
+ * @internal
+ */
 abstract class QueryFailedException extends Exception
 {
     public function __construct(string $message, int $code = 0, Throwable $previous = null)

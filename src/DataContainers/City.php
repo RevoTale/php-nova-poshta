@@ -8,6 +8,9 @@ use BladL\NovaPoshta\DataContainers\Traits\DescriptionMulti;
 use BladL\NovaPoshta\DataContainers\Traits\PartOfArea;
 use BladL\NovaPoshta\DataContainers\Traits\Referencable;
 
+/**
+ * @internal
+ */
 final class City extends DataContainer
 {
     use Referencable;

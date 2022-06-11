@@ -7,6 +7,9 @@ namespace BladL\NovaPoshta\Results\Counterparty;
 use BladL\NovaPoshta\DataContainers\Counterparty\CounterpartyWithContact;
 use BladL\NovaPoshta\Results\Result;
 
+/**
+ * @internal
+ */
 final class CounterpartySaveResult extends Result
 {
     public function getCounterParty(): CounterpartyWithContact

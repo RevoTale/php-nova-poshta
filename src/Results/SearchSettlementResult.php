@@ -6,6 +6,9 @@ namespace BladL\NovaPoshta\Results;
 
 use BladL\NovaPoshta\DataContainers\SettlementStreet;
 
+/**
+ * @internal
+ */
 final class SearchSettlementResult extends Result
 {
     /**
@@ -13,7 +16,10 @@ final class SearchSettlementResult extends Result
      */
     public function getStreets(): array
     {
-        return array_map(static fn (array $data) => new SettlementStreet($data), $this->container->getData()[0]['Addresses']);
+        return array_map(
+            static fn (array $data) => new SettlementStreet($data),
+            $this->container->getData()[0]['Addresses']
+        );
     }
 
     public function getTotalCount(): int

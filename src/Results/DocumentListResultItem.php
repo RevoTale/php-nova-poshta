@@ -7,6 +7,9 @@ namespace BladL\NovaPoshta\Results;
 use BladL\NovaPoshta\DataContainers\Document\Information;
 use BladL\NovaPoshta\Types\DocumentState;
 
+/**
+ * @internal
+ */
 final class DocumentListResultItem extends Information
 {
     public function getRef(): string

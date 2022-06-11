@@ -6,6 +6,9 @@ namespace BladL\NovaPoshta\Results;
 
 use BladL\NovaPoshta\DataContainers\WarehouseType;
 
+/**
+ * @internal
+ */
 final class WarehouseTypesResult extends Result
 {
     public function toArray(): array

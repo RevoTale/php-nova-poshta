@@ -7,6 +7,9 @@ namespace BladL\NovaPoshta\DataContainers;
 use BladL\NovaPoshta\DataContainers\Traits\Describable;
 use BladL\NovaPoshta\DataContainers\Traits\Referencable;
 
+/**
+ * @internal
+ */
 final class Counterparty extends DataContainer
 {
     use Referencable;

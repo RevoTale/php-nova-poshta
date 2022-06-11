@@ -6,6 +6,9 @@ namespace BladL\NovaPoshta\Services;
 
 use BladL\NovaPoshta\NovaPoshtaAPI;
 
+/**
+ * @internal
+ */
 abstract class Service
 {
     final public function __construct(protected NovaPoshtaAPI $api)

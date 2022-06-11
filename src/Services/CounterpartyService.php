@@ -14,6 +14,9 @@ use BladL\NovaPoshta\Results\CounterpartiesResult;
 use BladL\NovaPoshta\Results\Counterparty\ContactPersonsResult;
 use BladL\NovaPoshta\Results\Counterparty\CounterpartySaveResult;
 
+/**
+ * @internal
+ */
 class CounterpartyService extends Service
 {
     /**
@@ -25,13 +28,17 @@ class CounterpartyService extends Service
             $this->api->fetch('Counterparty', 'save', $saveInfo->getProperties())
         );
     }
+
     /**
      * @throws QueryFailedException
      */
     public function findCounterparties(CounterpartiesSearch $params): CounterpartiesResult
     {
-        return new CounterpartiesResult($this->api->fetch('Counterparty', 'getCounterparties', $params->getProperties()));
+        return new CounterpartiesResult(
+            $this->api->fetch('Counterparty', 'getCounterparties', $params->getProperties())
+        );
     }
+
     /**
      * @throws QueryFailedException
      */

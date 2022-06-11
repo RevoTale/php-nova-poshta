@@ -6,6 +6,9 @@ namespace BladL\NovaPoshta\DataContainers;
 
 use BladL\NovaPoshta\DataContainers\Traits\StringAccess;
 
+/**
+ * @internal
+ */
 abstract class DataContainer
 {
     use StringAccess;
