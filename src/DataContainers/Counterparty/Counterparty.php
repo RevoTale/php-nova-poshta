@@ -41,6 +41,6 @@ class Counterparty extends DataContainer
 
     public function getCounterpartyType(): CounterpartyType
     {
-        return CounterpartyType::fromString($this->getStr('CounterpartyType'));
+        return CounterpartyType::from($this->getStr('CounterpartyType'));
     }
 }
