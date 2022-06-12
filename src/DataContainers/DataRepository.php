@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataContainers;
 
-
 final class DataRepository
 {
     public function __construct(
@@ -47,7 +46,7 @@ final class DataRepository
     public function nullOrInt(string $key): ?int
     {
         $value = (string)$this->data[$key];
-        return '' === $value ? (int)$value : null;
+        return '' === $value ? null : (int)$value;
     }
 
     public function nullOrFloat(string $key): ?float
