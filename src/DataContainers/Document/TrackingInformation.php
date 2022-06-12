@@ -64,14 +64,14 @@ final class TrackingInformation extends Information
         }
     }
 
-    public function getRedeliverySum(): float
+    public function getRedeliverySum(): ?float
     {
-        return $this->data->float('RedeliverySum');
+        return $this->data->nullOrFloat('RedeliverySum');
     }
 
-    public function getAfterpaymentSum(): float
+    public function getAfterpaymentSum(): ?float
     {
-        return $this->data->float('AfterpaymentOnGoodsCost');
+        return $this->data->nullOrFloat('AfterpaymentOnGoodsCost');
     }
 
     public function getAmountToPay(): float
