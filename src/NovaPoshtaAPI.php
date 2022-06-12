@@ -34,7 +34,7 @@ class NovaPoshtaAPI implements LoggerAwareInterface
         return new DateTimeZone(self::TIMEZONE);
     }
 
-    public function __construct(private string $apiKey)
+    public function __construct(private readonly string $apiKey)
     {
         $this->logger = new NullLogger();
     }

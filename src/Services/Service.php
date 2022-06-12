@@ -11,7 +11,7 @@ use BladL\NovaPoshta\NovaPoshtaAPI;
  */
 abstract class Service
 {
-    final public function __construct(protected NovaPoshtaAPI $api)
+    final public function __construct(protected readonly NovaPoshtaAPI $api)
     {
     }
 }
