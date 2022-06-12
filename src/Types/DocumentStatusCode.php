@@ -42,6 +42,11 @@ enum DocumentStatusCode: int
         return $this->isOneOf(self::Deleted, self::NotFound);
     }
 
+    public function isRefused(): bool
+    {
+        return $this->isOneOf(self::Refused, self::RefusedSentBack);
+    }
+
     public function getCode(): int
     {
         return $this->value;
