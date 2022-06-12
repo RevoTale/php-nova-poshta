@@ -9,9 +9,7 @@ use BladL\NovaPoshta\DataContainers\Traits\Ref;
 use BladL\NovaPoshta\Types\DocumentStatusCode;
 use UnexpectedValueException;
 
-/**
- * @internal
- */
+
 final class DocumentListResultItem extends Information
 {
     use Ref;

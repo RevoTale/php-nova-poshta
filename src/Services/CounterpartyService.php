@@ -14,9 +14,7 @@ use BladL\NovaPoshta\Results\CounterpartiesResult;
 use BladL\NovaPoshta\Results\Counterparty\ContactPersonsResult;
 use BladL\NovaPoshta\Results\Counterparty\CounterpartySaveResult;
 
-/**
- * @internal
- */
+
 final class CounterpartyService extends Service
 {
     /**

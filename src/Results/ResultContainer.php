@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Results;
 
-/**
- * @internal
- */
+
 final class ResultContainer
 {
     private array $response;

@@ -7,9 +7,7 @@ namespace BladL\NovaPoshta\DataContainers;
 use BladL\NovaPoshta\DataContainers\Traits\DescriptionWithRu;
 use BladL\NovaPoshta\DataContainers\Traits\Ref;
 
-/**
- * @internal
- */
+
 final class WarehouseType extends DataContainer
 {
     use Ref;

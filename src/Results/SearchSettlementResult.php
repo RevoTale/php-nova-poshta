@@ -6,9 +6,7 @@ namespace BladL\NovaPoshta\Results;
 
 use BladL\NovaPoshta\DataContainers\SettlementStreet;
 
-/**
- * @internal
- */
+
 final class SearchSettlementResult extends Result
 {
     /**

@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataContainers;
 
-/**
- * @internal
- */
+
 final class DataRepository
 {
     public function __construct(

@@ -6,9 +6,7 @@ namespace BladL\NovaPoshta\Results\ScanSheet;
 
 use BladL\NovaPoshta\Results\Result;
 
-/**
- * @internal
- */
+
 final class DocumentsInsertResult extends Result
 {
     protected function getScanSheetData(): array
