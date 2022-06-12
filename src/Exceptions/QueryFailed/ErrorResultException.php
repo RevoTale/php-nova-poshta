@@ -4,35 +4,27 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Exceptions\QueryFailed;
 
-use function count;
+use BladL\NovaPoshta\Types\ErrorCode;
 
 final class ErrorResultException extends QueryFailedException
 {
-    protected array $errors;
-    protected array $errorCodes;
-
     /**
      * @param string[] $errors
      * @param string[] $errorCodes
      */
-    public function __construct(array $errors, array $errorCodes)
-    {
-        $this->errors = $errors;
-        $this->errorCodes = $errorCodes;
+    public function __construct(
+        private readonly array $errors,
+        private readonly array $errorCodes
+    ) {
         parent::__construct('АПИ Новой Почты вернуло негативный результат: ' . implode(', ', $errors));
     }
 
     /**
-     * @return string[]
+     * @return ErrorCode[]
      */
     public function getErrorCodes(): array
     {
-        return $this->errorCodes;
-    }
-
-    public function hasErrorCode(string ...$errorCodes): bool
-    {
-        return count(array_intersect($errorCodes, $this->errorCodes)) > 0;
+        return array_map(static fn (string $errorCode) =>ErrorCode::from($errorCode), $this->errorCodes);
     }
 
     /**
