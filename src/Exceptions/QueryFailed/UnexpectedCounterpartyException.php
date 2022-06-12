@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Exceptions;
+namespace BladL\NovaPoshta\Exceptions\QueryFailed;
 
 use UnexpectedValueException;
 
@@ -13,6 +13,6 @@ final class UnexpectedCounterpartyException extends UnexpectedValueException
 {
     public function __construct(string $type)
     {
-        parent::__construct("Неожиданный тип контрагента: '$type'");
+        parent::__construct("Unexpected counterparty '$type'");
     }
 }

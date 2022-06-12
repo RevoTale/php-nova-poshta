@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Services;
 
-use BladL\NovaPoshta\Exceptions\QueryFailedException;
+use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Results\ScanSheet\DocumentsInsertResult;
 
 /**

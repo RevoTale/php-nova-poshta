@@ -8,7 +8,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\Services;
 
 use BladL\NovaPoshta\DataContainers\WarehouseType;
-use BladL\NovaPoshta\Exceptions\QueryFailedException;
+use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Parameters\CitiesSearch;
 use BladL\NovaPoshta\Parameters\SettlementsSearch;
 use BladL\NovaPoshta\Parameters\WarehouseSearch;

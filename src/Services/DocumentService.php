@@ -8,11 +8,11 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\Services;
 
 use BladL\NovaPoshta\DataContainers\Document\TrackingInformation;
-use BladL\NovaPoshta\Exceptions\CurlException;
 use BladL\NovaPoshta\Exceptions\DocumentNotExists;
 use BladL\NovaPoshta\Exceptions\DocumentNotFoundException;
-use BladL\NovaPoshta\Exceptions\FileSaveException;
-use BladL\NovaPoshta\Exceptions\QueryFailedException;
+use BladL\NovaPoshta\Exceptions\QueryFailed\CurlException;
+use BladL\NovaPoshta\Exceptions\QueryFailed\FileSaveException;
+use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Results\Document\TrackingResult;
 use BladL\NovaPoshta\Results\DocumentListResult;
 use BladL\NovaPoshta\Results\DocumentListResultItem;

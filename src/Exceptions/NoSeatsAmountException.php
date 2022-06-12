@@ -10,6 +10,6 @@ final class NoSeatsAmountException extends Exception
 {
     public function __construct()
     {
-        parent::__construct('Количество мест пустое');
+        parent::__construct('No seats amount');
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\DataContainers\Document;
 
 use BladL\NovaPoshta\Exceptions\DateParseException;
-use BladL\NovaPoshta\Exceptions\UnexpectedCounterpartyException;
+use BladL\NovaPoshta\Exceptions\QueryFailed\UnexpectedCounterpartyException;
 use BladL\NovaPoshta\NovaPoshtaAPI;
 use BladL\NovaPoshta\NovaPoshtaTimeZone;
 use BladL\NovaPoshta\Types\CounterpartyPersonType;
