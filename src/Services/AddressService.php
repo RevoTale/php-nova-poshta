@@ -99,8 +99,7 @@ final class AddressService extends Service
         string $settlementRef,
         int $limit,
         int $page = 1
-    ): SearchSettlementResult
-    {
+    ): SearchSettlementResult {
         return new SearchSettlementResult($this->api->fetch('Address', 'searchSettlementStreets', [
             'StreetName' => $streetName,
             'SettlementRef' => $settlementRef,
