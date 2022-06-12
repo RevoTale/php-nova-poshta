@@ -6,7 +6,8 @@ namespace BladL\NovaPoshta\Results;
 
 use BladL\NovaPoshta\DataContainers\Document\Information;
 use BladL\NovaPoshta\DataContainers\Traits\Ref;
-use BladL\NovaPoshta\Types\DocumentState;
+use BladL\NovaPoshta\Types\DocumentStatusCode;
+use UnexpectedValueException;
 
 /**
  * @internal
@@ -40,9 +41,11 @@ final class DocumentListResultItem extends Information
         return $this->data->float('Cost');
     }
 
-    public function getState(): DocumentState
+    public function getStatusCode(): DocumentStatusCode
     {
-        return new DocumentState($this->data->int('StateId'));
+        return DocumentStatusCode::from(
+            $this->data->nullOrInt('StateId') ?? throw new UnexpectedValueException('StateId is null')
+        );
     }
 
     public function getStateName(): string

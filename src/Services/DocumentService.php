@@ -67,7 +67,7 @@ final class DocumentService extends Service
                 ],
             ])
         ))->getDocumentsTracking()[0];
-        if ($tracking->getStatus()->documentExists()) {
+        if ($tracking->getStatusCode()->documentExists()) {
             throw new DocumentNotExists($tracking);
         }
 
