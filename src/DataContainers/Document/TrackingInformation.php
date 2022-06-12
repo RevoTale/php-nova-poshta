@@ -9,16 +9,18 @@ use BladL\NovaPoshta\Exceptions\UnexpectedCounterpartyException;
 use BladL\NovaPoshta\NovaPoshtaAPI;
 use BladL\NovaPoshta\NovaPoshtaTimeZone;
 use BladL\NovaPoshta\Types\CounterpartyPersonType;
-use BladL\NovaPoshta\Types\DocumentState;
+use BladL\NovaPoshta\Types\DocumentStatusCode;
 use BladL\Time\Moment;
 use DateTime;
 use Exception;
+use UnexpectedValueException;
 
 final class TrackingInformation extends Information
 {
-    public function getStatus(): DocumentState
+    public function getStatusCode(): DocumentStatusCode
     {
-        return new DocumentState((int)$this->data->string('StatusCode'));
+        return DocumentStatusCode::from($this->data->nullOrInt('StatusCode')
+            ?? throw new UnexpectedValueException('Status code is null'));
     }
 
     public function getScanDateStr(): string
@@ -126,7 +128,6 @@ final class TrackingInformation extends Information
 
     public function getStoragePrice(): ?float
     {
-        $price = $this->data->nullOrFloat('StoragePrice');
-        return $price ? $price : null;
+        return $this->data->nullOrFloat('StoragePrice');
     }
 }

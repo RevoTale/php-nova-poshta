@@ -6,6 +6,7 @@ namespace BladL\NovaPoshta\DataContainers\Document;
 
 use BladL\NovaPoshta\DataContainers\DataContainer;
 use BladL\NovaPoshta\Exceptions\NoSeatsAmountException;
+use BladL\NovaPoshta\Types\DocumentStatusCode;
 
 /**
  * @internal
@@ -24,4 +25,5 @@ abstract class Information extends DataContainer
 
         return $seats;
     }
+    abstract public function getStatusCode(): DocumentStatusCode;
 }
