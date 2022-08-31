@@ -38,7 +38,11 @@ class NovaPoshtaAPI implements LoggerAwareInterface
     {
         $this->logger = new NullLogger();
     }
-
+    private int $timeout = 4;
+    public function setTimeoutInSeconds(int $timout): void
+    {
+        $this->timeout = $timout;
+    }
     /**
      * @throws QueryFailedException
      */
@@ -65,6 +69,7 @@ class NovaPoshtaAPI implements LoggerAwareInterface
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_2_0,
             CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_TIMEOUT=>$this->timeout,
             CURLOPT_POSTFIELDS => $payload,
             CURLOPT_HTTPHEADER => ['content-type: application/json'],
         ]);
