@@ -10,6 +10,7 @@ use BladL\NovaPoshta\NovaPoshtaAPI;
 use BladL\NovaPoshta\NovaPoshtaTimeZone;
 use BladL\NovaPoshta\Types\CounterpartyPersonType;
 use BladL\NovaPoshta\Types\DocumentStatusCode;
+use BladL\NovaPoshta\Types\ServiceType;
 use BladL\Time\Moment;
 use DateTime;
 use Exception;
@@ -134,5 +135,10 @@ final class TrackingInformation extends Information
     public function getStoragePrice(): ?float
     {
         return $this->data->nullOrFloat('StoragePrice');
+    }
+
+    public function getServiceType(): ServiceType
+    {
+        return ServiceType::from($this->data->string('ServiceType'));
     }
 }
