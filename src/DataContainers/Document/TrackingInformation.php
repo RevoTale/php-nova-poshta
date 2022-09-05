@@ -116,6 +116,11 @@ final class TrackingInformation extends Information
         return $this->data->nullOrInt('DaysStorageCargo');
     }
 
+    public function getDaysStorageAmount(): ?int
+    {
+        return $this->data->nullOrInt('StorageAmount');
+    }
+
     public function isRedelivery(): ?bool
     {
         return $this->data->nullOrBool('Redelivery');

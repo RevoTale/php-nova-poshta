@@ -7,7 +7,6 @@ namespace BladL\NovaPoshta\DataContainers;
 use BladL\NovaPoshta\DataContainers\Traits\Description;
 use BladL\NovaPoshta\DataContainers\Traits\Ref;
 
-
 final class Counterparty extends DataContainer
 {
     use Ref;

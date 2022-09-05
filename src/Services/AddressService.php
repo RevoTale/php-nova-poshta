@@ -19,7 +19,6 @@ use BladL\NovaPoshta\Results\SettlementsResult;
 use BladL\NovaPoshta\Results\WarehousesResult;
 use BladL\NovaPoshta\Results\WarehouseTypesResult;
 
-
 final class AddressService extends Service
 {
     /**

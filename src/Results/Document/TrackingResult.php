@@ -7,7 +7,6 @@ namespace BladL\NovaPoshta\Results\Document;
 use BladL\NovaPoshta\DataContainers\Document\TrackingInformation;
 use BladL\NovaPoshta\Results\Result;
 
-
 final class TrackingResult extends Result
 {
     /**

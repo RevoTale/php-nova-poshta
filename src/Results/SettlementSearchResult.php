@@ -6,7 +6,6 @@ namespace BladL\NovaPoshta\Results;
 
 use BladL\NovaPoshta\DataContainers\SettlementSearchItem;
 
-
 final class SettlementSearchResult extends Result
 {
     /**

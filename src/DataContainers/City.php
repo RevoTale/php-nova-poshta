@@ -8,7 +8,6 @@ use BladL\NovaPoshta\DataContainers\Traits\DescriptionWithRu;
 use BladL\NovaPoshta\DataContainers\Traits\PartOfArea;
 use BladL\NovaPoshta\DataContainers\Traits\Ref;
 
-
 final class City extends DataContainer
 {
     use Ref;

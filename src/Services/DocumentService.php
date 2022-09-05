@@ -18,7 +18,6 @@ use BladL\NovaPoshta\Results\DocumentListResult;
 use BladL\NovaPoshta\Results\DocumentListResultItem;
 use BladL\NovaPoshta\Types\DocumentPrintType;
 
-
 final class DocumentService extends Service
 {
     /**

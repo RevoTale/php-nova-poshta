@@ -6,7 +6,6 @@ namespace BladL\NovaPoshta\Results;
 
 use BladL\NovaPoshta\DataContainers\Warehouse;
 
-
 final class WarehousesResult extends Result
 {
     use Countable;

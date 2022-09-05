@@ -10,7 +10,6 @@ namespace BladL\NovaPoshta\Services;
 use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Results\ScanSheet\DocumentsInsertResult;
 
-
 final class ScanSheetService extends Service
 {
     /**
