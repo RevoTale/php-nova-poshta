@@ -12,13 +12,14 @@ use BladL\NovaPoshta\Exceptions\QueryFailed\JsonParseException;
 use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Results\ResultContainer;
 use BladL\NovaPoshta\Services\Service;
-use DateTimeZone;
+use BladL\Time\TimeZone;
 use Exception;
 use JsonException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use stdClass;
+
 use function is_bool;
 
 /**
@@ -26,23 +27,26 @@ use function is_bool;
  */
 class NovaPoshtaAPI implements LoggerAwareInterface
 {
-    private const TIMEZONE = 'Europe/Kiev';
     private LoggerInterface $logger;
+    private const  TIME_ZONE = TimeZone::EuropeKyiv;
 
-    final public static function getTimeZone(): DateTimeZone
+    final public static function getTimeZone(): TimeZone
     {
-        return new DateTimeZone(self::TIMEZONE);
+        return self::TIME_ZONE;
     }
 
     public function __construct(private readonly string $apiKey)
     {
         $this->logger = new NullLogger();
     }
+
     private int $timeout = 4;
+
     public function setTimeoutInSeconds(int $timout): void
     {
         $this->timeout = $timout;
     }
+
     /**
      * @throws QueryFailedException
      */
@@ -69,7 +73,7 @@ class NovaPoshtaAPI implements LoggerAwareInterface
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_2_0,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_TIMEOUT=>$this->timeout,
+            CURLOPT_TIMEOUT => $this->timeout,
             CURLOPT_POSTFIELDS => $payload,
             CURLOPT_HTTPHEADER => ['content-type: application/json'],
         ]);

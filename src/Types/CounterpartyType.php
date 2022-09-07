@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\Types;
 
 use UnexpectedValueException;
+
 use function in_array;
 
 /**

@@ -7,11 +7,11 @@ namespace BladL\NovaPoshta\DataContainers\Document;
 use BladL\NovaPoshta\Exceptions\DateParseException;
 use BladL\NovaPoshta\Exceptions\QueryFailed\UnexpectedCounterpartyException;
 use BladL\NovaPoshta\NovaPoshtaAPI;
-use BladL\NovaPoshta\NovaPoshtaTimeZone;
 use BladL\NovaPoshta\Types\CounterpartyPersonType;
 use BladL\NovaPoshta\Types\DocumentStatusCode;
 use BladL\NovaPoshta\Types\ServiceType;
-use BladL\Time\Moment;
+use BladL\Time\Timestamp;
+use BladL\Time\TimeZone;
 use DateTime;
 use Exception;
 use UnexpectedValueException;
@@ -59,7 +59,7 @@ final class TrackingInformation extends Information
     public function getScanDateTime(): DateTime
     {
         try {
-            return new DateTime($this->getScanDateStr(), NovaPoshtaAPI::getTimeZone());
+            return new DateTime($this->getScanDateStr(), NovaPoshtaAPI::getTimeZone()->toNativeDateTimeZone());
         } catch (Exception $e) {
             throw new DateParseException($e);
         }
@@ -95,16 +95,16 @@ final class TrackingInformation extends Information
         return $this->data->nullOrString('LastCreatedOnTheBasisNumber');
     }
 
-    public function getTrackingUpdateTime(): ?Moment
+    public function getTrackingUpdateTime(): ?Timestamp
     {
         $date = $this->data->nullOrString('TrackingUpdateDate');
-        return $date ? (new NovaPoshtaTimeZone())->timeFromFormat('Y-m-d H:i:s', $date) : null;
+        return $date ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
     }
 
-    public function getActualDeliveryTime(): ?Moment
+    public function getActualDeliveryTime(): ?Timestamp
     {
         $date = $this->data->nullOrString('ActualDeliveryDate');
-        return $date ? (new NovaPoshtaTimeZone())->timeFromFormat('Y-m-d H:i:s', $date) : null;
+        return $date ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
     }
 
     public function getStatusDescription(): string
