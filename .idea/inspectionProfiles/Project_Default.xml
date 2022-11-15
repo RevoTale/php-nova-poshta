@@ -238,7 +238,7 @@
     <inspection_tool class="PhpUnnecessaryDoubleQuotesInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PhpUsageOfSilenceOperatorInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PhpVarUsageInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
-    <inspection_tool class="PhpVariableNamingConventionInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+    <inspection_tool class="PhpVariableNamingConventionInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false">
       <option name="m_minLength" value="1" />
       <option name="m_maxLength" value="416" />
     </inspection_tool>
