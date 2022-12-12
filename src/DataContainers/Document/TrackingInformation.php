@@ -89,6 +89,10 @@ final class TrackingInformation extends Information
     {
         return $this->data->nullOrString('OwnerDocumentType');
     }
+    public function getOwnerDocumentNumber(): ?string
+    {
+        return $this->data->nullOrString('OwnerDocumentNumber');
+    }
 
     public function getLastCreatedOnTheBasisNumber(): ?string
     {
