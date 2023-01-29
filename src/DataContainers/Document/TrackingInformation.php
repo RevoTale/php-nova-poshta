@@ -9,6 +9,7 @@ use BladL\NovaPoshta\Exceptions\QueryFailed\UnexpectedCounterpartyException;
 use BladL\NovaPoshta\NovaPoshtaAPI;
 use BladL\NovaPoshta\Types\CounterpartyPersonType;
 use BladL\NovaPoshta\Types\DocumentStatusCode;
+use BladL\NovaPoshta\Types\PaymentMethod;
 use BladL\NovaPoshta\Types\ServiceType;
 use BladL\Time\Timestamp;
 use BladL\Time\TimeZone;
@@ -83,6 +84,10 @@ final class TrackingInformation extends Information
     public function getAmountPaid(): float
     {
         return $this->data->float('AmountPaid');
+    }
+
+    public function getPaymentMethod():PaymentMethod {
+        return PaymentMethod::from($this->data->string('PaymentMethod'));
     }
 
     public function getOwnerDocumentType(): ?string
