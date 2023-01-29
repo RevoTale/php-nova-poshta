@@ -41,6 +41,6 @@
     "php": ">=8.1",
     "ext-curl": "*",
     "ext-json": "*",
-    "bladl/time": "dev-main"
+    "bladl/time": "^0.0.1"
   }
 }
