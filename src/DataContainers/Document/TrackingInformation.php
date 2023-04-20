@@ -12,13 +12,13 @@ use BladL\NovaPoshta\Types\DocumentStatusCode;
 use BladL\NovaPoshta\Types\PaymentMethod;
 use BladL\NovaPoshta\Types\ServiceType;
 use BladL\Time\Timestamp;
-use BladL\Time\TimeZone;
 use DateTime;
 use Exception;
 use UnexpectedValueException;
 
 final class TrackingInformation extends Information
 {
+    public const DOC_TYPE_CARGO_RETURN = 'CargoReturn';
     public function getStatusCode(): DocumentStatusCode
     {
         return DocumentStatusCode::from($this->data->nullOrInt('StatusCode')
@@ -86,7 +86,8 @@ final class TrackingInformation extends Information
         return $this->data->float('AmountPaid');
     }
 
-    public function getPaymentMethod():PaymentMethod {
+    public function getPaymentMethod(): PaymentMethod
+    {
         return PaymentMethod::from($this->data->string('PaymentMethod'));
     }
 
@@ -94,6 +95,7 @@ final class TrackingInformation extends Information
     {
         return $this->data->nullOrString('OwnerDocumentType');
     }
+
     public function getOwnerDocumentNumber(): ?string
     {
         return $this->data->nullOrString('OwnerDocumentNumber');
@@ -102,6 +104,12 @@ final class TrackingInformation extends Information
     public function getLastCreatedOnTheBasisNumber(): ?string
     {
         return $this->data->nullOrString('LastCreatedOnTheBasisNumber');
+    }
+
+    public function getLastCreatedOnTheBasisDocumentType(): ?string
+    {
+        return $this->data->nullOrString('LastCreatedOnTheBasisDocumentType');
+
     }
 
     public function getTrackingUpdateTime(): ?Timestamp
