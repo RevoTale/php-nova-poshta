@@ -3,11 +3,11 @@
   "description": "PHP implementation of Ukrainian delivery service Nova Poshta API 2.0",
   "type": "library",
   "license": "MIT",
-  "authors": [
-    {
-      "name": "BladL"
-    }
-  ],
+  "authors": [{
+    "homepage": "https://github.com/rusted-love",
+    "name": "Liakhovskyi Vladyslav",
+    "email": "vlad@rusted-labs.org"
+  }],
   "keywords": [
     "Нова Пошта",
     "API 2.0"
