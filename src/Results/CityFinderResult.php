@@ -9,10 +9,14 @@ use BladL\NovaPoshta\DataContainers\City;
 final class CityFinderResult extends Result
 {
     /**
-     * @return City[]
+     * @return list<City>
      */
     public function getCities(): array
     {
-        return array_map(static fn (array $data) => new City($data), $this->container->getData());
+        $data = $this->container->getData();
+        if (!array_is_list($data)) {
+            throw new \UnexpectedValueException('Data returned is not list');
+        }
+        return array_map(static fn (array $data) => new City($data), $data);
     }
 }

@@ -9,8 +9,8 @@ use BladL\NovaPoshta\Types\ErrorCode;
 final class ErrorResultException extends QueryFailedException
 {
     /**
-     * @param string[] $errors
-     * @param string[] $errorCodes
+     * @param list<string> $errors
+     * @param list<string> $errorCodes
      */
     public function __construct(
         private readonly array $errors,
@@ -20,7 +20,7 @@ final class ErrorResultException extends QueryFailedException
     }
 
     /**
-     * @return ErrorCode[]
+     * @return list<ErrorCode>
      */
     public function getErrorCodes(): array
     {
@@ -28,7 +28,7 @@ final class ErrorResultException extends QueryFailedException
     }
 
     /**
-     * @return string[]
+     * @return list<string>
      */
     public function getErrorMessages(): array
     {

@@ -16,10 +16,10 @@ final class WarehousesResult extends Result
     }
 
     /**
-     * @return Warehouse[]
+     * @return list<Warehouse>
      */
     public function toArray(): array
     {
-        return array_map(static fn (array $data) => new Warehouse($data), $this->container->getData());
+        return array_map(static fn (array $data) => new Warehouse($data), $this->container->getDataAsList());
     }
 }

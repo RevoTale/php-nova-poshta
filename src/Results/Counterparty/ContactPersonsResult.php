@@ -10,10 +10,10 @@ use BladL\NovaPoshta\Results\Result;
 final class ContactPersonsResult extends Result
 {
     /**
-     * @return ContactPerson[]
+     * @return list<ContactPerson>
      */
     public function getContactPersons(): array
     {
-        return array_map(static fn (array $data) => new ContactPerson($data), $this->container->getData());
+        return array_map(static fn (array $data) => new ContactPerson($data), $this->container->getDataAsList());
     }
 }

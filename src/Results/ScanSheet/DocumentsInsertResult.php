@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\Results\ScanSheet;
 
 use BladL\NovaPoshta\Results\Result;
+use UnexpectedValueException;
 
 final class DocumentsInsertResult extends Result
 {
@@ -32,35 +33,47 @@ final class DocumentsInsertResult extends Result
     }
 
     /**
-     * @return DocumentInsertSuccess[]
+     * @return list<DocumentInsertSuccess>
      */
     public function getSuccessDocuments(): array
     {
+        $data =  $this->getScanSheetData()['Success'];
+        if (!array_is_list($data)) {
+            throw new UnexpectedValueException('Bad Success data');
+        }
         return array_map(
             static fn (array $doc) => new DocumentInsertSuccess($doc),
-            $this->getScanSheetData()['Success']
+            $data
         );
     }
 
     /**
-     * @return DocumentInsertError[]
+     * @return list<DocumentInsertError>
      */
     public function getDocumentErrors(): array
     {
+        $data =  $this->getScanSheetData()['Data']['Errors'];
+        if (!array_is_list($data)) {
+            throw new UnexpectedValueException('Bad Success data');
+        }
         return array_map(
             static fn (array $error) => new DocumentInsertError($error),
-            $this->getScanSheetData()['Data']['Errors']
+            $data
         );
     }
 
     /**
-     * @return DocumentInsertWarning[]
+     * @return list<DocumentInsertWarning>
      */
     public function getWarnings(): array
     {
+        $data =   $this->getScanSheetData()['Data']['Warnings'];
+        if (!array_is_list($data)) {
+            throw new UnexpectedValueException('Bad Success data');
+        }
         return array_map(
             static fn (array $error) => new DocumentInsertWarning($error),
-            $this->getScanSheetData()['Data']['Warnings']
+          $data
         );
     }
 }

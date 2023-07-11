@@ -77,7 +77,7 @@ final class DocumentService extends Service
     }
 
     /**
-     * @param string[] $documents
+     * @param list<string> $documents
      * @throws CurlException
      * @throws FileSaveException
      */

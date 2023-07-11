@@ -9,10 +9,10 @@ use BladL\NovaPoshta\DataContainers\Counterparty;
 final class CounterpartiesResult extends Result
 {
     /**
-     * @return Counterparty[]
+     * @return list<Counterparty>
      */
     public function getCounterparties(): array
     {
-        return array_map(static fn (array $data) => new Counterparty($data), $this->container->getData());
+        return array_map(static fn (array $data) => new Counterparty($data), $this->container->getDataAsList());
     }
 }
