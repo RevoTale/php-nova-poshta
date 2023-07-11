@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Results;
 
+use UnexpectedValueException;
+
 final class ResultContainer
 {
     private array $response;
@@ -31,5 +33,16 @@ final class ResultContainer
     public function getData(): array
     {
         return $this->response['data'];
+    }
+
+    /**
+     * @return list<mixed>
+     */
+    public function getDataAsList():array{
+        $data = $this->getData();
+        if (!array_is_list($data)) {
+            throw new UnexpectedValueException();
+        }
+        return $data;
     }
 }
