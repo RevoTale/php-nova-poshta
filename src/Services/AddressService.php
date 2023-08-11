@@ -10,10 +10,12 @@ namespace BladL\NovaPoshta\Services;
 use BladL\NovaPoshta\DataContainers\WarehouseType;
 use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Parameters\CitiesSearch;
+use BladL\NovaPoshta\Parameters\SettlementAreaSearch;
 use BladL\NovaPoshta\Parameters\SettlementsSearch;
 use BladL\NovaPoshta\Parameters\WarehouseSearch;
 use BladL\NovaPoshta\Results\CityFinderResult;
 use BladL\NovaPoshta\Results\SearchSettlementResult;
+use BladL\NovaPoshta\Results\SettlementAreasResult;
 use BladL\NovaPoshta\Results\SettlementSearchResult;
 use BladL\NovaPoshta\Results\SettlementsResult;
 use BladL\NovaPoshta\Results\WarehousesResult;
@@ -94,14 +96,23 @@ final class AddressService extends Service
     public function searchSettlementStreets(
         string $streetName,
         string $settlementRef,
-        int $limit,
-        int $page = 1
-    ): SearchSettlementResult {
+        int    $limit,
+        int    $page = 1
+    ): SearchSettlementResult
+    {
         return new SearchSettlementResult($this->api->fetch('Address', 'searchSettlementStreets', [
             'StreetName' => $streetName,
             'SettlementRef' => $settlementRef,
             'Limit' => $limit,
             'Page' => $page,
         ]));
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function getSettlementAreas(SettlementAreaSearch $params): SettlementAreasResult
+    {
+        return new SettlementAreasResult($this->api->fetch('Address', 'getSettlementAreas', $params->getProperties()));
     }
 }
