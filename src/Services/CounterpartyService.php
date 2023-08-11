@@ -14,7 +14,7 @@ use BladL\NovaPoshta\Results\CounterpartiesResult;
 use BladL\NovaPoshta\Results\Counterparty\ContactPersonsResult;
 use BladL\NovaPoshta\Results\Counterparty\CounterpartySaveResult;
 
-final class CounterpartyService extends Service
+final readonly class CounterpartyService extends Service
 {
     /**
      * @throws QueryFailedException

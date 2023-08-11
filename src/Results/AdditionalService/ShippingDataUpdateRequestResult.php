@@ -6,7 +6,7 @@ namespace BladL\NovaPoshta\Results\AdditionalService;
 
 use BladL\NovaPoshta\Results\Result;
 
-final class ShippingDataUpdateRequestResult extends Result
+final readonly class ShippingDataUpdateRequestResult extends Result
 {
     public function getRequestNumber(): string
     {

@@ -9,7 +9,7 @@ use BladL\NovaPoshta\NovaPoshtaAPI;
 /**
  * @internal
  */
-abstract class Service
+abstract readonly class Service
 {
     /**
      * @internal

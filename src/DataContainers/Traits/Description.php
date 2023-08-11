@@ -9,7 +9,7 @@ namespace BladL\NovaPoshta\DataContainers\Traits;
  */
 trait Description
 {
-    public function getDescription(): string
+    final public function getDescription(): string
     {
         return $this->data->string('Description');
     }

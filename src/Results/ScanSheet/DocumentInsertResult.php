@@ -7,13 +7,11 @@ namespace BladL\NovaPoshta\Results\ScanSheet;
 /**
  * @internal
  */
-abstract class DocumentInsertResult
+abstract readonly class DocumentInsertResult
 {
-    protected array $document;
 
-    public function __construct(array $document)
+    public function __construct(protected array $document)
     {
-        $this->document = $document;
     }
 
     public function getRef(): string

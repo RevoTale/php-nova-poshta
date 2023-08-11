@@ -7,7 +7,7 @@ namespace BladL\NovaPoshta\DataContainers\Counterparty;
 use BladL\NovaPoshta\DataContainers\DataContainer;
 use BladL\NovaPoshta\Types\CounterpartyType;
 
-class Counterparty extends DataContainer
+readonly class Counterparty extends DataContainer
 {
     public function getRef(): string
     {

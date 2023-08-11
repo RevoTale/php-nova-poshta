@@ -6,7 +6,7 @@ namespace BladL\NovaPoshta\Results;
 
 use BladL\NovaPoshta\DataContainers\Counterparty;
 
-final class CounterpartiesResult extends Result
+final readonly class CounterpartiesResult extends Result
 {
     /**
      * @return list<Counterparty>

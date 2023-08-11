@@ -8,7 +8,7 @@ use BladL\NovaPoshta\DataContainers\DataContainer;
 use BladL\NovaPoshta\DataContainers\Traits\Description;
 use BladL\NovaPoshta\DataContainers\Traits\Ref;
 
-final class ContactPerson extends DataContainer
+final readonly class ContactPerson extends DataContainer
 {
     use Ref;
     use Description;

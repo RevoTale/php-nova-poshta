@@ -9,6 +9,9 @@ namespace BladL\NovaPoshta\Parameters;
  */
 abstract class ParametersBuilder
 {
+    /**
+     * @var array<string,mixed>
+     */
     private array $data = [];
 
     protected function setStr(string $key, string $value): void

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataContainers;
 
-final class SettlementStreet extends DataContainer
+final readonly class SettlementStreet extends DataContainer
 {
     public function getRef(): string
     {

@@ -7,7 +7,7 @@ namespace BladL\NovaPoshta\Results;
 use BladL\NovaPoshta\DataContainers\SettlementStreet;
 use UnexpectedValueException;
 
-final class SearchSettlementResult extends Result
+final readonly class SearchSettlementResult extends Result
 {
     /**
      * @return list<SettlementStreet>

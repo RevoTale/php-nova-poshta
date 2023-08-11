@@ -11,7 +11,7 @@ trait DescriptionWithRu
 {
     use Description;
 
-    public function getDescriptionRu(): string
+    final public function getDescriptionRu(): string
     {
         return $this->data->string('DescriptionRu');
     }

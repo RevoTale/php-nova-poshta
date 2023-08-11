@@ -6,7 +6,7 @@ namespace BladL\NovaPoshta\Results;
 
 use BladL\NovaPoshta\DataContainers\City;
 
-final class CityFinderResult extends Result
+final readonly class CityFinderResult extends Result
 {
     /**
      * @return list<City>

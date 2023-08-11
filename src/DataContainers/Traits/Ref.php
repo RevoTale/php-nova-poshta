@@ -9,7 +9,7 @@ namespace BladL\NovaPoshta\DataContainers\Traits;
  */
 trait Ref
 {
-    public function getRef(): string
+    final public function getRef(): string
     {
         return $this->data->string('Ref');
     }

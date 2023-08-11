@@ -7,7 +7,7 @@ namespace BladL\NovaPoshta\Results\Counterparty;
 use BladL\NovaPoshta\DataContainers\Counterparty\ContactPerson;
 use BladL\NovaPoshta\Results\Result;
 
-final class ContactPersonsResult extends Result
+final readonly class ContactPersonsResult extends Result
 {
     /**
      * @return list<ContactPerson>

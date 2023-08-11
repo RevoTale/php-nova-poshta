@@ -7,7 +7,7 @@ namespace BladL\NovaPoshta\Results\ScanSheet;
 use BladL\NovaPoshta\Results\Result;
 use UnexpectedValueException;
 
-final class DocumentsInsertResult extends Result
+final readonly class DocumentsInsertResult extends Result
 {
     protected function getScanSheetData(): array
     {

@@ -7,7 +7,7 @@ namespace BladL\NovaPoshta\Results;
 /**
  * @internal
  */
-abstract class Result
+abstract readonly class Result
 {
     protected ResultContainer $container;
 

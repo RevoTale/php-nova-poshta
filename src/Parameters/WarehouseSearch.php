@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-final class WarehouseSearch extends ParametersBuilder
+class WarehouseSearch extends ParametersBuilder
 {
     use Pages;
 

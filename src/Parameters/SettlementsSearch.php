@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-final class SettlementsSearch extends ParametersBuilder
+class SettlementsSearch extends ParametersBuilder
 {
     public function __construct(string $string, int $limit)
     {

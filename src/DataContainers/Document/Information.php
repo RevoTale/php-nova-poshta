@@ -11,7 +11,7 @@ use BladL\NovaPoshta\Types\DocumentStatusCode;
 /**
  * @internal
  */
-abstract class Information extends DataContainer
+abstract readonly class Information extends DataContainer
 {
     /**
      * @throws NoSeatsAmountException
@@ -19,7 +19,7 @@ abstract class Information extends DataContainer
     public function getSeatsAmount(): int
     {
         $seats = $this->data->nullOrInt('SeatsAmount');
-        if (null === $seats || 0 === $seats) {
+        if ($seats === null || $seats === 0) {
             throw new NoSeatsAmountException();
         }
 

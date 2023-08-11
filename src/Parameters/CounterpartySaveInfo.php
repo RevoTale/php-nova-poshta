@@ -7,7 +7,7 @@ namespace BladL\NovaPoshta\Parameters;
 use BladL\NovaPoshta\Types\CounterpartyPersonType;
 use BladL\NovaPoshta\Types\CounterpartyType;
 
-final class CounterpartySaveInfo extends ParametersBuilder
+class CounterpartySaveInfo extends ParametersBuilder
 {
     public function setFirstName(string $name): void
     {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataContainers;
 
-abstract class DataContainer
+abstract readonly class DataContainer
 {
     protected readonly DataRepository $data;
     public function __construct(array $data)

@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Results;
 
-use BladL\NovaPoshta\DataContainers\SettlementAreaItem;
 use UnexpectedValueException;
 
-final class ResultContainer
+final readonly class ResultContainer
 {
-    private array $response;
 
-    public function __construct(array $response)
+    public function __construct(private array $response)
     {
-        $this->response = $response;
     }
 
     public function isSuccess(): bool

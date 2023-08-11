@@ -8,7 +8,7 @@ use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Parameters\ShippingDataInfo;
 use BladL\NovaPoshta\Results\AdditionalService\ShippingDataUpdateRequestResult;
 
-final class AdditionalService extends Service
+final readonly class AdditionalService extends Service
 {
     /**
      * @throws QueryFailedException

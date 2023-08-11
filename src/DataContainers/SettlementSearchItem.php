@@ -6,7 +6,7 @@ namespace BladL\NovaPoshta\DataContainers;
 
 use BladL\NovaPoshta\DataContainers\Traits\Ref;
 
-final class SettlementSearchItem extends DataContainer
+final readonly class SettlementSearchItem extends DataContainer
 {
     use Ref;
 

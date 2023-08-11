@@ -7,7 +7,7 @@ namespace BladL\NovaPoshta\Results;
 use BladL\NovaPoshta\DataContainers\SettlementSearchItem;
 use UnexpectedValueException;
 
-final class SettlementSearchResult extends Result
+final readonly class SettlementSearchResult extends Result
 {
     /**
      * @return list<SettlementSearchItem>
