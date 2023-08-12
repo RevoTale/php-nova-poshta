@@ -18,7 +18,7 @@
     }
   },
   "scripts": {
-    "psalm": "vendor/bin/phpstan",
+    "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon",
     "php-cs": "vendor/bin/php-cs-fixer fix",
     "test": [
       "@phpstan"
