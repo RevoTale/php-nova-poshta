@@ -6,7 +6,11 @@ namespace BladL\NovaPoshta\DataContainers;
 
 abstract readonly class DataContainer
 {
-    protected readonly DataRepository $data;
+    protected DataRepository $data;
+
+    /**
+     * @param array<string,mixed> $data
+     */
     public function __construct(array $data)
     {
         $this->data = new DataRepository($data);

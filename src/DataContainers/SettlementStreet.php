@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataContainers;
 
+use BladL\NovaPoshta\Exceptions\BadFieldValueException;
+
 final readonly class SettlementStreet extends DataContainer
 {
     public function getRef(): string
@@ -33,12 +35,30 @@ final readonly class SettlementStreet extends DataContainer
 
     public function getLocationX(): int
     {
-        return $this->data->array('Location')[0];
+        $index = 0;
+        $location = $this->data->arrayList('Location');
+        if (!isset($location[$index])) {
+            throw new BadFieldValueException('Location has incomplete coordinates');
+        }
+        $ordinate = $location[$index];
+        if (!is_numeric($ordinate)) {
+            throw new BadFieldValueException('Bad ordinate');
+        }
+        return $ordinate;
     }
 
     public function getLocationY(): int
     {
-        return $this->data->array('Location')[1];
+        $index = 1;
+        $location = $this->data->arrayList('Location');
+        if (!isset($location[$index])) {
+            throw new BadFieldValueException('Location has incomplete coordinates');
+        }
+        $ordinate = $location[$index];
+        if (!is_numeric($ordinate)) {
+            throw new BadFieldValueException('Bad ordinate');
+        }
+        return $ordinate;
     }
 
     public function getDescriptionRu(): string

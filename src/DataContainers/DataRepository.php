@@ -4,60 +4,113 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataContainers;
 
+use BladL\NovaPoshta\Exceptions\BadFieldValueException;
+use function is_array;
+
 final readonly class DataRepository
 {
+    /**
+     * @param array<string,mixed> $data
+     */
     public function __construct(
-        private readonly array $data
-    ) {
+        private array $data
+    )
+    {
     }
 
+    /**
+     * @throws BadFieldValueException
+     */
     public function int(string $key): int
     {
-        return (int)$this->data[$key];
+        return (int)$this->getScalar($key);
     }
 
-    public function array(string $key): array
+    /**
+     * @throws BadFieldValueException
+     * @return array<string,mixed>
+     */
+    public function arrayObject(string $key): array
     {
-        return $this->data[$key];
+        $value = $this->data[$key];
+        if (is_array($value)) {
+            /**
+             * @var array<string,mixed>$value
+             */
+            return $value;
+        }
+
+        throw new BadFieldValueException('Field is not object');
+    }
+
+    /**
+     * @return list<mixed>
+     * @throws BadFieldValueException
+     */
+    public function arrayList(string $key): array
+    {
+        $list = $this->data[$key];
+        if (!is_array($list) || !array_is_list($list)) {
+            throw new BadFieldValueException('Field is not list');
+        }
+        return $list;
     }
 
 
     public function bool(string $key): bool
     {
-        return (bool)$this->data[$key];
+        return (bool)$this->getScalar($key);
     }
 
     public function string(string $key): string
     {
-        return (string)$this->data[$key];
+        return (string)$this->getScalar($key);
     }
 
     public function float(string $key): float
     {
-        return (float)$this->data[$key];
+        return (float)$this->getScalar($key);
     }
 
     public function nullOrString(string $key): ?string
     {
-        $value = (string)$this->data[$key];
-        return '' === $value ? null : $value;
+        $value = $this->getPrimitive($key);
+        return (string)$value === '' ? null : (string)$value;
+    }
+
+    public function getPrimitive(string $key): string|float|int|null|bool
+    {
+        $value = $this->data[$key];
+        if (!is_scalar($value) && $value !== null) {
+            throw new BadFieldValueException('Field is not scalar');
+        }
+        return $value;
+    }
+
+    public function getScalar(string $key): string|float|int|bool
+    {
+        $value = $this->getPrimitive($key);
+        if ($value === null) {
+            throw new BadFieldValueException('Field is null');
+        }
+        return $value;
     }
 
     public function nullOrInt(string $key): ?int
     {
-        $value = (string)$this->data[$key];
-        return '' === $value ? null : (int)$value;
+        $value = $this->getPrimitive($key);
+        return (string)$value === '' ? null : (int)$value;
     }
 
     public function nullOrFloat(string $key): ?float
     {
-        $value = (string)$this->data[$key];
-        return '' === $value ? null : (float)$value;
+        $value = $this->getPrimitive($key);
+        return (string)$value === '' ? null : (float)$value;
     }
 
     public function nullOrBool(string $key): ?bool
     {
-        $yes = (string)$this->data[$key];
-        return '' === $yes ? null : (bool)$yes;
+        $yes = $this->getPrimitive($key);
+        return (string)$yes === '' ? null : (bool)$yes;
     }
 }

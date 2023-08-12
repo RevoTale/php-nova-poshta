@@ -11,6 +11,6 @@ final readonly class CounterpartyWithContact extends Counterparty
 {
     public function getContactPersonResult(): ContactPersonResult
     {
-        return new ContactPersonResult(new ResultContainer($this->data->array('ContactPerson')));
+        return new ContactPersonResult(new ResultContainer($this->data->arrayObject('ContactPerson')));
     }
 }
