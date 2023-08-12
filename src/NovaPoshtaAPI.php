@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta;
 
+use BladL\NovaPoshta\Exceptions\QueryFailed\BadBodyException;
 use BladL\NovaPoshta\Exceptions\QueryFailed\CurlException;
 use BladL\NovaPoshta\Exceptions\QueryFailed\ErrorResultException;
 use BladL\NovaPoshta\Exceptions\QueryFailed\JsonEncodeException;
@@ -20,7 +21,9 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use stdClass;
 
+use function is_array;
 use function is_bool;
+use function is_string;
 
 /**
  * Entry class for all library services
@@ -49,6 +52,7 @@ class NovaPoshtaAPI implements LoggerAwareInterface
 
     /**
      * @throws QueryFailedException
+     * @param array<string,string|int|bool|float> $params
      */
     public function fetch(string $model, string $method, array $params): ResultContainer
     {
@@ -61,9 +65,6 @@ class NovaPoshtaAPI implements LoggerAwareInterface
                 'methodProperties' => empty($params) ? new stdClass() : $params,
             ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
             $logger->info('Requested NovaPoshta service', compact('model', 'method', 'params'));
-            if ($payload === false) {
-                throw new JsonEncodeException(new Exception('Returned payload is false'));
-            }
         } catch (JsonException $e) {
             throw new JsonEncodeException($e);
         }
@@ -99,13 +100,23 @@ class NovaPoshtaAPI implements LoggerAwareInterface
             ]);
             throw new JsonParseException($result, $e);
         }
+        if (!is_array($resp)) {
+            throw new BadBodyException('Response is not array');
+        }
         if (isset($resp['errors'])) {
             $errors = $resp['errors'];
+            if (!is_array($errors) || !array_is_list($errors)) {
+                throw new BadBodyException('Errors is not list');
+            }
+            $errorCodes = $resp['errorCodes'];
+            if (!is_array($errorCodes) || !array_is_list($errorCodes)) {
+                throw new BadBodyException('Error codes is not list');
+            }
             if (!empty($errors)) {
                 $logger->error('NovaPoshta logical error', [
                     'errors' => $errors,
                 ]);
-                throw new ErrorResultException($resp['errors'], $resp['errorCodes']);
+                throw new ErrorResultException($errors,$errorCodes);
             }
         }
 

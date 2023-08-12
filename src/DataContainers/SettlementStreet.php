@@ -44,7 +44,7 @@ final readonly class SettlementStreet extends DataContainer
         if (!is_numeric($ordinate)) {
             throw new BadFieldValueException('Bad ordinate');
         }
-        return $ordinate;
+        return (int)$ordinate;
     }
 
     public function getLocationY(): int
@@ -58,7 +58,7 @@ final readonly class SettlementStreet extends DataContainer
         if (!is_numeric($ordinate)) {
             throw new BadFieldValueException('Bad ordinate');
         }
-        return $ordinate;
+        return (int)$ordinate;
     }
 
     public function getDescriptionRu(): string
