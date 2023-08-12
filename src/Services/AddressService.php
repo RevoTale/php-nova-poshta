@@ -16,6 +16,7 @@ use BladL\NovaPoshta\Parameters\WarehouseSearch;
 use BladL\NovaPoshta\Results\CityFinderResult;
 use BladL\NovaPoshta\Results\SearchSettlementResult;
 use BladL\NovaPoshta\Results\SettlementAreasResult;
+use BladL\NovaPoshta\Results\SettlementRegionsResult;
 use BladL\NovaPoshta\Results\SettlementSearchResult;
 use BladL\NovaPoshta\Results\SettlementsResult;
 use BladL\NovaPoshta\Results\WarehousesResult;
@@ -98,8 +99,7 @@ final readonly class AddressService extends Service
         string $settlementRef,
         int    $limit,
         int    $page = 1
-    ): SearchSettlementResult
-    {
+    ): SearchSettlementResult {
         return new SearchSettlementResult($this->api->fetch('Address', 'searchSettlementStreets', [
             'StreetName' => $streetName,
             'SettlementRef' => $settlementRef,
@@ -114,5 +114,19 @@ final readonly class AddressService extends Service
     public function getSettlementAreas(SettlementAreaSearch $params): SettlementAreasResult
     {
         return new SettlementAreasResult($this->api->fetch('Address', 'getSettlementAreas', $params->getProperties()));
+    }
+
+    /**
+     * @throws QueryFailedException
+     */
+    public function getSettlementCountryRegion(SettlementAreaSearch $params): SettlementRegionsResult
+    {
+        return new SettlementRegionsResult(
+            $this->api->fetch(
+                'Address',
+                'getSettlementCountryRegion',
+                $params->getProperties()
+            )
+        );
     }
 }

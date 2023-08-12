@@ -61,7 +61,7 @@ class NovaPoshtaAPI implements LoggerAwareInterface
                 'methodProperties' => empty($params) ? new stdClass() : $params,
             ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
             $logger->info('Requested NovaPoshta service', compact('model', 'method', 'params'));
-            if (false === $payload) {
+            if ($payload === false) {
                 throw new JsonEncodeException(new Exception('Returned payload is false'));
             }
         } catch (JsonException $e) {
