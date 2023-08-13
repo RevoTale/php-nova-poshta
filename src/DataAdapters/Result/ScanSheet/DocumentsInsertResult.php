@@ -52,7 +52,7 @@ final readonly class DocumentsInsertResult extends Result
      */
     public function getDocumentErrors(): array
     {
-        $data =  (new ObjectDecorator($this->getScanSheetData()->arrayObject('Data')))->arrayList('Errors');
+        $data =  (new ObjectDecorator($this->getScanSheetData()->object('Data')))->arrayList('Errors');
         /**
          * @var list<array<string,mixed>> $data
          */
@@ -67,7 +67,7 @@ final readonly class DocumentsInsertResult extends Result
      */
     public function getWarnings(): array
     {
-        $data =  (new ObjectDecorator($this->getScanSheetData()->arrayObject('Data')))->arrayList('Warnings');
+        $data =  (new ObjectDecorator($this->getScanSheetData()->object('Data')))->arrayList('Warnings');
         /**
          * @var list<array<string,mixed>> $data
          */

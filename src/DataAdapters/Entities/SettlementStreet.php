@@ -34,6 +34,9 @@ final readonly class SettlementStreet extends Entity
         return $this->getField('StreetsTypeDescription')->string();
     }
 
+    /**
+     * @throws BadFieldValueException
+     */
     public function getLocationX(): int
     {
         $index = 0;
@@ -41,13 +44,12 @@ final readonly class SettlementStreet extends Entity
         if (!isset($location[$index])) {
             throw new BadFieldValueException('Location has incomplete coordinates');
         }
-        $ordinate = $location[$index];
-        if (!is_numeric($ordinate)) {
-            throw new BadFieldValueException('Bad ordinate');
-        }
-        return (int)$ordinate;
+        return $location[$index]->integer();;
     }
 
+    /**
+     * @throws BadFieldValueException
+     */
     public function getLocationY(): int
     {
         $index = 1;
@@ -55,11 +57,7 @@ final readonly class SettlementStreet extends Entity
         if (!isset($location[$index])) {
             throw new BadFieldValueException('Location has incomplete coordinates');
         }
-        $ordinate = $location[$index];
-        if (!is_numeric($ordinate)) {
-            throw new BadFieldValueException('Bad ordinate');
-        }
-        return (int)$ordinate;
+        return $location[$index]->integer();
     }
 
     public function getDescriptionRu(): string

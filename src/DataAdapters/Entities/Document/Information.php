@@ -18,8 +18,8 @@ abstract readonly class Information extends Entity
      */
     public function getSeatsAmount(): int
     {
-        $seats = $this->data->nullOrInt('SeatsAmount');
-        if ($seats === null || $seats === 0) {
+        $seats = $this->getNullableField('SeatsAmount')->integer();
+        if (null === $seats || 0 === $seats) {
             throw new NoSeatsAmountException();
         }
 

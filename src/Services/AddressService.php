@@ -60,7 +60,7 @@ final readonly class AddressService extends Service
                 'Address',
                 'getWarehouseTypes',
                 ['Ref' => $ref]
-            )->getObjectList()[0]
+            )->getDataAsObjectList()[0]
         );
     }
 

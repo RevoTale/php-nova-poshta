@@ -15,43 +15,43 @@ final readonly class DocumentListResultItem extends Information
 
     public function isPrinted(): bool
     {
-        return $this->data->bool('Printed');
+        return $this->getField('Printed')->bool();
     }
 
     public function getWeight(): float
     {
-        return $this->data->float('Weight');
+        return $this->getField('Weight')->float();
     }
 
     public function getDocumentNumber(): string
     {
-        return $this->getField('IntDocNumber');
+        return $this->getField('IntDocNumber')->string();
     }
 
     public function getShippingCost(): float
     {
-        return $this->data->float('CostOnSite');
+        return $this->getField('CostOnSite')->float();
     }
 
     public function getAssessedCost(): float
     {
-        return $this->data->float('Cost');
+        return $this->getField('Cost')->float();
     }
 
     public function getStatusCode(): DocumentStatusCode
     {
         return DocumentStatusCode::from(
-            $this->data->nullOrInt('StateId') ?? throw new UnexpectedValueException('StateId is null')
+            $this->getNullableField('StateId')->integer() ?? throw new UnexpectedValueException('StateId is null')
         );
     }
 
     public function getStateName(): string
     {
-        return $this->getField('StateName');
+        return $this->getField('StateName')->string();
     }
 
     public function getScanSheetNumber(): ?string
     {
-        return $this->data->nullOrString('ScanSheetNumber');
+        return $this->getNullableField('ScanSheetNumber')->string();
     }
 }

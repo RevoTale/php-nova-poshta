@@ -21,7 +21,7 @@ final readonly class TrackingInformation extends Information
     public const DOC_TYPE_CARGO_RETURN = 'CargoReturn';
     public function getStatusCode(): DocumentStatusCode
     {
-        return DocumentStatusCode::from($this->getField('StatusCode')->integer()
+        return DocumentStatusCode::from($this->getNullableField('StatusCode')->integer()
             ?? throw new UnexpectedValueException('Status code is null'));
     }
 

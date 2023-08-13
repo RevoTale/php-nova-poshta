@@ -9,8 +9,9 @@ use BladL\NovaPoshta\DataAdapters\Result\ResultContainer;
 
 final readonly class CounterpartyWithContact extends Counterparty
 {
+
     public function getContactPersonResult(): ContactPersonResult
     {
-        return new ContactPersonResult(new ResultContainer($this->getField('ContactPerson')->arrayObject()));
+        return new ContactPersonResult(new ResultContainer($this->getField('ContactPerson')->object()));
     }
 }

@@ -8,13 +8,13 @@ use Throwable;
 /**
  * @template T of Throwable
  */
-final readonly class ObjectNullableFieldDecorator
+final readonly class ValueNullableDecorator
 {
     /**
-     * @param ObjectFieldDecorator<T> $data
+     * @param ValueDecorator<T> $data
      */
     public function __construct(
-        private ObjectFieldDecorator $data,
+        private ValueDecorator $data,
     ) {
     }
 
