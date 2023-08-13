@@ -7,8 +7,8 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Services;
 
-use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\Results\ScanSheet\DocumentsInsertResult;
+use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use BladL\NovaPoshta\DataAdapters\Result\ScanSheet\DocumentsInsertResult;
 
 final readonly class ScanSheetService extends Service
 {

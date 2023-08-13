@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Services;
 
-use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
+use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Parameters\ShippingDataInfo;
-use BladL\NovaPoshta\Results\AdditionalService\ShippingDataUpdateRequestResult;
+use BladL\NovaPoshta\DataAdapters\Result\AdditionalService\ShippingDataUpdateRequestResult;
 
 final readonly class AdditionalService extends Service
 {

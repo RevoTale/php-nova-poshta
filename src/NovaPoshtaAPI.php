@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta;
 
-use BladL\NovaPoshta\Exceptions\QueryFailed\BadBodyException;
-use BladL\NovaPoshta\Exceptions\QueryFailed\CurlException;
-use BladL\NovaPoshta\Exceptions\QueryFailed\ErrorResultException;
-use BladL\NovaPoshta\Exceptions\QueryFailed\JsonEncodeException;
-use BladL\NovaPoshta\Exceptions\QueryFailed\JsonParseException;
-use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\Results\ResultContainer;
+use BladL\NovaPoshta\Exception\QueryFailed\BadBodyException;
+use BladL\NovaPoshta\Exception\QueryFailed\CurlException;
+use BladL\NovaPoshta\Exception\QueryFailed\ErrorResultException;
+use BladL\NovaPoshta\Exception\QueryFailed\JsonEncodeException;
+use BladL\NovaPoshta\Exception\QueryFailed\JsonParseException;
+use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use BladL\NovaPoshta\DataAdapters\Result\ResultContainer;
 use BladL\NovaPoshta\Services\Service;
 use BladL\Time\TimeZone;
 use JsonException;
@@ -17,10 +17,8 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use stdClass;
-
 use function is_array;
 use function is_bool;
-use function is_string;
 
 /**
  * Entry class for all library services

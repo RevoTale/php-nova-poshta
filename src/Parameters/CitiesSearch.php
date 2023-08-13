@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-class CitiesSearch extends ParametersBuilder
+use BladL\NovaPoshta\Decorator\ParametersDecorator;
+use BladL\NovaPoshta\Parameters\Traits\Pageable;
+
+class CitiesSearch extends ParametersDecorator
 {
-    use Pages;
+    use Pageable;
 
     public function setCityRef(string $ref): void
     {

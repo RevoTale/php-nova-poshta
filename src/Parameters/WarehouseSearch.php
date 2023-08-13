@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-class WarehouseSearch extends ParametersBuilder
+use BladL\NovaPoshta\Decorator\ParametersDecorator;
+use BladL\NovaPoshta\Parameters\Traits\Pageable;
+
+class WarehouseSearch extends ParametersDecorator
 {
-    use Pages;
+    use Pageable;
 
     public function satHasBicycleParking(bool $true): void
     {

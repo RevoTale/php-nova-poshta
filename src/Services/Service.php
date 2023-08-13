@@ -14,7 +14,7 @@ abstract readonly class Service
     /**
      * @internal
      */
-    final public function __construct(protected readonly NovaPoshtaAPI $api)
+    final public function __construct(protected NovaPoshtaAPI $api)
     {
     }
 }

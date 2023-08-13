@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-class SettlementAreaSearch extends ParametersBuilder
+use BladL\NovaPoshta\Decorator\ParametersDecorator;
+
+class SettlementAreaSearch extends ParametersDecorator
 {
     public function setRef(string $ref): void
     {

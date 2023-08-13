@@ -7,20 +7,20 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Services;
 
-use BladL\NovaPoshta\DataContainers\WarehouseType;
-use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
+use BladL\NovaPoshta\Decorators\Objects\WarehouseType;
+use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Parameters\CitiesSearch;
 use BladL\NovaPoshta\Parameters\SettlementAreaSearch;
 use BladL\NovaPoshta\Parameters\SettlementsSearch;
 use BladL\NovaPoshta\Parameters\WarehouseSearch;
-use BladL\NovaPoshta\Results\CityFinderResult;
-use BladL\NovaPoshta\Results\SearchSettlementResult;
-use BladL\NovaPoshta\Results\SettlementAreasResult;
-use BladL\NovaPoshta\Results\SettlementRegionsResult;
-use BladL\NovaPoshta\Results\SettlementSearchResult;
-use BladL\NovaPoshta\Results\SettlementsResult;
-use BladL\NovaPoshta\Results\WarehousesResult;
-use BladL\NovaPoshta\Results\WarehouseTypesResult;
+use BladL\NovaPoshta\DataAdapters\Result\CityFinderResult;
+use BladL\NovaPoshta\DataAdapters\Result\SearchSettlementResult;
+use BladL\NovaPoshta\DataAdapters\Result\SettlementAreasResult;
+use BladL\NovaPoshta\DataAdapters\Result\SettlementRegionsResult;
+use BladL\NovaPoshta\DataAdapters\Result\SettlementSearchResult;
+use BladL\NovaPoshta\DataAdapters\Result\SettlementsResult;
+use BladL\NovaPoshta\DataAdapters\Result\WarehousesResult;
+use BladL\NovaPoshta\DataAdapters\Result\WarehouseTypesResult;
 
 final readonly class AddressService extends Service
 {

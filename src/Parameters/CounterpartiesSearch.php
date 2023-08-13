@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-use BladL\NovaPoshta\Types\CounterpartyPersonType;
+use BladL\NovaPoshta\Decorator\ParametersDecorator;
+use BladL\NovaPoshta\Decorators\Enums\CounterpartyPersonType;
+use BladL\NovaPoshta\Parameters\Traits\Pageable;
 
-class CounterpartiesSearch extends ParametersBuilder
+class CounterpartiesSearch extends ParametersDecorator
 {
-    use Pages;
+    use Pageable;
 
     public function setKind(CounterpartyPersonType $kind): void
     {

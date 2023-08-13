@@ -7,16 +7,16 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Services;
 
-use BladL\NovaPoshta\DataContainers\Document\TrackingInformation;
-use BladL\NovaPoshta\Exceptions\DocumentNotExists;
-use BladL\NovaPoshta\Exceptions\DocumentNotFoundException;
-use BladL\NovaPoshta\Exceptions\QueryFailed\CurlException;
-use BladL\NovaPoshta\Exceptions\QueryFailed\FileSaveException;
-use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\Results\Document\TrackingResult;
-use BladL\NovaPoshta\Results\DocumentListResult;
-use BladL\NovaPoshta\Results\DocumentListResultItem;
-use BladL\NovaPoshta\Types\DocumentPrintType;
+use BladL\NovaPoshta\Decorators\Enums\DocumentPrintType;
+use BladL\NovaPoshta\Decorators\Objects\Document\TrackingInformation;
+use BladL\NovaPoshta\Exception\DocumentNotExists;
+use BladL\NovaPoshta\Exception\DocumentNotFoundException;
+use BladL\NovaPoshta\Exception\QueryFailed\CurlException;
+use BladL\NovaPoshta\Exception\QueryFailed\FileSaveException;
+use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use BladL\NovaPoshta\DataAdapters\Result\Document\TrackingResult;
+use BladL\NovaPoshta\DataAdapters\Result\DocumentListResult;
+use BladL\NovaPoshta\DataAdapters\Result\DocumentListResultItem;
 
 final readonly class DocumentService extends Service
 {

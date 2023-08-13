@@ -7,12 +7,12 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Services;
 
-use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
+use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Parameters\CounterpartiesSearch;
 use BladL\NovaPoshta\Parameters\CounterpartySaveInfo;
-use BladL\NovaPoshta\Results\CounterpartiesResult;
-use BladL\NovaPoshta\Results\Counterparty\ContactPersonsResult;
-use BladL\NovaPoshta\Results\Counterparty\CounterpartySaveResult;
+use BladL\NovaPoshta\DataAdapters\Result\CounterpartiesResult;
+use BladL\NovaPoshta\DataAdapters\Result\Counterparty\ContactPersonsResult;
+use BladL\NovaPoshta\DataAdapters\Result\Counterparty\CounterpartySaveResult;
 
 final readonly class CounterpartyService extends Service
 {
