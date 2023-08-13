@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorators\Objects\Document;
+namespace BladL\NovaPoshta\DataAdapters\Entities\Document;
 
 use BladL\NovaPoshta\Decorators\Enums\DocumentStatusCode;
 use BladL\NovaPoshta\Exception\NoSeatsAmountException;

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\DataAdapters\Result;
 
 use BladL\NovaPoshta\Decorators\Enums\DocumentStatusCode;
-use BladL\NovaPoshta\Decorators\Objects\Document\Information;
-use BladL\NovaPoshta\Decorators\Objects\Traits\Ref;
+use BladL\NovaPoshta\DataAdapters\Entities\Document\Information;
+use BladL\NovaPoshta\DataAdapters\Entities\Traits\Ref;
 use UnexpectedValueException;
 
 final readonly class DocumentListResultItem extends Information
@@ -25,7 +25,7 @@ final readonly class DocumentListResultItem extends Information
 
     public function getDocumentNumber(): string
     {
-        return $this->data->string('IntDocNumber');
+        return $this->getField('IntDocNumber');
     }
 
     public function getShippingCost(): float
@@ -47,7 +47,7 @@ final readonly class DocumentListResultItem extends Information
 
     public function getStateName(): string
     {
-        return $this->data->string('StateName');
+        return $this->getField('StateName');
     }
 
     public function getScanSheetNumber(): ?string

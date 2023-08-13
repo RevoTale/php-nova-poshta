@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataAdapters\Result\ScanSheet;
 
-use BladL\NovaPoshta\Decorators\Objects\Traits\Ref;
+use BladL\NovaPoshta\DataAdapters\Entities\Traits\Ref;
 use BladL\NovaPoshta\DataAdapters\Entity;
 
 /**

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorators\Objects\Traits;
+namespace BladL\NovaPoshta\DataAdapters\Entities\Traits;
 
 /**
  * @internal
@@ -13,6 +13,6 @@ trait DescriptionWithRu
 
     final public function getDescriptionRu(): string
     {
-        return $this->data->string('DescriptionRu');
+        return $this->getField('DescriptionRu')->string();
     }
 }

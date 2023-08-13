@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorators\Objects;
+namespace BladL\NovaPoshta\DataAdapters\Entities;
 
-use BladL\NovaPoshta\Decorators\Objects\Traits\Description;
-use BladL\NovaPoshta\Decorators\Objects\Traits\Ref;
+use BladL\NovaPoshta\DataAdapters\Entities\Traits\Description;
+use BladL\NovaPoshta\DataAdapters\Entities\Traits\Ref;
 use BladL\NovaPoshta\DataAdapters\Entity;
 
 final readonly class SettlementRegionResource extends Entity
@@ -14,11 +14,11 @@ final readonly class SettlementRegionResource extends Entity
     use Description;
     public function getAreaCenterRef(): string
     {
-        return $this->data->string('AreasCenter');
+        return $this->getField('AreasCenter')->string();
     }
 
     public function getRegionType(): string
     {
-        return $this->data->string('RegionType');
+        return $this->getField('RegionType')->string();
     }
 }

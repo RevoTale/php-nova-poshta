@@ -6,10 +6,11 @@ namespace BladL\NovaPoshta\Decorator;
 
 use BladL\NovaPoshta\Exception\BadFieldValueException;
 
+use Throwable;
 use function is_array;
 
 /**
- * @template T implements Throwable
+ * @template T of Throwable
  */
 final readonly class ObjectFieldDecorator
 {
@@ -22,9 +23,9 @@ final readonly class ObjectFieldDecorator
     /**
      * @throws T
      */
-    public function arrayObject(string $key): ObjectDecorator
+    public function arrayObject(): ObjectDecorator
     {
-        $value = $this->data[$key];
+        $value =$this->data;
         if (is_array($value)) {
             /**
              * @var array<string,mixed> $value
@@ -34,6 +35,10 @@ final readonly class ObjectFieldDecorator
 
         throw new $this->exceptionFactory->createBadFieldException('Field is not object');
     }
+
+    /**
+     * @throws T
+     */
     public function float(): float
     {
         return (float)$this->scalar();

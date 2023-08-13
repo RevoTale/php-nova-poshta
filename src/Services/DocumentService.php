@@ -8,7 +8,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\Services;
 
 use BladL\NovaPoshta\Decorators\Enums\DocumentPrintType;
-use BladL\NovaPoshta\Decorators\Objects\Document\TrackingInformation;
+use BladL\NovaPoshta\DataAdapters\Entities\Document\TrackingInformation;
 use BladL\NovaPoshta\Exception\DocumentNotExists;
 use BladL\NovaPoshta\Exception\DocumentNotFoundException;
 use BladL\NovaPoshta\Exception\QueryFailed\CurlException;

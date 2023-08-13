@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\DataAdapters\Result;
 
 use BladL\NovaPoshta\Decorator\ObjectDecorator;
-use BladL\NovaPoshta\Decorators\Objects\SettlementSearchResource;
+use BladL\NovaPoshta\DataAdapters\Entities\SettlementSearchResource;
 use BladL\NovaPoshta\DataAdapters\Result;
 
 final readonly class SettlementSearchResult extends Result

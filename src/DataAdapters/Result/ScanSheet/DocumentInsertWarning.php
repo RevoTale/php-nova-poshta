@@ -8,7 +8,7 @@ final readonly class DocumentInsertWarning extends DocumentInsertResult
 {
     public function getWarning(): string
     {
-        return $this->data->string('Warning');
+        return $this->getField('Warning');
     }
 
     public function getScanSheetNumber(): ?string

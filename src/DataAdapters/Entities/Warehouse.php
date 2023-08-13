@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorators\Objects;
+namespace BladL\NovaPoshta\DataAdapters\Entities;
 
-use BladL\NovaPoshta\Decorators\Objects\Traits\DescriptionWithRu;
-use BladL\NovaPoshta\Decorators\Objects\Traits\Ref;
+use BladL\NovaPoshta\DataAdapters\Entities\Traits\DescriptionWithRu;
+use BladL\NovaPoshta\DataAdapters\Entities\Traits\Ref;
 use BladL\NovaPoshta\DataAdapters\Entity;
 
 final readonly class Warehouse extends Entity
@@ -15,71 +15,71 @@ final readonly class Warehouse extends Entity
 
     public function getWarehouseTypeRef(): string
     {
-        return $this->data->string('TypeOfWarehouse');
+        return $this->getField('TypeOfWarehouse')->string();
     }
 
     public function getSettlementRef(): string
     {
-        return $this->data->string('SettlementRef');
+        return $this->getField('SettlementRef')->string();
     }
 
     public function getSettlementDescription(): string
     {
-        return $this->data->string('SettlementDescription');
+        return $this->getField('SettlementDescription')->string();
     }
 
     public function getSettlementAreaDescription(): string
     {
-        return $this->data->string('SettlementAreaDescription');
+        return $this->getField('SettlementAreaDescription')->string();
     }
 
     public function getSettlementRegionDescription(): string
     {
-        return $this->data->string('SettlementRegionsDescription');
+        return $this->getField('SettlementRegionsDescription')->string();
     }
 
     public function getSettlementTypeDescription(): string
     {
-        return $this->data->string('SettlementTypeDescription');
+        return $this->getField('SettlementTypeDescription')->string();
     }
 
     public function getRegionCity(): string
     {
-        return $this->data->string('RegionCity');
+        return $this->getField('RegionCity')->string();
     }
 
     public function getDistrictCode(): string
     {
-        return $this->data->string('DistrictCode');
+        return $this->getField('DistrictCode')->string();
     }
 
     public function getCityRef(): string
     {
-        return $this->data->string('CityRef');
+        return $this->getField('CityRef')->string();
     }
 
     public function isDenyToSelect(): ?bool
     {
-        return $this->data->bool('DenyToSelect');
+        return $this->getNullableField('DenyToSelect')->bool();
     }
 
     public function isWorking(): bool
     {
-        return 'Working' === $this->data->string('WarehouseStatus');
+        return 'Working' === $this->getField('WarehouseStatus')->string();
     }
 
     public function getCityDescriptionRu(): string
     {
-        return $this->data->string('CityDescriptionRu');
+        return $this->getField('CityDescriptionRu')->string();
     }
 
     public function getCityDescription(): string
     {
-        return $this->data->string('CityDescription');
+        return $this->getField('CityDescription')->string();
     }
 
     public function getNumber(): int
     {
-        return (int) $this->data->string('Number');
+        return $this->getField('Number')->integer();
     }
 }

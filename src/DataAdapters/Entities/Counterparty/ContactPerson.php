@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorators\Objects\Counterparty;
+namespace BladL\NovaPoshta\DataAdapters\Entities\Counterparty;
 
-use BladL\NovaPoshta\Decorators\Objects\Traits\Description;
-use BladL\NovaPoshta\Decorators\Objects\Traits\Ref;
+use BladL\NovaPoshta\DataAdapters\Entities\Traits\Description;
+use BladL\NovaPoshta\DataAdapters\Entities\Traits\Ref;
 use BladL\NovaPoshta\DataAdapters\Entity;
 
 final readonly class ContactPerson extends Entity
@@ -15,26 +15,26 @@ final readonly class ContactPerson extends Entity
 
     public function getPhone(): string
     {
-        return $this->data->string('Phones');
+        return $this->getField('Phones')->string();
     }
 
     public function getEmail(): string
     {
-        return $this->data->string('Email');
+        return $this->getField('Email')->string();
     }
 
     public function getLastName(): string
     {
-        return $this->data->string('LastName');
+        return $this->getField('LastName')->string();
     }
 
     public function getFirstName(): string
     {
-        return $this->data->string('FirstName');
+        return $this->getField('FirstName')->string();
     }
 
     public function getMiddleName(): string
     {
-        return $this->data->string('MiddleName');
+        return $this->getField('MiddleName')->string();
     }
 }

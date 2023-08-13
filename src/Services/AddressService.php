@@ -15,7 +15,7 @@ use BladL\NovaPoshta\DataAdapters\Result\SettlementSearchResult;
 use BladL\NovaPoshta\DataAdapters\Result\SettlementsResult;
 use BladL\NovaPoshta\DataAdapters\Result\WarehousesResult;
 use BladL\NovaPoshta\DataAdapters\Result\WarehouseTypesResult;
-use BladL\NovaPoshta\Decorators\Objects\WarehouseType;
+use BladL\NovaPoshta\DataAdapters\Entities\WarehouseType;
 use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Parameters\CitiesSearch;
 use BladL\NovaPoshta\Parameters\SettlementAreaSearch;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataAdapters\Result\Document;
 
-use BladL\NovaPoshta\Decorators\Objects\Document\TrackingInformation;
+use BladL\NovaPoshta\DataAdapters\Entities\Document\TrackingInformation;
 use BladL\NovaPoshta\DataAdapters\Result;
 
 final readonly class TrackingResult extends Result

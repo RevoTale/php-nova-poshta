@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorators\Objects;
+namespace BladL\NovaPoshta\DataAdapters\Entities;
 
 use BladL\NovaPoshta\Exception\BadFieldValueException;
 use BladL\NovaPoshta\DataAdapters\Entity;
@@ -11,33 +11,33 @@ final readonly class SettlementStreet extends Entity
 {
     public function getRef(): string
     {
-        return $this->data->string('SettlementStreetRef');
+        return $this->getField('SettlementStreetRef')->string();
     }
 
     public function getDescription(): string
     {
-        return $this->data->string('SettlementStreetDescription');
+        return $this->getField('SettlementStreetDescription')->string();
     }
 
     public function getPresent(): string
     {
-        return $this->data->string('Present');
+        return $this->getField('Present')->string();
     }
 
     public function getTypeRef(): string
     {
-        return $this->data->string('StreetsType');
+        return $this->getField('StreetsType')->string();
     }
 
     public function getTypeDescription(): string
     {
-        return $this->data->string('StreetsTypeDescription');
+        return $this->getField('StreetsTypeDescription')->string();
     }
 
     public function getLocationX(): int
     {
         $index = 0;
-        $location = $this->data->arrayList('Location');
+        $location = $this->getField('Location')->list();
         if (!isset($location[$index])) {
             throw new BadFieldValueException('Location has incomplete coordinates');
         }
@@ -51,7 +51,7 @@ final readonly class SettlementStreet extends Entity
     public function getLocationY(): int
     {
         $index = 1;
-        $location = $this->data->arrayList('Location');
+        $location = $this->getField('Location')->list();
         if (!isset($location[$index])) {
             throw new BadFieldValueException('Location has incomplete coordinates');
         }
@@ -64,11 +64,11 @@ final readonly class SettlementStreet extends Entity
 
     public function getDescriptionRu(): string
     {
-        return $this->data->string('SettlementStreetDescriptionRu');
+        return $this->getField('SettlementStreetDescriptionRu')->string();
     }
 
     public function getSettlementRef(): string
     {
-        return $this->data->string('SettlementRef');
+        return $this->getField('SettlementRef')->string();
     }
 }

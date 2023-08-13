@@ -12,7 +12,8 @@ final readonly class ObjectDecorator
     public function __construct(
         private array                             $data,
         private BadFieldExceptionFactoryInterface $exceptionFactory = new DefaultBadFieldExceptionFactory(),
-    ) {
+    )
+    {
     }
 
     public function field(string $key): ObjectFieldDecorator
@@ -23,5 +24,9 @@ final readonly class ObjectDecorator
         return new ObjectFieldDecorator($this->data[$key], $this->exceptionFactory);
     }
 
+    public function nullableField(string $key): ObjectNullableFieldDecorator
+    {
+        return new ObjectNullableFieldDecorator($this->field($key));
+    }
 
 }

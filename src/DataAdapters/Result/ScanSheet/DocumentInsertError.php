@@ -8,6 +8,6 @@ final readonly class DocumentInsertError extends DocumentInsertResult
 {
     public function getError(): string
     {
-        return $this->data->string('Error');
+        return $this->getField('Error');
     }
 }

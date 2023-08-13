@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorators\Objects;
+namespace BladL\NovaPoshta\DataAdapters\Entities;
 
-use BladL\NovaPoshta\Decorators\Objects\Traits\Ref;
+use BladL\NovaPoshta\DataAdapters\Entities\Traits\Ref;
 use BladL\NovaPoshta\DataAdapters\Entity;
 
 final readonly class SettlementSearchResource extends Entity
@@ -13,66 +13,66 @@ final readonly class SettlementSearchResource extends Entity
 
     public function getPresent(): string
     {
-        return $this->data->string('Present');
+        return $this->getField('Present')->string();
     }
 
     public function getWarehouseCount(): int
     {
-        return $this->data->int('Warehouses');
+        return $this->getField('Warehouses')->integer();
     }
 
     public function getMainDescription(): string
     {
-        return $this->data->string('MainDescription');
+        return $this->getField('MainDescription')->string();
     }
 
     public function getArea(): string
     {
-        return $this->data->string('Area');
+        return $this->getField('Area')->string();
     }
 
     public function getRegion(): string
     {
-        return $this->data->string('Region');
+        return $this->getField('Region')->string();
     }
 
     public function getSettlementTypeCode(): string
     {
-        return $this->data->string('SettlementTypeCode');
+        return $this->getField('SettlementTypeCode')->string();
     }
 
     public function getDeliveryCityRef(): string
     {
-        return $this->data->string('DeliveryCity');
+        return $this->getField('DeliveryCity')->string();
     }
 
     public function isAddressDeliveryAllowed(): bool
     {
-        return $this->data->bool('AddressDeliveryAllowed');
+        return $this->getField('AddressDeliveryAllowed')->bool();
     }
 
     public function hasStreetsAvailability(): bool
     {
-        return $this->data->bool('StreetsAvailability');
+        return $this->getField('StreetsAvailability')->bool();
     }
 
     public function getParentRegionType(): string
     {
-        return $this->data->string('ParentRegionTypes');
+        return $this->getField('ParentRegionTypes')->string();
     }
 
     public function getParentRegionCode(): string
     {
-        return $this->data->string('ParentRegionCode');
+        return $this->getField('ParentRegionCode')->string();
     }
 
     public function getRegionType(): string
     {
-        return $this->data->string('RegionTypes');
+        return $this->getField('RegionTypes')->string();
     }
 
     public function getRegionTypeCode(): string
     {
-        return $this->data->string('RegionTypesCode');
+        return $this->getField('RegionTypesCode')->string();
     }
 }

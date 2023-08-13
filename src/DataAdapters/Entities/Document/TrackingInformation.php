@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorators\Objects\Document;
+namespace BladL\NovaPoshta\DataAdapters\Entities\Document;
 
 use BladL\NovaPoshta\Decorators\Enums\CounterpartyPersonType;
 use BladL\NovaPoshta\Decorators\Enums\DocumentStatusCode;
@@ -21,23 +21,23 @@ final readonly class TrackingInformation extends Information
     public const DOC_TYPE_CARGO_RETURN = 'CargoReturn';
     public function getStatusCode(): DocumentStatusCode
     {
-        return DocumentStatusCode::from($this->data->nullOrInt('StatusCode')
+        return DocumentStatusCode::from($this->getField('StatusCode')->integer()
             ?? throw new UnexpectedValueException('Status code is null'));
     }
 
     public function getScanDateStr(): string
     {
-        return $this->data->string('DateScan');
+        return $this->getField('DateScan')->string();
     }
 
     public function getNumber(): string
     {
-        return $this->data->string('Number');
+        return $this->getField('Number')->string();
     }
 
     public function getDocumentWeight(): float
     {
-        return $this->data->float('DocumentWeight');
+        return $this->getField('DocumentWeight')->float();
     }
 
     /**
@@ -45,13 +45,13 @@ final readonly class TrackingInformation extends Information
      */
     public function getPayerType(): CounterpartyPersonType
     {
-        $type = $this->data->string('PayerType');
+        $type = $this->getField('PayerType')->string();
         return CounterpartyPersonType::tryFrom($type) ?? throw new UnexpectedCounterpartyException($type);
     }
 
     public function getDocumentCost(): float
     {
-        return $this->data->float('DocumentCost');
+        return $this->getField('DocumentCost')->float();
     }
 
     /**
@@ -68,94 +68,94 @@ final readonly class TrackingInformation extends Information
 
     public function getRedeliverySum(): ?float
     {
-        return $this->data->nullOrFloat('RedeliverySum');
+        return $this->getNullableField('RedeliverySum')->float();
     }
 
     public function getAfterpaymentSum(): ?float
     {
-        return $this->data->nullOrFloat('AfterpaymentOnGoodsCost');
+        return $this->getNullableField('AfterpaymentOnGoodsCost')->float();
     }
 
     public function getAmountToPay(): float
     {
-        return $this->data->float('AmountToPay');
+        return $this->getField('AmountToPay')->float();
     }
 
     public function getAmountPaid(): float
     {
-        return $this->data->float('AmountPaid');
+        return $this->getField('AmountPaid')->float();
     }
 
     public function getPaymentMethod(): PaymentMethod
     {
-        return PaymentMethod::from($this->data->string('PaymentMethod'));
+        return PaymentMethod::from($this->getField('PaymentMethod')->string());
     }
 
     public function getOwnerDocumentType(): ?string
     {
-        return $this->data->nullOrString('OwnerDocumentType');
+        return $this->getNullableField('OwnerDocumentType')->string();
     }
 
     public function getOwnerDocumentNumber(): ?string
     {
-        return $this->data->nullOrString('OwnerDocumentNumber');
+        return $this->getNullableField('OwnerDocumentNumber')->string();
     }
 
     public function getLastCreatedOnTheBasisNumber(): ?string
     {
-        return $this->data->nullOrString('LastCreatedOnTheBasisNumber');
+        return $this->getNullableField('LastCreatedOnTheBasisNumber')->string();
     }
 
     public function getLastCreatedOnTheBasisDocumentType(): ?string
     {
-        return $this->data->nullOrString('LastCreatedOnTheBasisDocumentType');
+        return $this->getNullableField('LastCreatedOnTheBasisDocumentType')->string();
 
     }
 
     public function getTrackingUpdateTime(): ?Timestamp
     {
-        $date = $this->data->nullOrString('TrackingUpdateDate');
+        $date = $this->getNullableField('TrackingUpdateDate')->string();
         return $date ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
     }
 
     public function getActualDeliveryTime(): ?Timestamp
     {
-        $date = $this->data->nullOrString('ActualDeliveryDate');
+        $date = $this->getNullableField('ActualDeliveryDate')->string();
         return $date ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
     }
 
     public function getStatusDescription(): string
     {
-        return $this->data->string('Status');
+        return $this->getField('Status')->string();
     }
 
     public function getDaysStorageCargo(): ?int
     {
-        return $this->data->nullOrInt('DaysStorageCargo');
+        return $this->getNullableField('DaysStorageCargo')->integer();
     }
 
     public function getDaysStorageAmount(): ?int
     {
-        return $this->data->nullOrInt('StorageAmount');
+        return $this->getNullableField('StorageAmount')->integer();
     }
 
     public function isRedelivery(): ?bool
     {
-        return $this->data->nullOrBool('Redelivery');
+        return $this->getNullableField('Redelivery')->bool();
     }
 
     public function getRedeliveryNumber(): ?string
     {
-        return $this->data->nullOrString('RedeliveryNum') ?: null;
+        return $this->getNullableField('RedeliveryNum')->string() ?: null;
     }
 
     public function getStoragePrice(): ?float
     {
-        return $this->data->nullOrFloat('StoragePrice');
+        return $this->getNullableField('StoragePrice')->float();
     }
 
     public function getServiceType(): ServiceType
     {
-        return ServiceType::from($this->data->string('ServiceType'));
+        return ServiceType::from($this->getField('ServiceType')->string());
     }
 }

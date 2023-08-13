@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataAdapters\Result;
 
-use BladL\NovaPoshta\Decorators\Objects\City;
+use BladL\NovaPoshta\DataAdapters\Entities\City;
 use BladL\NovaPoshta\DataAdapters\Result;
 use UnexpectedValueException;
 
