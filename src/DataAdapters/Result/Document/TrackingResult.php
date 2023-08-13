@@ -10,7 +10,7 @@ use BladL\NovaPoshta\DataAdapters\Result;
 final readonly class TrackingResult extends Result
 {
     /**
-     * @return TrackingInformation
+     * @return list<TrackingInformation>
      */
     public function getDocumentsTracking(): array
     {

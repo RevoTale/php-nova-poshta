@@ -11,7 +11,7 @@ use BladL\NovaPoshta\DataAdapters\Result;
 final readonly class SettlementSearchResult extends Result
 {
     /**
-     * @return SettlementSearchResource
+     * @return list<SettlementSearchResource>
      */
     public function getSettlements(): array
     {

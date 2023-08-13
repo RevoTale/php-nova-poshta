@@ -10,7 +10,7 @@ use BladL\NovaPoshta\DataAdapters\Result;
 final readonly class ContactPersonsResult extends Result
 {
     /**
-     * @return ContactPerson
+     * @return list<ContactPerson>
      */
     public function getContactPersons(): array
     {

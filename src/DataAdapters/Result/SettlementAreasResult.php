@@ -9,7 +9,7 @@ use BladL\NovaPoshta\DataAdapters\Result;
 final readonly class SettlementAreasResult extends Result
 {
     /**
-     * @return SettlementAreaResource
+     * @return list<SettlementAreaResource>
      */
     public function getAreas(): array
     {

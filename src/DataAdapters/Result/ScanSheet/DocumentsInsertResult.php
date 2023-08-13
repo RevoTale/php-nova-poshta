@@ -33,7 +33,7 @@ final readonly class DocumentsInsertResult extends Result
     }
 
     /**
-     * @return DocumentInsertWarning
+     * @return list<DocumentInsertSuccess>
      */
     public function getSuccessDocuments(): array
     {
@@ -48,7 +48,7 @@ final readonly class DocumentsInsertResult extends Result
     }
 
     /**
-     * @return DocumentInsertWarning
+     * @return list<DocumentInsertError>
      */
     public function getDocumentErrors(): array
     {
@@ -63,7 +63,7 @@ final readonly class DocumentsInsertResult extends Result
     }
 
     /**
-     * @return DocumentInsertWarning
+     * @return list<DocumentInsertWarning>
      */
     public function getWarnings(): array
     {

@@ -10,7 +10,7 @@ use BladL\NovaPoshta\DataAdapters\Result;
 final readonly class SettlementsResult extends Result
 {
     /**
-     * @return Settlement
+     * @return list<Settlement>
      */
     public function toArray(): array
     {

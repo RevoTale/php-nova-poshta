@@ -10,7 +10,7 @@ use BladL\NovaPoshta\DataAdapters\Result;
 final readonly class CounterpartiesResult extends Result
 {
     /**
-     * @return Counterparty
+     * @return list<Counterparty>
      */
     public function getCounterparties(): array
     {

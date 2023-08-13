@@ -17,7 +17,7 @@ final readonly class WarehousesResult extends Result
     }
 
     /**
-     * @return Warehouse
+     * @return list<Warehouse>
      */
     public function toArray(): array
     {

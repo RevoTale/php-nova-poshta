@@ -9,7 +9,7 @@ use BladL\NovaPoshta\DataAdapters\Result;
 final readonly class DocumentListResult extends Result
 {
     /**
-     * @return DocumentListResultItem
+     * @return list<DocumentListResultItem>
      */
     public function getDocuments(): array
     {

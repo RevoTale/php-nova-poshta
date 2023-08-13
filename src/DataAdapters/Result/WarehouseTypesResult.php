@@ -10,7 +10,7 @@ use BladL\NovaPoshta\DataAdapters\Result;
 final readonly class WarehouseTypesResult extends Result
 {
     /**
-     * @return WarehouseType
+     * @return list<WarehouseType>
      */
     public function toArray(): array
     {
