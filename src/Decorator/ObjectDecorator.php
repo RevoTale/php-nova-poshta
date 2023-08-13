@@ -110,6 +110,6 @@ final readonly class ObjectDecorator
     public function nullOrBool(string $key): ?bool
     {
         $yes = $this->getPrimitive($key);
-        return '' === (string)$yes ? null : (bool)$yes;
+        return (string)$yes === '' ? null : (bool)$yes;
     }
 }

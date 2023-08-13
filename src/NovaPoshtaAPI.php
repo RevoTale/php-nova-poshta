@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BladL\NovaPoshta;
@@ -17,6 +18,7 @@ use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use stdClass;
+
 use function is_array;
 use function is_bool;
 
@@ -75,15 +77,15 @@ class NovaPoshtaAPI implements LoggerAwareInterface
         ]);
         $result = curl_exec($curl);
         $err = curl_error($curl);
-        $err_no = curl_errno($curl);
+        $errNo = curl_errno($curl);
         curl_close($curl);
-        if ($err || $err_no || is_bool($result)) {
+        if ($err || $errNo || is_bool($result)) {
             $logger->alert('NovaPoshta cURl error', [
                 'curlErr' => $err,
-                'curlErrNo' => $err_no,
+                'curlErrNo' => $errNo,
                 'output' => $result,
             ]);
-            throw new CurlException($err, $err_no);
+            throw new CurlException($err, $errNo);
         }
         $logger->debug('NovaPoshta service responded', ['output' => $result]);
         try {
@@ -111,7 +113,7 @@ class NovaPoshtaAPI implements LoggerAwareInterface
                 $logger->error('NovaPoshta logical error', [
                     'errors' => $errors,
                 ]);
-                throw new ErrorResultException($errors,$errorCodes);
+                throw new ErrorResultException($errors, $errorCodes);
             }
         }
 
@@ -123,28 +125,28 @@ class NovaPoshtaAPI implements LoggerAwareInterface
      */
     public function fetchFile(string $path, int $timeout): string
     {
-        $ch = curl_init(
+        $curl = curl_init(
             "https://my.novaposhta.ua/$path/apiKey/$this->apiKey"
         );
-        if ($ch === false) {
-            throw new CurlException('Failed to initialize curl connectivity',0);
+        if ($curl === false) {
+            throw new CurlException('Failed to initialize curl connectivity', 0);
         }
 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
-        $result = curl_exec($ch);
-        $err_no = curl_errno($ch);
-        $err = curl_error($ch);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
+        $result = curl_exec($curl);
+        $errNo = curl_errno($curl);
+        $err = curl_error($curl);
         $logger = $this->logger;
-        if ($err || $err_no || is_bool($result)) {
+        if ($err || $errNo || is_bool($result)) {
             $logger->alert('NovaPoshta cURl file error', [
                 'curlErr' => $err,
-                'curlErrNo' => $err_no,
+                'curlErrNo' => $errNo,
                 'output' => $result,
             ]);
-            throw new CurlException($err, $err_no);
+            throw new CurlException($err, $errNo);
         }
-        curl_close($ch);
+        curl_close($curl);
         return $result;
     }
 

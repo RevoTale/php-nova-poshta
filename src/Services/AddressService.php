@@ -7,12 +7,6 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Services;
 
-use BladL\NovaPoshta\Decorators\Objects\WarehouseType;
-use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\Parameters\CitiesSearch;
-use BladL\NovaPoshta\Parameters\SettlementAreaSearch;
-use BladL\NovaPoshta\Parameters\SettlementsSearch;
-use BladL\NovaPoshta\Parameters\WarehouseSearch;
 use BladL\NovaPoshta\DataAdapters\Result\CityFinderResult;
 use BladL\NovaPoshta\DataAdapters\Result\SearchSettlementResult;
 use BladL\NovaPoshta\DataAdapters\Result\SettlementAreasResult;
@@ -21,6 +15,12 @@ use BladL\NovaPoshta\DataAdapters\Result\SettlementSearchResult;
 use BladL\NovaPoshta\DataAdapters\Result\SettlementsResult;
 use BladL\NovaPoshta\DataAdapters\Result\WarehousesResult;
 use BladL\NovaPoshta\DataAdapters\Result\WarehouseTypesResult;
+use BladL\NovaPoshta\Decorators\Objects\WarehouseType;
+use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use BladL\NovaPoshta\Parameters\CitiesSearch;
+use BladL\NovaPoshta\Parameters\SettlementAreaSearch;
+use BladL\NovaPoshta\Parameters\SettlementsSearch;
+use BladL\NovaPoshta\Parameters\WarehouseSearch;
 
 final readonly class AddressService extends Service
 {
@@ -55,7 +55,13 @@ final readonly class AddressService extends Service
      */
     public function getWarehouseTypeByRef(string $ref): WarehouseType
     {
-        return new WarehouseType($this->api->fetch('Address', 'getWarehouseTypes', ['Ref' => $ref])->getObjectList()[0]);
+        return new WarehouseType(
+            $this->api->fetch(
+                'Address',
+                'getWarehouseTypes',
+                ['Ref' => $ref]
+            )->getObjectList()[0]
+        );
     }
 
     /**

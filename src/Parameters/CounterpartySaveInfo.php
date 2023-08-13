@@ -35,9 +35,9 @@ class CounterpartySaveInfo extends ParametersDecorator
         $this->setStr('CounterpartyType', $type->toString());
     }
 
-    public function setEDRPOU(string $EDRPOU): void
+    public function setEdrpou(string $edrpou): void
     {
-        $this->setStr('EDRPOU', $EDRPOU);
+        $this->setStr('EDRPOU', $edrpou);
     }
 
     public function setCounterpartyKind(CounterpartyPersonType $property): void
