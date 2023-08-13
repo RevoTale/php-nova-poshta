@@ -19,9 +19,11 @@
   },
   "scripts": {
     "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon",
+    "phpmd": "vendor/bin/phpmd ./src/ text phpmd.ruleset.xml",
     "php-cs": "vendor/bin/php-cs-fixer fix",
     "test": [
-      "@phpstan"
+      "@phpstan",
+      "@phpmd"
     ],
     "fix": [
       "@php-cs"
@@ -31,7 +33,8 @@
   "minimum-stability": "stable",
   "require-dev": {
     "friendsofphp/php-cs-fixer": ">=3.6",
-    "phpstan/phpstan": "^1.10"
+    "phpstan/phpstan": "^1.10",
+    "phpmd/phpmd" : "@stable"
   },
   "config": {
     "allow-plugins": {
