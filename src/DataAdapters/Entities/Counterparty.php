@@ -15,6 +15,6 @@ final readonly class Counterparty extends Entity
 
     public function getCityRef(): string
     {
-        return $this->data->string('City');
+        return $this->data->field('City')->string();
     }
 }

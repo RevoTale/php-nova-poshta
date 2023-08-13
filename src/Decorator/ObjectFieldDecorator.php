@@ -8,14 +8,19 @@ use BladL\NovaPoshta\Exception\BadFieldValueException;
 
 use function is_array;
 
+/**
+ * @template T implements Throwable
+ */
 final readonly class ObjectFieldDecorator
 {
     public function __construct(
-        private mixed $data
+        private mixed $data,
+        private BadFieldExceptionFactoryInterface $exceptionFactory = new DefaultBadFieldExceptionFactory(),
+
     ) {
     }
     /**
-     * @throws BadFieldValueException
+     * @throws T
      */
     public function arrayObject(string $key): ObjectDecorator
     {
@@ -27,14 +32,14 @@ final readonly class ObjectFieldDecorator
             return new ObjectDecorator($value);
         }
 
-        throw new BadFieldValueException('Field is not object');
+        throw new $this->exceptionFactory->createBadFieldException('Field is not object');
     }
     public function float(): float
     {
         return (float)$this->scalar();
     }
     /**
-     * @throws BadFieldValueException
+     * @throws T
      */
     public function integer(): int
     {
@@ -42,7 +47,7 @@ final readonly class ObjectFieldDecorator
     }
     /**
      * @return list<mixed>
-     * @throws BadFieldValueException
+     * @throws T
      */
     public function list(): array
     {
@@ -53,17 +58,23 @@ final readonly class ObjectFieldDecorator
         return $list;
     }
 
-
+    /**
+     * @throws T
+     */
     public function bool(): bool
     {
         return (bool)$this->scalar();
     }
-
+    /**
+     * @throws T
+     */
     public function string(): string
     {
         return (string)$this->scalar();
     }
-
+    /**
+     * @throws T
+     */
     public function nullableScalar(): string|float|int|null|bool
     {
         $value = $this->data;
@@ -74,12 +85,14 @@ final readonly class ObjectFieldDecorator
     }
 
 
-
+    /**
+     * @throws T
+     */
     public function scalar(): string|float|int|bool
     {
         $value = $this->nullableScalar();
         if (null === $value) {
-            throw new BadFieldValueException('Field is null');
+            throw new $this->exceptionFactory->createBadFieldException('Field is null');
         }
         return $value;
     }
