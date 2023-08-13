@@ -4,23 +4,25 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Results\ScanSheet;
 
+use BladL\NovaPoshta\DataContainers\DataContainer;
+use BladL\NovaPoshta\DataContainers\DataRepository;
 use BladL\NovaPoshta\Results\Result;
 use UnexpectedValueException;
 
 final readonly class DocumentsInsertResult extends Result
 {
-    protected function getScanSheetData(): array
+    protected function getScanSheetData(): DataRepository
     {
-        return $this->container->getData()[0];
+        return new DataRepository($this->container->getObjectList()[0]);
     }
 
     public function getScanSheetRef(): ?string
     {
-        return $this->getScanSheetData()['Ref'] ?: null;
+        return $this->getScanSheetData()->nullOrString('Ref');
     }
 
     /**
-     * Check whether scan sheet exists or created.
+     * Check whether a scan sheet exists or created.
      */
     public function isScanSheetOk(): bool
     {
@@ -29,7 +31,7 @@ final readonly class DocumentsInsertResult extends Result
 
     public function getScanSheetNumber(): ?string
     {
-        return $this->getScanSheetData()['Number'] ?: null;
+        return $this->getScanSheetData()->nullOrString('Number');
     }
 
     /**
@@ -37,14 +39,14 @@ final readonly class DocumentsInsertResult extends Result
      */
     public function getSuccessDocuments(): array
     {
-        $data =  $this->getScanSheetData()['Success'];
-        if (!array_is_list($data)) {
-            throw new UnexpectedValueException('Bad Success data');
-        }
-        return array_map(
+        $data =  $this->getScanSheetData()->arrayList('Success');
+        /**
+         * @var list<array<string,mixed>> $data
+         */
+        return (array_map(
             static fn (array $doc) => new DocumentInsertSuccess($doc),
             $data
-        );
+        ));
     }
 
     /**
@@ -52,10 +54,10 @@ final readonly class DocumentsInsertResult extends Result
      */
     public function getDocumentErrors(): array
     {
-        $data =  $this->getScanSheetData()['Data']['Errors'];
-        if (!array_is_list($data)) {
-            throw new UnexpectedValueException('Bad Success data');
-        }
+        $data =  (new DataRepository($this->getScanSheetData()->arrayObject('Data')))->arrayList('Errors');
+        /**
+         * @var list<array<string,mixed>> $data
+         */
         return array_map(
             static fn (array $error) => new DocumentInsertError($error),
             $data
@@ -67,10 +69,10 @@ final readonly class DocumentsInsertResult extends Result
      */
     public function getWarnings(): array
     {
-        $data =   $this->getScanSheetData()['Data']['Warnings'];
-        if (!array_is_list($data)) {
-            throw new UnexpectedValueException('Bad Success data');
-        }
+        $data =  (new DataRepository($this->getScanSheetData()->arrayObject('Data')))->arrayList('Warnings');
+        /**
+         * @var list<array<string,mixed>> $data
+         */
         return array_map(
             static fn (array $error) => new DocumentInsertWarning($error),
           $data

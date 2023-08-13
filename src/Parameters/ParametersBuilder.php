@@ -10,7 +10,7 @@ namespace BladL\NovaPoshta\Parameters;
 abstract class ParametersBuilder
 {
     /**
-     * @var array<string,mixed>
+     * @var array<string,string|float|int>
      */
     private array $data = [];
 
@@ -29,6 +29,9 @@ abstract class ParametersBuilder
         $this->data[$key] = $value ? '1' : '0';
     }
 
+    /**
+     * @return array<string,string|float|int>
+     */
     final public function getProperties(): array
     {
         return $this->data;

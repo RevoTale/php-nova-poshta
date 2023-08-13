@@ -14,6 +14,6 @@ final readonly class TrackingResult extends Result
      */
     public function getDocumentsTracking(): array
     {
-        return array_map(static fn (array $doc) => new TrackingInformation($doc), $this->container->getDataAsList());
+        return array_map(static fn (array $doc) => new TrackingInformation($doc), $this->container->getObjectList());
     }
 }

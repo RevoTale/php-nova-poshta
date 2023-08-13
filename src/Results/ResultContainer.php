@@ -4,33 +4,63 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Results;
 
+use BladL\NovaPoshta\Exceptions\BadFieldValueException;
 use UnexpectedValueException;
+use function assert;
+use function is_array;
 
 final readonly class ResultContainer
 {
-
+    /**
+     * @param array<string,mixed> $response
+     */
     public function __construct(private array $response)
     {
     }
 
     public function isSuccess(): bool
     {
-        return $this->response['success'];
+        $value = $this->response['success'];
+        if (is_scalar($value)) {
+            return (bool)$value;
+        }
+        throw new BadFieldValueException('Bad "success" property');
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function getResponse(): array
     {
         return $this->response;
     }
 
+    /**
+     * @return array<int|string,mixed>
+     */
     public function getInfo(): array
     {
-        return $this->response['info'];
+        $info = $this->response['info'];
+        if (!is_array($info)) {
+            throw new BadFieldValueException('Bad info property');
+        }
+        /**
+         * @var array<int|string,mixed> $info
+         */
+        return $info;
     }
 
+    /**
+     * @return array<int|string,mixed>
+     */
     public function getData(): array
     {
-        return $this->response['data'];
+        $data = $this->response['data'];
+        assert(is_array($data));
+        /**
+         * @var array<int|string,mixed> $data
+         */
+        return $data;
     }
 
     /**
@@ -44,6 +74,22 @@ final readonly class ResultContainer
         }
         return $data;
     }
+    /**
+     * @return list<array<string,mixed>>
+     */
+    public function getObjectList(): array
+    {
+        $data = $this->getDataAsList();
+        foreach ($data as $datum) {
+            if (!is_array($datum)) {
+                throw new BadFieldValueException('List member is not object');
+            }
+        }
+        /**
+         * @var list<array<string,mixed>> $data
+         */
+        return $data;
+    }
 
     /**
      * @template T extends \BladL\NovaPoshta\DataContainers\DataContainer
@@ -53,7 +99,7 @@ final readonly class ResultContainer
      */
     public function getListOfItems(string $class): array
     {
-        $list = $this->getDataAsList();
+        $list = $this->getObjectList();
         return array_map(
             static fn(array $data) => new $class($data),
             $list

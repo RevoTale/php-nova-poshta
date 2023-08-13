@@ -11,6 +11,6 @@ final readonly class ContactPersonResult extends Result
 {
     public function getContactPerson(): ContactPerson
     {
-        return new ContactPerson($this->container->getData()[0]);
+        return new ContactPerson($this->container->getObjectList()[0]);
     }
 }

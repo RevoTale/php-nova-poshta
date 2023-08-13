@@ -55,7 +55,7 @@ final readonly class AddressService extends Service
      */
     public function getWarehouseTypeByRef(string $ref): WarehouseType
     {
-        return new WarehouseType($this->api->fetch('Address', 'getWarehouseTypes', ['Ref' => $ref])->getData()[0]);
+        return new WarehouseType($this->api->fetch('Address', 'getWarehouseTypes', ['Ref' => $ref])->getObjectList()[0]);
     }
 
     /**

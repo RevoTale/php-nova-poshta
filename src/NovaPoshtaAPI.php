@@ -1,6 +1,4 @@
 <?php
-
-/** @noinspection PhpMultipleClassDeclarationsInspection */
 declare(strict_types=1);
 
 namespace BladL\NovaPoshta;
@@ -14,7 +12,6 @@ use BladL\NovaPoshta\Exceptions\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Results\ResultContainer;
 use BladL\NovaPoshta\Services\Service;
 use BladL\Time\TimeZone;
-use Exception;
 use JsonException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;
@@ -51,8 +48,8 @@ class NovaPoshtaAPI implements LoggerAwareInterface
     }
 
     /**
+     * @param array<string,string|int|bool|float|array<string|int,mixed>|list<mixed>> $params
      * @throws QueryFailedException
-     * @param array<string,string|int|bool|float> $params
      */
     public function fetch(string $model, string $method, array $params): ResultContainer
     {
@@ -131,6 +128,9 @@ class NovaPoshtaAPI implements LoggerAwareInterface
         $ch = curl_init(
             "https://my.novaposhta.ua/$path/apiKey/$this->apiKey"
         );
+        if ($ch === false) {
+            throw new CurlException('Failed to initialize curl connectivity',0);
+        }
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);

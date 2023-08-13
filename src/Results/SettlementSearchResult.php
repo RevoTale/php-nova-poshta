@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Results;
 
+use BladL\NovaPoshta\DataContainers\DataRepository;
 use BladL\NovaPoshta\DataContainers\SettlementSearchItem;
 use UnexpectedValueException;
 
@@ -14,10 +15,10 @@ final readonly class SettlementSearchResult extends Result
      */
     public function getSettlements(): array
     {
-        $addresses =   $this->container->getDataAsList()[0]['Addresses'];
-        if (!array_is_list($addresses)) {
-            throw new UnexpectedValueException('Bad Adresses returned');
-        }
+        $addresses =   (new DataRepository($this->container->getObjectList()[0]))->arrayList('Addresses');
+        /**
+         * @var list<array<string,mixed>> $addresses
+         */
         return array_map(
             static fn (array $data) => new SettlementSearchItem($data),
             $addresses
@@ -26,6 +27,6 @@ final readonly class SettlementSearchResult extends Result
 
     public function getTotalCount(): int
     {
-        return $this->container->getData()[0]['TotalCount'];
+        return (new DataRepository($this->container->getObjectList()[0]))->int('TotalCount');
     }
 }

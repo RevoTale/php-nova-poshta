@@ -11,6 +11,6 @@ final readonly class CounterpartySaveResult extends Result
 {
     public function getCounterParty(): CounterpartyWithContact
     {
-        return new CounterpartyWithContact($this->container->getData()[0]);
+        return new CounterpartyWithContact($this->container->getObjectList()[0]);
     }
 }

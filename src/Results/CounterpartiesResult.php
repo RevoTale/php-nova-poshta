@@ -13,6 +13,12 @@ final readonly class CounterpartiesResult extends Result
      */
     public function getCounterparties(): array
     {
-        return array_map(static fn (array $data) => new Counterparty($data), $this->container->getDataAsList());
+        return array_map(
+        /**
+         * @param array<string,mixed> $data
+         */
+            static fn(array $data): Counterparty => new Counterparty($data),
+            $this->container->getObjectList()
+        );
     }
 }

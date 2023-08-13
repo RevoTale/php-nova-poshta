@@ -4,23 +4,18 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Results\ScanSheet;
 
+use BladL\NovaPoshta\DataContainers\DataContainer;
+use BladL\NovaPoshta\DataContainers\Traits\Ref;
+
 /**
  * @internal
  */
-abstract readonly class DocumentInsertResult
+abstract readonly class DocumentInsertResult extends DataContainer
 {
-
-    public function __construct(protected array $document)
-    {
-    }
-
-    public function getRef(): string
-    {
-        return $this->document['Ref'];
-    }
+    use Ref;
 
     public function getNumber(): ?string
     {
-        return $this->document['Number'] ?: null;
+        return $this->data->nullOrString('Number');
     }
 }

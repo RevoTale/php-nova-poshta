@@ -20,6 +20,6 @@ final readonly class WarehousesResult extends Result
      */
     public function toArray(): array
     {
-        return array_map(static fn (array $data) => new Warehouse($data), $this->container->getDataAsList());
+        return array_map(static fn (array $data) => new Warehouse($data), $this->container->getObjectList());
     }
 }

@@ -14,6 +14,6 @@ final readonly class ContactPersonsResult extends Result
      */
     public function getContactPersons(): array
     {
-        return array_map(static fn (array $data) => new ContactPerson($data), $this->container->getDataAsList());
+        return array_map(static fn (array $data) => new ContactPerson($data), $this->container->getObjectList());
     }
 }

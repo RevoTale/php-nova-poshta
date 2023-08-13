@@ -13,6 +13,6 @@ final readonly class SettlementsResult extends Result
      */
     public function toArray(): array
     {
-        return array_map(static fn (array $data) => new Settlement($data), $this->container->getDataAsList());
+        return array_map(static fn (array $data) => new Settlement($data), $this->container->getObjectList());
     }
 }
