@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Services;
 
+use BladL\NovaPoshta\DataAdapters\Result\AdditionalService\ShippingDataUpdateRequestResult;
 use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\Parameters\ShippingDataInfo;
-use BladL\NovaPoshta\DataAdapters\Result\AdditionalService\ShippingDataUpdateRequestResult;
 
 final readonly class AdditionalService extends Service
 {
@@ -16,8 +16,7 @@ final readonly class AdditionalService extends Service
     public function requestShippingDataUpdate(
         string           $documentNumber,
         ShippingDataInfo $info
-    ): ShippingDataUpdateRequestResult
-    {
+    ): ShippingDataUpdateRequestResult {
         $params = [
             'IntDocNumber' => $documentNumber,
             'OrderType' => 'orderChangeEW',

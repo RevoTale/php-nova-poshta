@@ -1,8 +1,5 @@
 <?php
-/**
- * @noinspection UnknownInspectionInspection
- * @noinspection PhpUnused
- */
+
 declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Services;
