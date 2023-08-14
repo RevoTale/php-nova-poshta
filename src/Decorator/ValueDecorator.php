@@ -39,7 +39,7 @@ final readonly class ValueDecorator
             return new ObjectDecorator($value, exceptionFactory: $this->exceptionFactory);
         }
 
-        throw new $this->exceptionFactory->createBadFieldException('Field is not object');
+        throw  $this->exceptionFactory->createBadFieldException('Field is not object');
     }
 
     /**
@@ -48,8 +48,12 @@ final readonly class ValueDecorator
      */
     public function objectList(): array
     {
+        $data = $this->data;
+        if (!is_array($data) || !array_is_list($data)) {
+            throw  $this->exceptionFactory->createBadFieldException('Field is not list');
+        }
         $list = [];
-        foreach ($this->data as $item) {
+        foreach ($data as $item) {
             $list[] = new ObjectDecorator($item, exceptionFactory: $this->exceptionFactory);
         }
         return $list;
@@ -80,7 +84,7 @@ final readonly class ValueDecorator
         $list = [];
         $data = $this->data;
         if (!is_array($data) || !array_is_list($data)) {
-            throw new $this->exceptionFactory->createBadFieldException('Field is not list');
+            throw  $this->exceptionFactory->createBadFieldException('Field is not list');
         }
         foreach ($data as $datum) {
             $list[] = new ValueDecorator($datum, exceptionFactory: $this->exceptionFactory);
@@ -112,7 +116,7 @@ final readonly class ValueDecorator
     {
         $value = $this->data;
         if (!is_scalar($value) && null !== $value) {
-            throw new $this->exceptionFactory->createBadFieldException('Field is not scalar');
+            throw  $this->exceptionFactory->createBadFieldException('Field is not scalar');
 
         }
         return $value;
@@ -126,7 +130,7 @@ final readonly class ValueDecorator
     {
         $value = $this->nullableScalar();
         if (null === $value) {
-            throw new $this->exceptionFactory->createBadFieldException('Field is null');
+            throw $this->exceptionFactory->createBadFieldException('Field is null');
         }
         return $value;
     }

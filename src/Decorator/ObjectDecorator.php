@@ -27,7 +27,7 @@ final readonly class ObjectDecorator
     public function field(string $key): ValueDecorator
     {
         if (!isset($this->data[$key])) {
-            throw new $this->exceptionFactory->createBadFieldException('Field key not exist');
+            throw $this->exceptionFactory->createBadFieldException('Field key not exist');
         }
         return new ValueDecorator($this->data[$key], $this->exceptionFactory);
     }
@@ -47,6 +47,9 @@ final readonly class ObjectDecorator
         return $this->data;
     }
 
+    /**
+     * @return BadFieldExceptionFactoryInterface<T>
+     */
     public function getExceptionFactory(): BadFieldExceptionFactoryInterface
     {
         return $this->exceptionFactory;
