@@ -6,7 +6,7 @@ namespace BladL\NovaPoshta\DataAdapters\Result\Counterparty;
 
 use BladL\NovaPoshta\DataAdapters\Entities\Counterparty\ContactPerson;
 use BladL\NovaPoshta\DataAdapters\Result;
-use BladL\NovaPoshta\Decorator\ObjectDecorator;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class ContactPersonsResult extends Result
 {
@@ -15,6 +15,6 @@ final readonly class ContactPersonsResult extends Result
      */
     public function getContactPersons(): array
     {
-        return array_map(static fn (ObjectDecorator $data) => new ContactPerson($data), $this->container->getDataAsObjectList());
+        return array_map(static fn (ObjectNormalizer $data) => new ContactPerson($data), $this->container->getDataAsObjectList());
     }
 }

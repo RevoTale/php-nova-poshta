@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-use BladL\NovaPoshta\Decorator\ParametersDecorator;
+use BladL\NovaPoshta\Normalizer\ParametersBuilder;
 use BladL\NovaPoshta\Parameters\Traits\Pageable;
 
-class CitiesSearch extends ParametersDecorator
+class CitiesSearch extends ParametersBuilder
 {
     use Pageable;
 

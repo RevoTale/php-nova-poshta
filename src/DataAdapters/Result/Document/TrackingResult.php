@@ -6,7 +6,7 @@ namespace BladL\NovaPoshta\DataAdapters\Result\Document;
 
 use BladL\NovaPoshta\DataAdapters\Entities\Document\TrackingInformation;
 use BladL\NovaPoshta\DataAdapters\Result;
-use BladL\NovaPoshta\Decorator\ObjectDecorator;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class TrackingResult extends Result
 {
@@ -15,6 +15,6 @@ final readonly class TrackingResult extends Result
      */
     public function getDocumentsTracking(): array
     {
-        return array_map(static fn (ObjectDecorator $doc) => new TrackingInformation($doc), $this->container->getDataAsObjectList());
+        return array_map(static fn (ObjectNormalizer $doc) => new TrackingInformation($doc), $this->container->getDataAsObjectList());
     }
 }

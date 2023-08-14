@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\DataAdapters\Result;
 
 use BladL\NovaPoshta\DataAdapters\Entity;
-use BladL\NovaPoshta\Decorator\ObjectDecorator;
-use BladL\NovaPoshta\Decorator\ValueDecorator;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
+use BladL\NovaPoshta\Normalizer\ValueNormalizer;
 use BladL\NovaPoshta\Exception\BadFieldValueException;
 use Throwable;
 
@@ -21,24 +21,24 @@ final readonly class ResultContainer extends Entity
         return $this->getField('success')->bool();
     }
     /**
+     * @return ValueNormalizer<BadFieldValueException>
      * @throws BadFieldValueException
-     * @return ValueDecorator<BadFieldValueException>
      */
-    public function getInfo(): ValueDecorator
+    public function getInfo(): ValueNormalizer
     {
         return $this->getField('info');
     }
     /**
+     * @return ValueNormalizer<BadFieldValueException>
      * @throws BadFieldValueException
-     * @return ValueDecorator<BadFieldValueException>
      */
-    public function getData(): ValueDecorator
+    public function getData(): ValueNormalizer
     {
         return $this->getField('data');
     }
 
     /**
-     * @return list<ObjectDecorator<BadFieldValueException>>
+     * @return list<ObjectNormalizer<BadFieldValueException>>
      * @throws BadFieldValueException
      */
     public function getDataAsObjectList(): array

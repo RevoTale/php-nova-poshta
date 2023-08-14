@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataAdapters\Result\ScanSheet;
 
-use BladL\NovaPoshta\Decorator\ObjectDecorator;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 use BladL\NovaPoshta\DataAdapters\Result;
 use BladL\NovaPoshta\Exception\BadFieldValueException;
 
 final readonly class DocumentsInsertResult extends Result
 {
     /**
-     * @return ObjectDecorator<BadFieldValueException>
+     * @return ObjectNormalizer<BadFieldValueException>
      */
-    protected function getScanSheetData(): ObjectDecorator
+    protected function getScanSheetData(): ObjectNormalizer
     {
         return $this->container->getDataAsObjectList()[0];
     }
@@ -43,7 +43,7 @@ final readonly class DocumentsInsertResult extends Result
     {
         $data =  $this->getScanSheetData()->field('Success')->objectList();
         return (array_map(
-            static fn (ObjectDecorator $doc) => new DocumentInsertSuccess($doc),
+            static fn (ObjectNormalizer $doc) => new DocumentInsertSuccess($doc),
             $data
         ));
     }
@@ -55,7 +55,7 @@ final readonly class DocumentsInsertResult extends Result
     {
         $data =  (($this->getScanSheetData()->field('Data')->object()))->field('Errors')->objectList();
         return array_map(
-            static fn (ObjectDecorator $error) => new DocumentInsertError($error),
+            static fn (ObjectNormalizer $error) => new DocumentInsertError($error),
             $data
         );
     }
@@ -67,7 +67,7 @@ final readonly class DocumentsInsertResult extends Result
     {
         $data =  (($this->getScanSheetData()->field('Data')->object()))->field('Warnings')->objectList();
         return array_map(
-            static fn (ObjectDecorator $error) => new DocumentInsertWarning($error),
+            static fn (ObjectNormalizer $error) => new DocumentInsertWarning($error),
             $data
         );
     }

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Parameters;
 
-use BladL\NovaPoshta\Decorator\ParametersDecorator;
+use BladL\NovaPoshta\Normalizer\ParametersBuilder;
 use BladL\NovaPoshta\Decorators\Enums\CounterpartyPersonType;
 use BladL\NovaPoshta\Decorators\Enums\CounterpartyType;
 
-class CounterpartySaveInfo extends ParametersDecorator
+class CounterpartySaveInfo extends ParametersBuilder
 {
     public function setFirstName(string $name): void
     {

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorator;
+namespace BladL\NovaPoshta\Normalizer;
 use Throwable;
 
 /**
  * @template T of Throwable
  */
-final readonly class ValueNullableDecorator
+final readonly class NullableValueNormalizer
 {
     /**
-     * @param ValueDecorator<T> $data
+     * @param ValueNormalizer<T> $data
      */
     public function __construct(
-        private ValueDecorator $data,
+        private ValueNormalizer $data,
     ) {
     }
 

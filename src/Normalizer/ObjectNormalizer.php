@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorator;
+namespace BladL\NovaPoshta\Normalizer;
 
 use Throwable;
 
 /**
  * @template T of Throwable
  */
-final readonly class ObjectDecorator
+final readonly class ObjectNormalizer
 {
     /**
      * @param array<string,mixed> $data
@@ -22,21 +22,21 @@ final readonly class ObjectDecorator
     }
 
     /**
-     * @return ValueDecorator<T>
+     * @return ValueNormalizer<T>
      */
-    public function field(string $key): ValueDecorator
+    public function field(string $key): ValueNormalizer
     {
         if (!isset($this->data[$key])) {
             throw $this->exceptionFactory->createBadFieldException('Field key not exist');
         }
-        return new ValueDecorator($this->data[$key], $this->exceptionFactory);
+        return new ValueNormalizer($this->data[$key], $this->exceptionFactory);
     }
     /**
-     * @return ValueNullableDecorator<T>
+     * @return NullableValueNormalizer<T>
      */
-    public function nullableField(string $key): ValueNullableDecorator
+    public function nullableField(string $key): NullableValueNormalizer
     {
-        return new ValueNullableDecorator($this->field($key));
+        return new NullableValueNormalizer($this->field($key));
     }
 
     /**

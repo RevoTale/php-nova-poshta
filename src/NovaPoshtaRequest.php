@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta;
 
 use BladL\NovaPoshta\DataAdapters\Result\ResultContainer;
-use BladL\NovaPoshta\Decorator\ObjectDecorator;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 use BladL\NovaPoshta\Exception\BadFieldValueException;
 use BladL\NovaPoshta\Exception\QueryFailed\BadBodyException;
 use BladL\NovaPoshta\Exception\QueryFailed\CurlException;
@@ -31,12 +31,12 @@ final readonly class NovaPoshtaRequest
     }
 
     /**
-     * @return ObjectDecorator<BadFieldValueException>
+     * @return ObjectNormalizer<BadFieldValueException>
      * @throws BadBodyException
      * @throws ErrorResultException
      * @throws JsonParseException
      */
-    private function validateResponse(string $result): ObjectDecorator
+    private function validateResponse(string $result): ObjectNormalizer
     {
 
         try {
@@ -67,7 +67,7 @@ final readonly class NovaPoshtaRequest
                 throw new ErrorResultException($errors, $errorCodes);
             }
         }
-        return new ObjectDecorator($resp, exceptionFactory: new BadFieldValueExceptionFactory());
+        return new ObjectNormalizer($resp, exceptionFactory: new BadFieldValueExceptionFactory());
     }
 
     /**

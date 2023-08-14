@@ -6,7 +6,7 @@ namespace BladL\NovaPoshta\DataAdapters\Result;
 
 use BladL\NovaPoshta\DataAdapters\Entities\SettlementSearchResource;
 use BladL\NovaPoshta\DataAdapters\Result;
-use BladL\NovaPoshta\Decorator\ObjectDecorator;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class SettlementSearchResult extends Result
 {
@@ -17,7 +17,7 @@ final readonly class SettlementSearchResult extends Result
     {
         $addresses = (($this->container->getDataAsObjectList()[0]))->field('Addresses')->objectList();
         return array_map(
-            static fn(ObjectDecorator $data) => new SettlementSearchResource($data),
+            static fn(ObjectNormalizer $data) => new SettlementSearchResource($data),
             $addresses
         );
     }

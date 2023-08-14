@@ -6,7 +6,7 @@ namespace BladL\NovaPoshta\DataAdapters\Result;
 
 use BladL\NovaPoshta\DataAdapters\Entities\WarehouseType;
 use BladL\NovaPoshta\DataAdapters\Result;
-use BladL\NovaPoshta\Decorator\ObjectDecorator;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class WarehouseTypesResult extends Result
 {
@@ -15,6 +15,6 @@ final readonly class WarehouseTypesResult extends Result
      */
     public function toArray(): array
     {
-        return array_map(static fn (ObjectDecorator $data) => new WarehouseType($data), $this->container->getDataAsObjectList());
+        return array_map(static fn (ObjectNormalizer $data) => new WarehouseType($data), $this->container->getDataAsObjectList());
     }
 }

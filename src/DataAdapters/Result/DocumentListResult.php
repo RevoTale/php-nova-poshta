@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\DataAdapters\Result;
 
 use BladL\NovaPoshta\DataAdapters\Result;
-use BladL\NovaPoshta\Decorator\ObjectDecorator;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class DocumentListResult extends Result
 {
@@ -14,6 +14,6 @@ final readonly class DocumentListResult extends Result
      */
     public function getDocuments(): array
     {
-        return array_map(static fn (ObjectDecorator $doc) => new DocumentListResultItem($doc), $this->container->getDataAsObjectList());
+        return array_map(static fn (ObjectNormalizer $doc) => new DocumentListResultItem($doc), $this->container->getDataAsObjectList());
     }
 }

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorator;
+namespace BladL\NovaPoshta\Normalizer;
 
 use Throwable;
 

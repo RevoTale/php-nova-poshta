@@ -6,7 +6,7 @@ namespace BladL\NovaPoshta\DataAdapters\Result;
 
 use BladL\NovaPoshta\DataAdapters\Entities\SettlementAreaResource;
 use BladL\NovaPoshta\DataAdapters\Result;
-use BladL\NovaPoshta\Decorator\ObjectDecorator;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class SettlementAreasResult extends Result
 {
@@ -16,7 +16,7 @@ final readonly class SettlementAreasResult extends Result
     public function getAreas(): array
     {
         return array_map(
-            static fn (ObjectDecorator $decorator) => new SettlementAreaResource($decorator),
+            static fn (ObjectNormalizer $decorator) => new SettlementAreaResource($decorator),
             $this->container->getDataAsObjectList()
         );
     }

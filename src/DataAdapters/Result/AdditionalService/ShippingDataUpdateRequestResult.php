@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataAdapters\Result\AdditionalService;
 
-use BladL\NovaPoshta\Decorator\ObjectDecorator;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 use BladL\NovaPoshta\Exception\BadFieldValueException;
 use BladL\NovaPoshta\DataAdapters\Result;
 
@@ -23,9 +23,9 @@ final readonly class ShippingDataUpdateRequestResult extends Result
     }
 
     /**
-     * @return ObjectDecorator<BadFieldValueException>
+     * @return ObjectNormalizer<BadFieldValueException>
      */
-    private function getData(): ObjectDecorator
+    private function getData(): ObjectNormalizer
     {
         $objects = $this->container->getDataAsObjectList();
         if (0 === count($objects)) {

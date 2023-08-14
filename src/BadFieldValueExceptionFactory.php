@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta;
 
-use BladL\NovaPoshta\Decorator\BadFieldExceptionFactoryInterface;
+use BladL\NovaPoshta\Normalizer\BadFieldExceptionFactoryInterface;
 use BladL\NovaPoshta\Exception\BadFieldValueException;
 
 /**

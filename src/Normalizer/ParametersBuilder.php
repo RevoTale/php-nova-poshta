@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorator;
+namespace BladL\NovaPoshta\Normalizer;
 
 /**
  * @internal
  */
-abstract class ParametersDecorator
+abstract class ParametersBuilder
 {
     /**
      * @var array<string,string|float|int>

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorator;
+namespace BladL\NovaPoshta\Normalizer;
 
 use BladL\NovaPoshta\DataAdapters\Entity;
 use BladL\NovaPoshta\Exception\BadFieldValueException;
@@ -13,7 +13,7 @@ use function is_array;
 /**
  * @template T of Throwable
  */
-final readonly class ValueDecorator
+final readonly class ValueNormalizer
 {
     /**
      * @param mixed $data
@@ -26,24 +26,24 @@ final readonly class ValueDecorator
     }
 
     /**
+     * @return ObjectNormalizer<T>
      * @throws T
-     * @return ObjectDecorator<T>
      */
-    public function object(): ObjectDecorator
+    public function object(): ObjectNormalizer
     {
         $value = $this->data;
         if (is_array($value)) {
             /**
              * @var array<string,mixed> $value
              */
-            return new ObjectDecorator($value, exceptionFactory: $this->exceptionFactory);
+            return new ObjectNormalizer($value, exceptionFactory: $this->exceptionFactory);
         }
 
         throw  $this->exceptionFactory->createBadFieldException('Field is not object');
     }
 
     /**
-     * @return  list<ObjectDecorator<T>>
+     * @return  list<ObjectNormalizer<T>>
      * @throws T
      */
     public function objectList(): array
@@ -54,7 +54,7 @@ final readonly class ValueDecorator
         }
         $list = [];
         foreach ($data as $item) {
-            $list[] = new ObjectDecorator($item, exceptionFactory: $this->exceptionFactory);
+            $list[] = new ObjectNormalizer($item, exceptionFactory: $this->exceptionFactory);
         }
         return $list;
     }
@@ -76,7 +76,7 @@ final readonly class ValueDecorator
     }
 
     /**
-     * @return list<ValueDecorator<T>>
+     * @return list<ValueNormalizer<T>>
      * @throws T
      */
     public function list(): array
@@ -87,7 +87,7 @@ final readonly class ValueDecorator
             throw  $this->exceptionFactory->createBadFieldException('Field is not list');
         }
         foreach ($data as $datum) {
-            $list[] = new ValueDecorator($datum, exceptionFactory: $this->exceptionFactory);
+            $list[] = new ValueNormalizer($datum, exceptionFactory: $this->exceptionFactory);
         }
 
         return $list;
