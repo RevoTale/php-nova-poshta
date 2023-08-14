@@ -16,6 +16,6 @@ abstract readonly class DocumentInsertResult extends Entity
 
     public function getNumber(): ?string
     {
-        return $this->data->nullOrString('Number');
+        return $this->getNullableField('Number')->string();
     }
 }

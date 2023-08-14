@@ -22,6 +22,7 @@ final readonly class ResultContainer extends Entity
     }
     /**
      * @throws BadFieldValueException
+     * @return ValueDecorator<BadFieldValueException>
      */
     public function getInfo(): ValueDecorator
     {
@@ -29,6 +30,7 @@ final readonly class ResultContainer extends Entity
     }
     /**
      * @throws BadFieldValueException
+     * @return ValueDecorator<BadFieldValueException>
      */
     public function getData(): ValueDecorator
     {
@@ -36,7 +38,7 @@ final readonly class ResultContainer extends Entity
     }
 
     /**
-     * @return list<ObjectDecorator>
+     * @return list<ObjectDecorator<BadFieldValueException>>
      * @throws BadFieldValueException
      */
     public function getDataAsObjectList(): array

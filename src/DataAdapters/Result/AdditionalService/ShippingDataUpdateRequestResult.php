@@ -7,27 +7,30 @@ namespace BladL\NovaPoshta\DataAdapters\Result\AdditionalService;
 use BladL\NovaPoshta\Decorator\ObjectDecorator;
 use BladL\NovaPoshta\Exception\BadFieldValueException;
 use BladL\NovaPoshta\DataAdapters\Result;
+
 use function count;
 
 final readonly class ShippingDataUpdateRequestResult extends Result
 {
-
     public function getRequestNumber(): string
     {
-        return $this->getData()->string('Number');
+        return $this->getData()->field('Number')->string();
     }
 
     public function getRequestRef(): string
     {
-        return $this->getData()->string('Ref');
+        return $this->getData()->field('Ref')->string();
     }
 
+    /**
+     * @return ObjectDecorator<BadFieldValueException>
+     */
     private function getData(): ObjectDecorator
     {
-        $objects = $this->container->getObjectList();
-        if (count($objects) === 0) {
+        $objects = $this->container->getDataAsObjectList();
+        if (0 === count($objects)) {
             throw new BadFieldValueException('No single object returned');
         }
-        return new ObjectDecorator($objects[0]);
+        return $objects[0];
     }
 }

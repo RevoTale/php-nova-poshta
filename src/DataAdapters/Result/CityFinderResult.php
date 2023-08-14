@@ -6,7 +6,7 @@ namespace BladL\NovaPoshta\DataAdapters\Result;
 
 use BladL\NovaPoshta\DataAdapters\Entities\City;
 use BladL\NovaPoshta\DataAdapters\Result;
-use UnexpectedValueException;
+use BladL\NovaPoshta\Decorator\ObjectDecorator;
 
 final readonly class CityFinderResult extends Result
 {
@@ -15,10 +15,7 @@ final readonly class CityFinderResult extends Result
      */
     public function getCities(): array
     {
-        $data = $this->container->getData();
-        if (!array_is_list($data)) {
-            throw new UnexpectedValueException('Data returned is not list');
-        }
-        return array_map(static fn (array $data) => new City($data), $data);
+        return array_map(static fn(ObjectDecorator $decorator) => new City($decorator)
+            , $this->container->getData()->objectList());
     }
 }

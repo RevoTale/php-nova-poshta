@@ -21,6 +21,9 @@ final readonly class ObjectDecorator
     ) {
     }
 
+    /**
+     * @return ValueDecorator<T>
+     */
     public function field(string $key): ValueDecorator
     {
         if (!isset($this->data[$key])) {
@@ -28,7 +31,9 @@ final readonly class ObjectDecorator
         }
         return new ValueDecorator($this->data[$key], $this->exceptionFactory);
     }
-
+    /**
+     * @return ValueNullableDecorator<T>
+     */
     public function nullableField(string $key): ValueNullableDecorator
     {
         return new ValueNullableDecorator($this->field($key));
@@ -40,6 +45,11 @@ final readonly class ObjectDecorator
     public function getRaw(): array
     {
         return $this->data;
+    }
+
+    public function getExceptionFactory(): BadFieldExceptionFactoryInterface
+    {
+        return $this->exceptionFactory;
     }
 
 }

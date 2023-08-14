@@ -8,11 +8,11 @@ final readonly class DocumentInsertWarning extends DocumentInsertResult
 {
     public function getWarning(): string
     {
-        return $this->getField('Warning');
+        return $this->getField('Warning')->string();
     }
 
     public function getScanSheetNumber(): ?string
     {
-        return $this->data->nullOrString('ScanSheetNumber');
+        return $this->getNullableField('ScanSheetNumber')->string();
     }
 }

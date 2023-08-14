@@ -6,6 +6,7 @@ namespace BladL\NovaPoshta\DataAdapters\Result;
 
 use BladL\NovaPoshta\DataAdapters\Entities\Warehouse;
 use BladL\NovaPoshta\DataAdapters\Result;
+use BladL\NovaPoshta\Decorator\ObjectDecorator;
 
 final readonly class WarehousesResult extends Result
 {
@@ -21,6 +22,9 @@ final readonly class WarehousesResult extends Result
      */
     public function toArray(): array
     {
-        return array_map(static fn (array $data) => new Warehouse($data), $this->container->getObjectList());
+        return array_map(
+            static fn (ObjectDecorator $data) => new Warehouse($data),
+            $this->container->getDataAsObjectList()
+        );
     }
 }

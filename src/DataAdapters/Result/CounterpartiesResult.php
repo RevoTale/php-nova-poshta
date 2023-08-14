@@ -6,6 +6,7 @@ namespace BladL\NovaPoshta\DataAdapters\Result;
 
 use BladL\NovaPoshta\DataAdapters\Entities\Counterparty;
 use BladL\NovaPoshta\DataAdapters\Result;
+use BladL\NovaPoshta\Decorator\ObjectDecorator;
 
 final readonly class CounterpartiesResult extends Result
 {
@@ -15,11 +16,8 @@ final readonly class CounterpartiesResult extends Result
     public function getCounterparties(): array
     {
         return array_map(
-        /**
-         * @param array<string,mixed> $data
-         */
-            static fn(array $data): Counterparty => new Counterparty($data),
-            $this->container->getObjectList()
+            static fn (ObjectDecorator $data): Counterparty => new Counterparty($data),
+            $this->container->getDataAsObjectList()
         );
     }
 }

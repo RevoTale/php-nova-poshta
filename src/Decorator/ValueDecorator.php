@@ -131,18 +131,5 @@ final readonly class ValueDecorator
         return $value;
     }
 
-    /**
-     * @template B
-     * @param ListItemWrapperInterface<B> $wrapper
-     * @return list<B>
-     * @throws T
-     */
-    public function getWrappedList(ListItemWrapperInterface $wrapper): array
-    {
-        $list = $this->list();
-        return array_map(
-            static fn (array $data) => $wrapper->wrapItem(new ValueDecorator($data, exceptionFactory: $this->exceptionFactory)),
-            $list
-        );
-    }
+
 }

@@ -13,7 +13,7 @@ use BladL\NovaPoshta\Exception\BadFieldValueException;
 abstract readonly class Result
 {
     /**
-     * @param ResultContainer<BadFieldValueException> $container
+     * @param ResultContainer $container
      */
     public function __construct(protected ResultContainer $container)
     {

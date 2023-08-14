@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataAdapters\Result;
 
-use BladL\NovaPoshta\Decorator\ObjectDecorator;
 use BladL\NovaPoshta\DataAdapters\Entities\SettlementSearchResource;
 use BladL\NovaPoshta\DataAdapters\Result;
+use BladL\NovaPoshta\Decorator\ObjectDecorator;
 
 final readonly class SettlementSearchResult extends Result
 {
@@ -15,18 +15,15 @@ final readonly class SettlementSearchResult extends Result
      */
     public function getSettlements(): array
     {
-        $addresses =   (new ObjectDecorator($this->container->getObjectList()[0]))->arrayList('Addresses');
-        /**
-         * @var list<array<string,mixed>> $addresses
-         */
+        $addresses = (($this->container->getDataAsObjectList()[0]))->field('Addresses')->objectList();
         return array_map(
-            static fn (array $data) => new SettlementSearchResource($data),
+            static fn(ObjectDecorator $data) => new SettlementSearchResource($data),
             $addresses
         );
     }
 
     public function getTotalCount(): int
     {
-        return (new ObjectDecorator($this->container->getObjectList()[0]))->int('TotalCount');
+        return (($this->container->getDataAsObjectList()[0]))->field('TotalCount')->integer();
     }
 }

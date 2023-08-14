@@ -6,17 +6,21 @@ namespace BladL\NovaPoshta\DataAdapters\Result\ScanSheet;
 
 use BladL\NovaPoshta\Decorator\ObjectDecorator;
 use BladL\NovaPoshta\DataAdapters\Result;
+use BladL\NovaPoshta\Exception\BadFieldValueException;
 
 final readonly class DocumentsInsertResult extends Result
 {
+    /**
+     * @return ObjectDecorator<BadFieldValueException>
+     */
     protected function getScanSheetData(): ObjectDecorator
     {
-        return new ObjectDecorator($this->container->getObjectList()[0]);
+        return $this->container->getDataAsObjectList()[0];
     }
 
     public function getScanSheetRef(): ?string
     {
-        return $this->getScanSheetData()->nullOrString('Ref');
+        return $this->getScanSheetData()->nullableField('Ref')->string();
     }
 
     /**
@@ -29,7 +33,7 @@ final readonly class DocumentsInsertResult extends Result
 
     public function getScanSheetNumber(): ?string
     {
-        return $this->getScanSheetData()->nullOrString('Number');
+        return $this->getScanSheetData()->nullableField('Number')->string();
     }
 
     /**
@@ -37,12 +41,9 @@ final readonly class DocumentsInsertResult extends Result
      */
     public function getSuccessDocuments(): array
     {
-        $data =  $this->getScanSheetData()->arrayList('Success');
-        /**
-         * @var list<array<string,mixed>> $data
-         */
+        $data =  $this->getScanSheetData()->field('Success')->objectList();
         return (array_map(
-            static fn (array $doc) => new DocumentInsertSuccess($doc),
+            static fn (ObjectDecorator $doc) => new DocumentInsertSuccess($doc),
             $data
         ));
     }
@@ -52,12 +53,9 @@ final readonly class DocumentsInsertResult extends Result
      */
     public function getDocumentErrors(): array
     {
-        $data =  (new ObjectDecorator($this->getScanSheetData()->object('Data')))->arrayList('Errors');
-        /**
-         * @var list<array<string,mixed>> $data
-         */
+        $data =  (($this->getScanSheetData()->field('Data')->object()))->field('Errors')->objectList();
         return array_map(
-            static fn (array $error) => new DocumentInsertError($error),
+            static fn (ObjectDecorator $error) => new DocumentInsertError($error),
             $data
         );
     }
@@ -67,13 +65,10 @@ final readonly class DocumentsInsertResult extends Result
      */
     public function getWarnings(): array
     {
-        $data =  (new ObjectDecorator($this->getScanSheetData()->object('Data')))->arrayList('Warnings');
-        /**
-         * @var list<array<string,mixed>> $data
-         */
+        $data =  (($this->getScanSheetData()->field('Data')->object()))->field('Warnings')->objectList();
         return array_map(
-            static fn (array $error) => new DocumentInsertWarning($error),
-          $data
+            static fn (ObjectDecorator $error) => new DocumentInsertWarning($error),
+            $data
         );
     }
 }
