@@ -6,13 +6,14 @@ namespace BladL\NovaPoshta\DataAdapters\Result;
 
 use BladL\NovaPoshta\DataAdapters\Entities\Warehouse;
 use BladL\NovaPoshta\DataAdapters\Result;
+use BladL\NovaPoshta\DataAdapters\ResponseContainer;
 use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class WarehousesResult extends Result
 {
     use Countable;
 
-    protected function getResultContainer(): ResultContainer
+    protected function getResultContainer(): ResponseContainer
     {
         return $this->container;
     }

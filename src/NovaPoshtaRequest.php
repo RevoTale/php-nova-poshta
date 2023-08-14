@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta;
 
-use BladL\NovaPoshta\DataAdapters\Result\ResultContainer;
-use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
+use BladL\NovaPoshta\DataAdapters\ResponseContainer;
 use BladL\NovaPoshta\Exception\BadFieldValueException;
 use BladL\NovaPoshta\Exception\QueryFailed\BadBodyException;
 use BladL\NovaPoshta\Exception\QueryFailed\CurlException;
 use BladL\NovaPoshta\Exception\QueryFailed\ErrorResultException;
 use BladL\NovaPoshta\Exception\QueryFailed\JsonParseException;
 use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 use JsonException;
 use Psr\Log\LoggerInterface;
-
 use function is_array;
 use function is_bool;
 
@@ -73,7 +72,7 @@ final readonly class NovaPoshtaRequest
     /**
      * @throws QueryFailedException
      */
-    public function handle(): ResultContainer
+    public function handle(): ResponseContainer
     {
         $curl = curl_init();
         curl_setopt_array($curl, [
@@ -99,6 +98,6 @@ final readonly class NovaPoshtaRequest
         }
         $this->logger->debug('NovaPoshta service responded', ['output' => $result]);
 
-        return new ResultContainer($this->validateResponse($result));
+        return new ResponseContainer($this->validateResponse($result));
     }
 }

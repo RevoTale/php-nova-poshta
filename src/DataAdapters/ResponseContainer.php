@@ -2,16 +2,14 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Result;
+namespace BladL\NovaPoshta\DataAdapters;
 
-use BladL\NovaPoshta\DataAdapters\Entity;
+use BladL\NovaPoshta\Exception\BadFieldValueException;
 use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 use BladL\NovaPoshta\Normalizer\ValueNormalizer;
-use BladL\NovaPoshta\Exception\BadFieldValueException;
-use Throwable;
 
 
-final readonly class ResultContainer extends Entity
+final readonly class ResponseContainer extends Entity
 {
     /**
      * @throws BadFieldValueException

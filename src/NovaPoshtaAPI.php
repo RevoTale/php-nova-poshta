@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta;
 
-use BladL\NovaPoshta\DataAdapters\Result\ResultContainer;
+use BladL\NovaPoshta\DataAdapters\ResponseContainer;
 use BladL\NovaPoshta\Exception\QueryFailed\CurlException;
 use BladL\NovaPoshta\Exception\QueryFailed\JsonEncodeException;
 use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
@@ -46,7 +46,7 @@ class NovaPoshtaAPI implements LoggerAwareInterface
      * @param array<string,string|int|bool|float|array<string|int,mixed>|list<mixed>> $params
      * @throws QueryFailedException
      */
-    public function fetch(string $model, string $method, array $params): ResultContainer
+    public function fetch(string $model, string $method, array $params): ResponseContainer
     {
         $logger = $this->logger;
         try {
