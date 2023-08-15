@@ -14,7 +14,7 @@ final readonly class WarehouseService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function findWarehouses(WarehouseListProperties $parameters): WarehousesResult
+    public function getWarehouseList(WarehouseListProperties $parameters): WarehousesResult
     {
         return new WarehousesResult($this->api->fetch('Address', 'getWarehouses', $parameters->getProperties()));
     }
@@ -22,7 +22,7 @@ final readonly class WarehouseService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function getWarehouseTypes(): WarehouseTypesResult
+    public function getWarehouseTypeList(): WarehouseTypesResult
     {
         return new WarehouseTypesResult($this->api->fetch('Address', 'getWarehouseTypes', []));
     }

@@ -34,7 +34,7 @@ final readonly class DocumentService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function getDocuments(int $page, int $limit): DocumentListResult
+    public function getDocumentList(int $page, int $limit): DocumentListResult
     {
         return
             new DocumentListResult(
@@ -73,25 +73,5 @@ final readonly class DocumentService extends Service
         return substr($barcode, 0, 14);
     }
 
-    /**
-     * @param list<string> $documents
-     * @throws CurlException
-     * @throws FileSaveException
-     */
-    public function saveDocumentsFile(
-        string $destination,
-        array $documents,
-        DocumentPrintType $type,
-        int $timeout = 5
-    ): void {
-        $content = $this->api->fetchFile('orders/printMarking85x85/orders/'
-            . implode(',', $documents)
-            . '/type/' . $type->value, $timeout);
-        if (empty($content)) {
-            throw new FileSaveException('Empty content returned');
-        }
-        if (false === file_put_contents($destination, $content)) {
-            throw new FileSaveException('Failed to save content in filesystem');
-        }
-    }
+
 }

@@ -18,7 +18,7 @@ final readonly class SettlementService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function getSettlements(int $page, int $limit): SettlementsResult
+    public function getSettlementList(int $page, int $limit): SettlementsResult
     {
         return new SettlementsResult(
             $this->api->fetch('AddressGeneral', 'getSettlements', [
@@ -47,7 +47,7 @@ final readonly class SettlementService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function getSettlementAreas(SettlementAreaListProperties $params): SettlementAreasResult
+    public function getSettlementAreaList(SettlementAreaListProperties $params): SettlementAreasResult
     {
         return new SettlementAreasResult($this->api->fetch('Address', 'getSettlementAreas', $params->getProperties()));
     }
@@ -55,7 +55,7 @@ final readonly class SettlementService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function getSettlementCountryRegion(SettlementRegionListProperties $params): SettlementRegionsResult
+    public function getSettlementCountryRegionList(SettlementRegionListProperties $params): SettlementRegionsResult
     {
         return new SettlementRegionsResult(
             $this->api->fetch(

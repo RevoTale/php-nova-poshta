@@ -13,7 +13,7 @@ final readonly class CityService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function findCities(CityListProperties $parameters): CityFinderResult
+    public function getCityList(CityListProperties $parameters): CityFinderResult
     {
         return new CityFinderResult(
             $this->api->fetch('Address', 'getCities', $parameters->getProperties())
