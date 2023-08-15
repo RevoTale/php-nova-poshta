@@ -11,12 +11,12 @@ use BladL\NovaPoshta\DataAdapters\Entity;
 /**
  * @internal
  */
-abstract readonly class Information extends Entity
+abstract readonly class DocumentInfo extends Entity
 {
     /**
      * @throws NoSeatsAmountException
      */
-    public function getSeatsAmount(): int
+    public function getSeatAmount(): int
     {
         $seats = $this->getNullableField('SeatsAmount')->integer();
         if (null === $seats || 0 === $seats) {

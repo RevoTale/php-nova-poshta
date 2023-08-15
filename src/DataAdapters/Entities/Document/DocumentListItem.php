@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Result;
+namespace BladL\NovaPoshta\DataAdapters\Entities\Document;
 
-use BladL\NovaPoshta\Decorators\Enums\DocumentStatusCode;
-use BladL\NovaPoshta\DataAdapters\Entities\Document\Information;
 use BladL\NovaPoshta\DataAdapters\Entities\Traits\Ref;
+use BladL\NovaPoshta\Decorators\Enums\DocumentStatusCode;
 use UnexpectedValueException;
 
-final readonly class DocumentListResultItem extends Information
+final readonly class DocumentListItem extends DocumentInfo
 {
     use Ref;
 

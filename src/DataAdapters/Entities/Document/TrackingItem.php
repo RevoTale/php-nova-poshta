@@ -16,7 +16,7 @@ use DateTime;
 use Exception;
 use UnexpectedValueException;
 
-final readonly class TrackingInformation extends Information
+final readonly class TrackingItem extends DocumentInfo
 {
     public const DOC_TYPE_CARGO_RETURN = 'CargoReturn';
     public function getStatusCode(): DocumentStatusCode

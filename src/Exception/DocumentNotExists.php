@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Exception;
 
-use BladL\NovaPoshta\DataAdapters\Entities\Document\TrackingInformation;
+use BladL\NovaPoshta\DataAdapters\Entities\Document\TrackingItem;
 use Exception;
 
 final class DocumentNotExists extends Exception
 {
-    private TrackingInformation $tracking;
+    private TrackingItem $tracking;
 
-    public function getTracking(): TrackingInformation
+    public function getTracking(): TrackingItem
     {
         return $this->tracking;
     }
 
-    public function __construct(TrackingInformation $tracking)
+    public function __construct(TrackingItem $tracking)
     {
         $this->tracking = $tracking;
         $status = $tracking->getStatusDescription();

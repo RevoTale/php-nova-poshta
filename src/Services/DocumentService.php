@@ -4,23 +4,20 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\Services;
 
-use BladL\NovaPoshta\Decorators\Enums\DocumentPrintType;
-use BladL\NovaPoshta\DataAdapters\Entities\Document\TrackingInformation;
+use BladL\NovaPoshta\DataAdapters\Entities\Document\DocumentListItem;
+use BladL\NovaPoshta\DataAdapters\Entities\Document\TrackingItem;
+use BladL\NovaPoshta\DataAdapters\Result\Document\DocumentListResult;
+use BladL\NovaPoshta\DataAdapters\Result\Document\TrackingResult;
 use BladL\NovaPoshta\Exception\DocumentNotExists;
 use BladL\NovaPoshta\Exception\DocumentNotFoundException;
-use BladL\NovaPoshta\Exception\QueryFailed\CurlException;
-use BladL\NovaPoshta\Exception\QueryFailed\FileSaveException;
 use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\DataAdapters\Result\Document\TrackingResult;
-use BladL\NovaPoshta\DataAdapters\Result\DocumentListResult;
-use BladL\NovaPoshta\DataAdapters\Result\DocumentListResultItem;
 
 final readonly class DocumentService extends Service
 {
     /**
      * @throws QueryFailedException|DocumentNotFoundException
      */
-    public function getDocument(string $documentNumber): DocumentListResultItem
+    public function getDocument(string $documentNumber): DocumentListItem
     {
         return (
             new DocumentListResult(
@@ -49,7 +46,7 @@ final readonly class DocumentService extends Service
      * @throws QueryFailedException
      * @throws DocumentNotExists
      */
-    public function trackDocument(string $documentNumber, string $phone = ''): TrackingInformation
+    public function trackDocument(string $documentNumber, string $phone = ''): TrackingItem
     {
         $tracking = (new TrackingResult(
             $this->api->fetch('TrackingDocument', 'getStatusDocuments', [
