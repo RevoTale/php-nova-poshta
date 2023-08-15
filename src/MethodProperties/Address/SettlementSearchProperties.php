@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Parameters;
+namespace BladL\NovaPoshta\MethodProperties\Address;
 
-use BladL\NovaPoshta\Normalizer\ParametersBuilder;
+use BladL\NovaPoshta\Normalizer\MethodProperties;
 
-class SettlementsSearch extends ParametersBuilder
+class SettlementSearchProperties extends MethodProperties
 {
     public function __construct(string $string, int $limit)
     {

@@ -9,8 +9,9 @@ use BladL\NovaPoshta\DataAdapters\Result\SettlementRegionsResult;
 use BladL\NovaPoshta\DataAdapters\Result\SettlementSearchResult;
 use BladL\NovaPoshta\DataAdapters\Result\SettlementsResult;
 use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\Parameters\SettlementAreaSearch;
-use BladL\NovaPoshta\Parameters\SettlementsSearch;
+use BladL\NovaPoshta\MethodProperties\Address\SettlementAreaListProperties;
+use BladL\NovaPoshta\MethodProperties\Address\SettlementRegionListProperties;
+use BladL\NovaPoshta\MethodProperties\Address\SettlementSearchProperties;
 
 final readonly class SettlementService extends Service
 {
@@ -46,7 +47,7 @@ final readonly class SettlementService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function getSettlementAreas(SettlementAreaSearch $params): SettlementAreasResult
+    public function getSettlementAreas(SettlementAreaListProperties $params): SettlementAreasResult
     {
         return new SettlementAreasResult($this->api->fetch('Address', 'getSettlementAreas', $params->getProperties()));
     }
@@ -54,7 +55,7 @@ final readonly class SettlementService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function getSettlementCountryRegion(SettlementAreaSearch $params): SettlementRegionsResult
+    public function getSettlementCountryRegion(SettlementRegionListProperties $params): SettlementRegionsResult
     {
         return new SettlementRegionsResult(
             $this->api->fetch(
@@ -68,7 +69,7 @@ final readonly class SettlementService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function searchSettlements(SettlementsSearch $search): SettlementSearchResult
+    public function searchSettlements(SettlementSearchProperties $search): SettlementSearchResult
     {
         return new SettlementSearchResult(
             $this->api->fetch('Address', 'searchSettlements', $search->getProperties())

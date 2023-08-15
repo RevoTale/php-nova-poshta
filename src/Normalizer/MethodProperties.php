@@ -7,7 +7,7 @@ namespace BladL\NovaPoshta\Normalizer;
 /**
  * @internal
  */
-abstract class ParametersBuilder
+abstract class MethodProperties
 {
     /**
      * @var array<string,string|float|int>

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Parameters;
+namespace BladL\NovaPoshta\MethodProperties\Counterparty;
 
-use BladL\NovaPoshta\Normalizer\ParametersBuilder;
 use BladL\NovaPoshta\Decorators\Enums\CounterpartyPersonType;
 use BladL\NovaPoshta\Decorators\Enums\CounterpartyType;
+use BladL\NovaPoshta\Normalizer\MethodProperties;
 
-class CounterpartySaveInfo extends ParametersBuilder
+class CounterpartySaveProperties extends MethodProperties
 {
     public function setFirstName(string $name): void
     {

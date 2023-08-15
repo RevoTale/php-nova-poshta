@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Parameters;
+namespace BladL\NovaPoshta\MethodProperties\Address;
 
-use BladL\NovaPoshta\Normalizer\ParametersBuilder;
-use BladL\NovaPoshta\Parameters\Traits\Pageable;
+use BladL\NovaPoshta\MethodProperties\Traits\Pageable;
+use BladL\NovaPoshta\Normalizer\MethodProperties;
 
-class WarehouseSearch extends ParametersBuilder
+class WarehouseListProperties extends MethodProperties
 {
     use Pageable;
 

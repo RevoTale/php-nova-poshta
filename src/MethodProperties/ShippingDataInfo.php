@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Parameters;
+namespace BladL\NovaPoshta\MethodProperties;
 
 class ShippingDataInfo
 {

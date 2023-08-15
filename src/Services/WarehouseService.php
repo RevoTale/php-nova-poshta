@@ -6,7 +6,7 @@ use BladL\NovaPoshta\DataAdapters\Entities\WarehouseType;
 use BladL\NovaPoshta\DataAdapters\Result\WarehousesResult;
 use BladL\NovaPoshta\DataAdapters\Result\WarehouseTypesResult;
 use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\Parameters\WarehouseSearch;
+use BladL\NovaPoshta\MethodProperties\Address\WarehouseListProperties;
 
 final readonly class WarehouseService extends Service
 {
@@ -14,7 +14,7 @@ final readonly class WarehouseService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function findWarehouses(WarehouseSearch $parameters): WarehousesResult
+    public function findWarehouses(WarehouseListProperties $parameters): WarehousesResult
     {
         return new WarehousesResult($this->api->fetch('Address', 'getWarehouses', $parameters->getProperties()));
     }
