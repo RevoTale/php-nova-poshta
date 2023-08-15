@@ -8,7 +8,7 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\Decorators\Enums;
 
 /**
- * Counterparty person type
+ * CounterpartyListItem person type
  */
 enum CounterpartyPersonType: string
 {

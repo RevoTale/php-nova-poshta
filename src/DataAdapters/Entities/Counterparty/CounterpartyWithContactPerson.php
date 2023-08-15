@@ -7,7 +7,7 @@ namespace BladL\NovaPoshta\DataAdapters\Entities\Counterparty;
 use BladL\NovaPoshta\DataAdapters\Result\Counterparty\ContactPersonResult;
 use BladL\NovaPoshta\DataAdapters\ResponseContainer;
 
-final readonly class CounterpartyWithContact extends Counterparty
+final readonly class CounterpartyWithContactPerson extends Counterparty
 {
 
     public function getContactPersonResult(): ContactPersonResult

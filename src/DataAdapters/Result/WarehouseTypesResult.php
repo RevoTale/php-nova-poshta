@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataAdapters\Result;
 
-use BladL\NovaPoshta\DataAdapters\Entities\WarehouseType;
+use BladL\NovaPoshta\DataAdapters\Entities\Location\WarehouseType;
 use BladL\NovaPoshta\DataAdapters\Result;
 use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 

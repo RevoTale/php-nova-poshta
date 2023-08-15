@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Entities;
+namespace BladL\NovaPoshta\DataAdapters\Entities\Location;
 
-use BladL\NovaPoshta\Exception\BadFieldValueException;
 use BladL\NovaPoshta\DataAdapters\Entity;
+use BladL\NovaPoshta\Exception\BadFieldValueException;
 
-final readonly class SettlementStreet extends Entity
+final readonly class SettlementStreetItem extends Entity
 {
     public function getRef(): string
     {

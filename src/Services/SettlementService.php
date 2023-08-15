@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace BladL\NovaPoshta\Services;
 
 use BladL\NovaPoshta\DataAdapters\Result\SearchSettlementResult;
-use BladL\NovaPoshta\DataAdapters\Result\SettlementAreasResult;
-use BladL\NovaPoshta\DataAdapters\Result\SettlementRegionsResult;
+use BladL\NovaPoshta\DataAdapters\Result\SettlementAreaListResult;
+use BladL\NovaPoshta\DataAdapters\Result\SettlementRegionListResult;
 use BladL\NovaPoshta\DataAdapters\Result\SettlementSearchResult;
-use BladL\NovaPoshta\DataAdapters\Result\SettlementsResult;
+use BladL\NovaPoshta\DataAdapters\Result\SettlementListItem;
 use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
 use BladL\NovaPoshta\MethodProperties\Address\SettlementAreaListProperties;
 use BladL\NovaPoshta\MethodProperties\Address\SettlementRegionListProperties;
@@ -18,9 +18,9 @@ final readonly class SettlementService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function getSettlementList(int $page, int $limit): SettlementsResult
+    public function getSettlementList(int $page, int $limit): SettlementListItem
     {
-        return new SettlementsResult(
+        return new SettlementListItem(
             $this->api->fetch('AddressGeneral', 'getSettlements', [
                 'Page' => $page,
                 'Limit' => $limit,
@@ -47,17 +47,17 @@ final readonly class SettlementService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function getSettlementAreaList(SettlementAreaListProperties $params): SettlementAreasResult
+    public function getSettlementAreaList(SettlementAreaListProperties $params): SettlementAreaListResult
     {
-        return new SettlementAreasResult($this->api->fetch('Address', 'getSettlementAreas', $params->getProperties()));
+        return new SettlementAreaListResult($this->api->fetch('Address', 'getSettlementAreas', $params->getProperties()));
     }
 
     /**
      * @throws QueryFailedException
      */
-    public function getSettlementCountryRegionList(SettlementRegionListProperties $params): SettlementRegionsResult
+    public function getSettlementCountryRegionList(SettlementRegionListProperties $params): SettlementRegionListResult
     {
-        return new SettlementRegionsResult(
+        return new SettlementRegionListResult(
             $this->api->fetch(
                 'Address',
                 'getSettlementCountryRegion',

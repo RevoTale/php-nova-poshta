@@ -19,17 +19,17 @@ final readonly class CounterpartyService extends Service
     public function saveCounterparty(CounterpartySaveProperties $saveInfo): CounterpartySaveResult
     {
         return new CounterpartySaveResult(
-            $this->api->fetch('Counterparty', 'save', $saveInfo->getProperties())
+            $this->api->fetch('CounterpartyListItem', 'save', $saveInfo->getProperties())
         );
     }
 
     /**
      * @throws QueryFailedException
      */
-    public function findCounterparties(CounterpartyListProperties $params): CounterpartiesResult
+    public function getCounterpartyList(CounterpartyListProperties $params): CounterpartiesResult
     {
         return new CounterpartiesResult(
-            $this->api->fetch('Counterparty', 'getCounterparties', $params->getProperties())
+            $this->api->fetch('CounterpartyListItem', 'getCounterparties', $params->getProperties())
         );
     }
 
@@ -38,7 +38,7 @@ final readonly class CounterpartyService extends Service
      */
     public function getCounterpartyContactPerson(string $ref, int $page): ContactPersonsResult
     {
-        return new ContactPersonsResult($this->api->fetch('Counterparty', 'getCounterpartyContactPersons', [
+        return new ContactPersonsResult($this->api->fetch('CounterpartyListItem', 'getCounterpartyContactPersons', [
             'Ref' => $ref,
             'Page' => $page,
         ]));

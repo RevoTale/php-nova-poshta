@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataAdapters\Result;
 
-use BladL\NovaPoshta\DataAdapters\Entities\Warehouse;
-use BladL\NovaPoshta\DataAdapters\Result;
+use BladL\NovaPoshta\DataAdapters\Entities\Location\WarehouseItem;
 use BladL\NovaPoshta\DataAdapters\ResponseContainer;
+use BladL\NovaPoshta\DataAdapters\Result;
 use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class WarehousesResult extends Result
@@ -19,12 +19,12 @@ final readonly class WarehousesResult extends Result
     }
 
     /**
-     * @return list<Warehouse>
+     * @return list<WarehouseItem>
      */
     public function toArray(): array
     {
         return array_map(
-            static fn (ObjectNormalizer $data) => new Warehouse($data),
+            static fn (ObjectNormalizer $data) => new WarehouseItem($data),
             $this->container->getDataAsObjectList()
         );
     }

@@ -2,7 +2,7 @@
 
 namespace BladL\NovaPoshta\Services;
 
-use BladL\NovaPoshta\DataAdapters\Entities\WarehouseType;
+use BladL\NovaPoshta\DataAdapters\Entities\Location\WarehouseType;
 use BladL\NovaPoshta\DataAdapters\Result\WarehousesResult;
 use BladL\NovaPoshta\DataAdapters\Result\WarehouseTypesResult;
 use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;

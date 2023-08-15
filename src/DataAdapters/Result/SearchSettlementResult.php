@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace BladL\NovaPoshta\DataAdapters\Result;
 
-use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
-use BladL\NovaPoshta\DataAdapters\Entities\SettlementStreet;
+use BladL\NovaPoshta\DataAdapters\Entities\Location\SettlementStreetItem;
 use BladL\NovaPoshta\DataAdapters\Result;
+use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class SearchSettlementResult extends Result
 {
     /**
-     * @return list<SettlementStreet>
+     * @return list<SettlementStreetItem>
      */
     public function getStreets(): array
     {
         $addresses = ($this->container->getDataAsObjectList()[0])->field('Addresses')->objectList();
         return array_map(
-            static fn (ObjectNormalizer $data) => new SettlementStreet($data),
+            static fn (ObjectNormalizer $data) => new SettlementStreetItem($data),
             $addresses
         );
     }
