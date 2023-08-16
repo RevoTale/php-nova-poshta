@@ -1,5 +1,5 @@
 {
-  "name": "grisaia/nova-poshta-api",
+  "name": "grisaia/nova-poshta",
   "description": "PHP library to communicate with Ukrainian delivery service Nova Poshta via API 2.0",
   "type": "library",
   "license": "MIT",
