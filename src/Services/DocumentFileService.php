@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Services;
+namespace Grisaia\NovaPoshta\Services;
 
-use BladL\NovaPoshta\Decorators\Enums\DocumentPrintType;
-use BladL\NovaPoshta\Exception\QueryFailed\CurlException;
-use BladL\NovaPoshta\Exception\QueryFailed\FileSaveException;
+use Grisaia\NovaPoshta\Decorators\Enums\DocumentPrintType;
+use Grisaia\NovaPoshta\Exception\QueryFailed\CurlException;
+use Grisaia\NovaPoshta\Exception\QueryFailed\FileSaveException;
 
 final readonly class DocumentFileService extends Service
 {

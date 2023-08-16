@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Services;
+namespace Grisaia\NovaPoshta\Services;
 
-use BladL\NovaPoshta\NovaPoshtaAPI;
+use Grisaia\NovaPoshta\NovaPoshtaAPI;
 
 /**
  * @internal

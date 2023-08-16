@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Services;
+namespace Grisaia\NovaPoshta\Services;
 
-use BladL\NovaPoshta\DataAdapters\Result\SearchSettlementResult;
-use BladL\NovaPoshta\DataAdapters\Result\SettlementAreaListResult;
-use BladL\NovaPoshta\DataAdapters\Result\SettlementRegionListResult;
-use BladL\NovaPoshta\DataAdapters\Result\SettlementSearchResult;
-use BladL\NovaPoshta\DataAdapters\Result\SettlementListItem;
-use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\MethodProperties\Address\SettlementAreaListProperties;
-use BladL\NovaPoshta\MethodProperties\Address\SettlementRegionListProperties;
-use BladL\NovaPoshta\MethodProperties\Address\SettlementSearchProperties;
+use Grisaia\NovaPoshta\DataAdapters\Result\SearchSettlementResult;
+use Grisaia\NovaPoshta\DataAdapters\Result\SettlementAreaListResult;
+use Grisaia\NovaPoshta\DataAdapters\Result\SettlementRegionListResult;
+use Grisaia\NovaPoshta\DataAdapters\Result\SettlementSearchResult;
+use Grisaia\NovaPoshta\DataAdapters\Result\SettlementListItem;
+use Grisaia\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use Grisaia\NovaPoshta\MethodProperties\Address\SettlementAreaListProperties;
+use Grisaia\NovaPoshta\MethodProperties\Address\SettlementRegionListProperties;
+use Grisaia\NovaPoshta\MethodProperties\Address\SettlementSearchProperties;
 
 final readonly class SettlementService extends Service
 {

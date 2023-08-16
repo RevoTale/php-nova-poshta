@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta;
+namespace Grisaia\NovaPoshta;
 
-use BladL\NovaPoshta\Normalizer\BadFieldExceptionFactoryInterface;
-use BladL\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\Normalizer\BadFieldExceptionFactoryInterface;
+use Grisaia\NovaPoshta\Exception\BadFieldValueException;
 
 /**
  * @implements BadFieldExceptionFactoryInterface<BadFieldValueException>

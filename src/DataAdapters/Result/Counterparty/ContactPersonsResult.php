@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Result\Counterparty;
+namespace Grisaia\NovaPoshta\DataAdapters\Result\Counterparty;
 
-use BladL\NovaPoshta\DataAdapters\Entities\Counterparty\ContactPerson;
-use BladL\NovaPoshta\DataAdapters\Result;
-use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Counterparty\ContactPerson;
+use Grisaia\NovaPoshta\DataAdapters\Result;
+use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class ContactPersonsResult extends Result
 {

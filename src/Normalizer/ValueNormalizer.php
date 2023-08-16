@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Normalizer;
+namespace Grisaia\NovaPoshta\Normalizer;
 
-use BladL\NovaPoshta\DataAdapters\Entity;
-use BladL\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\DataAdapters\Entity;
+use Grisaia\NovaPoshta\Exception\BadFieldValueException;
 use Throwable;
 
 use function is_array;

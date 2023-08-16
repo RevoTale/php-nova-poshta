@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Normalizer;
+namespace Grisaia\NovaPoshta\Normalizer;
 
 use Throwable;
 

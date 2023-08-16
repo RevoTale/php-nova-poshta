@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Exception;
+namespace Grisaia\NovaPoshta\Exception;
 
 use Exception;
 

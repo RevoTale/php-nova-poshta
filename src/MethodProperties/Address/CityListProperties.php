@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\MethodProperties\Address;
+namespace Grisaia\NovaPoshta\MethodProperties\Address;
 
-use BladL\NovaPoshta\MethodProperties\Traits\Pageable;
-use BladL\NovaPoshta\Normalizer\MethodProperties;
+use Grisaia\NovaPoshta\MethodProperties\Traits\Pageable;
+use Grisaia\NovaPoshta\Normalizer\MethodProperties;
 
 class CityListProperties extends MethodProperties
 {

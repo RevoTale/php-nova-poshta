@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Services;
+namespace Grisaia\NovaPoshta\Services;
 
-use BladL\NovaPoshta\DataAdapters\Result\AdditionalService\ShippingDataUpdateRequestResult;
-use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\MethodProperties\AdditionalService\AdditionalServiceSaveProperties;
+use Grisaia\NovaPoshta\DataAdapters\Result\AdditionalService\ShippingDataUpdateRequestResult;
+use Grisaia\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use Grisaia\NovaPoshta\MethodProperties\AdditionalService\AdditionalServiceSaveProperties;
 
 final readonly class AdditionalService extends Service
 {

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\MethodProperties\AdditionalService\Save;
+namespace Grisaia\NovaPoshta\MethodProperties\AdditionalService\Save;
 
-use BladL\NovaPoshta\MethodProperties\AdditionalService\AdditionalServiceOrderType;
-use BladL\NovaPoshta\MethodProperties\AdditionalService\AdditionalServiceSaveProperties;
+use Grisaia\NovaPoshta\MethodProperties\AdditionalService\AdditionalServiceOrderType;
+use Grisaia\NovaPoshta\MethodProperties\AdditionalService\AdditionalServiceSaveProperties;
 //TODO fill each field
 class ChangeEWProperties extends AdditionalServiceSaveProperties
 {

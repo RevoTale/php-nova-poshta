@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Entities\Counterparty;
+namespace Grisaia\NovaPoshta\DataAdapters\Entities\Counterparty;
 
-use BladL\NovaPoshta\DataAdapters\Entities\Traits\Description;
-use BladL\NovaPoshta\DataAdapters\Entities\Traits\Ref;
-use BladL\NovaPoshta\DataAdapters\Entity;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\Description;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\Ref;
+use Grisaia\NovaPoshta\DataAdapters\Entity;
 
 final readonly class ContactPerson extends Entity
 {

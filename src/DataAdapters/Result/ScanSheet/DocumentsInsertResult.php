@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Result\ScanSheet;
+namespace Grisaia\NovaPoshta\DataAdapters\Result\ScanSheet;
 
-use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
-use BladL\NovaPoshta\DataAdapters\Result;
-use BladL\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
+use Grisaia\NovaPoshta\DataAdapters\Result;
+use Grisaia\NovaPoshta\Exception\BadFieldValueException;
 
 final readonly class DocumentsInsertResult extends Result
 {

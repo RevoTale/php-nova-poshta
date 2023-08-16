@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\MethodProperties\Traits;
+namespace Grisaia\NovaPoshta\MethodProperties\Traits;
 
 /**
  * @internal

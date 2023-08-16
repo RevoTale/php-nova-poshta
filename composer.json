@@ -1,6 +1,6 @@
 {
-  "name": "bladl/nova-poshta-api",
-  "description": "PHP implementation of Ukrainian delivery service Nova Poshta API 2.0",
+  "name": "grisaia/nova-poshta-api",
+  "description": "PHP library to communicate with Ukrainian delivery service Nova Poshta via API 2.0",
   "type": "library",
   "license": "MIT",
   "authors": [{
@@ -10,11 +10,14 @@
   }],
   "keywords": [
     "Нова Пошта",
-    "API 2.0"
+    "API",
+    "Nova Poshta",
+    "АПІ",
+    "2.0"
   ],
   "autoload": {
     "psr-4": {
-      "BladL\\NovaPoshta\\": "src"
+      "Grisaia\\NovaPoshta\\": "src"
     }
   },
   "scripts": {
@@ -36,14 +39,10 @@
     "phpstan/phpstan": "^1.10",
     "phpmd/phpmd" : "@stable"
   },
-  "config": {
-    "allow-plugins": {
-    }
-  },
   "require": {
     "php": ">=8.2",
     "ext-curl": "*",
     "ext-json": "*",
-    "bladl/time": "^0.0.1"
+    "grisaia/time": "^0.2.0"
   }
 }

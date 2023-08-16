@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta;
+namespace Grisaia\NovaPoshta;
 
-use BladL\NovaPoshta\DataAdapters\ResponseContainer;
-use BladL\NovaPoshta\Exception\QueryFailed\CurlException;
-use BladL\NovaPoshta\Exception\QueryFailed\JsonEncodeException;
-use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\Services\Service;
-use BladL\Time\TimeZone;
+use Grisaia\NovaPoshta\DataAdapters\ResponseContainer;
+use Grisaia\NovaPoshta\Exception\QueryFailed\CurlException;
+use Grisaia\NovaPoshta\Exception\QueryFailed\JsonEncodeException;
+use Grisaia\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use Grisaia\NovaPoshta\Services\Service;
+use Grisaia\Time\TimeZone;
 use JsonException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerInterface;

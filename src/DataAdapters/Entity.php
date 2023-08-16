@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters;
+namespace Grisaia\NovaPoshta\DataAdapters;
 
-use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
-use BladL\NovaPoshta\Normalizer\ValueNormalizer;
-use BladL\NovaPoshta\Normalizer\NullableValueNormalizer;
-use BladL\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
+use Grisaia\NovaPoshta\Normalizer\ValueNormalizer;
+use Grisaia\NovaPoshta\Normalizer\NullableValueNormalizer;
+use Grisaia\NovaPoshta\Exception\BadFieldValueException;
 
 abstract readonly class Entity
 {

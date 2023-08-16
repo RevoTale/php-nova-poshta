@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Entities\Document;
+namespace Grisaia\NovaPoshta\DataAdapters\Entities\Document;
 
-use BladL\NovaPoshta\Decorators\Enums\DocumentStatusCode;
-use BladL\NovaPoshta\Exception\NoSeatsAmountException;
-use BladL\NovaPoshta\DataAdapters\Entity;
+use Grisaia\NovaPoshta\Decorators\Enums\DocumentStatusCode;
+use Grisaia\NovaPoshta\Exception\NoSeatsAmountException;
+use Grisaia\NovaPoshta\DataAdapters\Entity;
 
 /**
  * @internal

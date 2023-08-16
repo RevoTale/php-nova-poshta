@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Result\Document;
+namespace Grisaia\NovaPoshta\DataAdapters\Result\Document;
 
-use BladL\NovaPoshta\DataAdapters\Entities\Document\DocumentListItem;
-use BladL\NovaPoshta\DataAdapters\Result;
-use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Document\DocumentListItem;
+use Grisaia\NovaPoshta\DataAdapters\Result;
+use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class DocumentListResult extends Result
 {

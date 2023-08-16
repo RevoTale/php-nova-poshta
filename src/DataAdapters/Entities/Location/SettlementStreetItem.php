@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Entities\Location;
+namespace Grisaia\NovaPoshta\DataAdapters\Entities\Location;
 
-use BladL\NovaPoshta\DataAdapters\Entity;
-use BladL\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\DataAdapters\Entity;
+use Grisaia\NovaPoshta\Exception\BadFieldValueException;
 
 final readonly class SettlementStreetItem extends Entity
 {

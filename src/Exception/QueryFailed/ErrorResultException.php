@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Exception\QueryFailed;
+namespace Grisaia\NovaPoshta\Exception\QueryFailed;
 
-use BladL\NovaPoshta\Decorators\Enums\ErrorCode;
+use Grisaia\NovaPoshta\Decorators\Enums\ErrorCode;
 
 final class ErrorResultException extends QueryFailedException
 {

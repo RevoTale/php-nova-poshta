@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Result;
+namespace Grisaia\NovaPoshta\DataAdapters\Result;
 
-use BladL\NovaPoshta\DataAdapters\ResponseContainer;
+use Grisaia\NovaPoshta\DataAdapters\ResponseContainer;
 
 /**
  * @internal

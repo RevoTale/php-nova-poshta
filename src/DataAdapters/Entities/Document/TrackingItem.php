@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Entities\Document;
+namespace Grisaia\NovaPoshta\DataAdapters\Entities\Document;
 
-use BladL\NovaPoshta\Decorators\Enums\CounterpartyPersonType;
-use BladL\NovaPoshta\Decorators\Enums\DocumentStatusCode;
-use BladL\NovaPoshta\Decorators\Enums\PaymentMethod;
-use BladL\NovaPoshta\Decorators\Enums\ServiceType;
-use BladL\NovaPoshta\Exception\DateParseException;
-use BladL\NovaPoshta\Exception\QueryFailed\UnexpectedCounterpartyException;
-use BladL\NovaPoshta\NovaPoshtaAPI;
-use BladL\Time\Timestamp;
+use Grisaia\NovaPoshta\Decorators\Enums\CounterpartyPersonType;
+use Grisaia\NovaPoshta\Decorators\Enums\DocumentStatusCode;
+use Grisaia\NovaPoshta\Decorators\Enums\PaymentMethod;
+use Grisaia\NovaPoshta\Decorators\Enums\ServiceType;
+use Grisaia\NovaPoshta\Exception\DateParseException;
+use Grisaia\NovaPoshta\Exception\QueryFailed\UnexpectedCounterpartyException;
+use Grisaia\NovaPoshta\NovaPoshtaAPI;
+use Grisaia\Time\Timestamp;
 use DateTime;
 use Exception;
 use UnexpectedValueException;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Entities\Traits;
+namespace Grisaia\NovaPoshta\DataAdapters\Entities\Traits;
 
 /**
  * @internal

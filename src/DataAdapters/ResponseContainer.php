@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters;
+namespace Grisaia\NovaPoshta\DataAdapters;
 
-use BladL\NovaPoshta\Exception\BadFieldValueException;
-use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
-use BladL\NovaPoshta\Normalizer\ValueNormalizer;
+use Grisaia\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
+use Grisaia\NovaPoshta\Normalizer\ValueNormalizer;
 
 
 final readonly class ResponseContainer extends Entity

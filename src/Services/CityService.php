@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Services;
+namespace Grisaia\NovaPoshta\Services;
 
-use BladL\NovaPoshta\DataAdapters\Result\CityListResult;
-use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\MethodProperties\Address\CityListProperties;
+use Grisaia\NovaPoshta\DataAdapters\Result\CityListResult;
+use Grisaia\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use Grisaia\NovaPoshta\MethodProperties\Address\CityListProperties;
 
 final readonly class CityService extends Service
 {

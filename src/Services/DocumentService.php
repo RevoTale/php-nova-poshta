@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Services;
+namespace Grisaia\NovaPoshta\Services;
 
-use BladL\NovaPoshta\DataAdapters\Entities\Document\DocumentListItem;
-use BladL\NovaPoshta\DataAdapters\Entities\Document\TrackingItem;
-use BladL\NovaPoshta\DataAdapters\Result\Document\DocumentListResult;
-use BladL\NovaPoshta\DataAdapters\Result\Document\TrackingResult;
-use BladL\NovaPoshta\Exception\DocumentNotExists;
-use BladL\NovaPoshta\Exception\DocumentNotFoundException;
-use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Document\DocumentListItem;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Document\TrackingItem;
+use Grisaia\NovaPoshta\DataAdapters\Result\Document\DocumentListResult;
+use Grisaia\NovaPoshta\DataAdapters\Result\Document\TrackingResult;
+use Grisaia\NovaPoshta\Exception\DocumentNotExists;
+use Grisaia\NovaPoshta\Exception\DocumentNotFoundException;
+use Grisaia\NovaPoshta\Exception\QueryFailed\QueryFailedException;
 
 final readonly class DocumentService extends Service
 {

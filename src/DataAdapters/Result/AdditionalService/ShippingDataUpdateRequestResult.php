@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Result\AdditionalService;
+namespace Grisaia\NovaPoshta\DataAdapters\Result\AdditionalService;
 
-use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
-use BladL\NovaPoshta\Exception\BadFieldValueException;
-use BladL\NovaPoshta\DataAdapters\Result;
+use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
+use Grisaia\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\DataAdapters\Result;
 
 use function count;
 

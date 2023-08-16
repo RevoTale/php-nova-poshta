@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\MethodProperties\AdditionalService;
+namespace Grisaia\NovaPoshta\MethodProperties\AdditionalService;
 
 enum AdditionalServiceOrderType:string
 {

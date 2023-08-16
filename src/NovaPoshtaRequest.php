@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta;
+namespace Grisaia\NovaPoshta;
 
-use BladL\NovaPoshta\DataAdapters\ResponseContainer;
-use BladL\NovaPoshta\Exception\BadFieldValueException;
-use BladL\NovaPoshta\Exception\QueryFailed\BadBodyException;
-use BladL\NovaPoshta\Exception\QueryFailed\CurlException;
-use BladL\NovaPoshta\Exception\QueryFailed\ErrorResultException;
-use BladL\NovaPoshta\Exception\QueryFailed\JsonParseException;
-use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
+use Grisaia\NovaPoshta\DataAdapters\ResponseContainer;
+use Grisaia\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\Exception\QueryFailed\BadBodyException;
+use Grisaia\NovaPoshta\Exception\QueryFailed\CurlException;
+use Grisaia\NovaPoshta\Exception\QueryFailed\ErrorResultException;
+use Grisaia\NovaPoshta\Exception\QueryFailed\JsonParseException;
+use Grisaia\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
 use JsonException;
 use Psr\Log\LoggerInterface;
 use function is_array;

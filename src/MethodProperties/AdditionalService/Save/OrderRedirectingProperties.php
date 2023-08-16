@@ -1,9 +1,9 @@
 <?php
 
-namespace BladL\NovaPoshta\MethodProperties\AdditionalService\Save;
+namespace Grisaia\NovaPoshta\MethodProperties\AdditionalService\Save;
 
-use BladL\NovaPoshta\MethodProperties\AdditionalService\AdditionalServiceOrderType;
-use BladL\NovaPoshta\MethodProperties\AdditionalService\AdditionalServiceSaveProperties;
+use Grisaia\NovaPoshta\MethodProperties\AdditionalService\AdditionalServiceOrderType;
+use Grisaia\NovaPoshta\MethodProperties\AdditionalService\AdditionalServiceSaveProperties;
 
 class OrderRedirectingProperties extends AdditionalServiceSaveProperties
 {

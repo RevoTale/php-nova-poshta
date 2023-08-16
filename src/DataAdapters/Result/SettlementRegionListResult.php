@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Result;
+namespace Grisaia\NovaPoshta\DataAdapters\Result;
 
-use BladL\NovaPoshta\DataAdapters\Entities\Location\SettlementRegionItem;
-use BladL\NovaPoshta\DataAdapters\Result;
-use BladL\NovaPoshta\Normalizer\ObjectNormalizer;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Location\SettlementRegionItem;
+use Grisaia\NovaPoshta\DataAdapters\Result;
+use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class SettlementRegionListResult extends Result
 {

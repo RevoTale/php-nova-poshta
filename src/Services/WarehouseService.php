@@ -1,12 +1,12 @@
 <?php
 
-namespace BladL\NovaPoshta\Services;
+namespace Grisaia\NovaPoshta\Services;
 
-use BladL\NovaPoshta\DataAdapters\Entities\Location\WarehouseType;
-use BladL\NovaPoshta\DataAdapters\Result\WarehousesResult;
-use BladL\NovaPoshta\DataAdapters\Result\WarehouseTypesResult;
-use BladL\NovaPoshta\Exception\QueryFailed\QueryFailedException;
-use BladL\NovaPoshta\MethodProperties\Address\WarehouseListProperties;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Location\WarehouseType;
+use Grisaia\NovaPoshta\DataAdapters\Result\WarehousesResult;
+use Grisaia\NovaPoshta\DataAdapters\Result\WarehouseTypesResult;
+use Grisaia\NovaPoshta\Exception\QueryFailed\QueryFailedException;
+use Grisaia\NovaPoshta\MethodProperties\Address\WarehouseListProperties;
 
 final readonly class WarehouseService extends Service
 {

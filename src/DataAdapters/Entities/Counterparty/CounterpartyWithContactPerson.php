@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Entities\Counterparty;
+namespace Grisaia\NovaPoshta\DataAdapters\Entities\Counterparty;
 
-use BladL\NovaPoshta\DataAdapters\Result\Counterparty\ContactPersonResult;
-use BladL\NovaPoshta\DataAdapters\ResponseContainer;
+use Grisaia\NovaPoshta\DataAdapters\Result\Counterparty\ContactPersonResult;
+use Grisaia\NovaPoshta\DataAdapters\ResponseContainer;
 
 final readonly class CounterpartyWithContactPerson extends Counterparty
 {

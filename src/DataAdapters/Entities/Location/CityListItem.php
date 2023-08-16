@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Entities\Location;
+namespace Grisaia\NovaPoshta\DataAdapters\Entities\Location;
 
-use BladL\NovaPoshta\DataAdapters\Entities\Traits\DescriptionWithRu;
-use BladL\NovaPoshta\DataAdapters\Entities\Traits\PartOfArea;
-use BladL\NovaPoshta\DataAdapters\Entities\Traits\Ref;
-use BladL\NovaPoshta\DataAdapters\Entity;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\DescriptionWithRu;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\PartOfArea;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\Ref;
+use Grisaia\NovaPoshta\DataAdapters\Entity;
 
 final readonly class CityListItem extends Entity
 {

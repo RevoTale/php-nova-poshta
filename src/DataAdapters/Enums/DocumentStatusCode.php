@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Decorators\Enums;
+namespace Grisaia\NovaPoshta\Decorators\Enums;
 
 use function in_array;
 

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\MethodProperties\Address;
+namespace Grisaia\NovaPoshta\MethodProperties\Address;
 
-use BladL\NovaPoshta\Normalizer\MethodProperties;
+use Grisaia\NovaPoshta\Normalizer\MethodProperties;
 
 class SettlementRegionListProperties extends MethodProperties
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\DataAdapters\Result\ScanSheet;
+namespace Grisaia\NovaPoshta\DataAdapters\Result\ScanSheet;
 
-use BladL\NovaPoshta\DataAdapters\Entities\Traits\Ref;
-use BladL\NovaPoshta\DataAdapters\Entity;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\Ref;
+use Grisaia\NovaPoshta\DataAdapters\Entity;
 
 /**
  * @internal

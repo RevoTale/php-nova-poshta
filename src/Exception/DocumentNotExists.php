@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\Exception;
+namespace Grisaia\NovaPoshta\Exception;
 
-use BladL\NovaPoshta\DataAdapters\Entities\Document\TrackingItem;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Document\TrackingItem;
 use Exception;
 
 final class DocumentNotExists extends Exception

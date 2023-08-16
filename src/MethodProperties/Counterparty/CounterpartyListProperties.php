@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace BladL\NovaPoshta\MethodProperties\Counterparty;
+namespace Grisaia\NovaPoshta\MethodProperties\Counterparty;
 
-use BladL\NovaPoshta\Decorators\Enums\CounterpartyPersonType;
-use BladL\NovaPoshta\MethodProperties\Traits\Pageable;
-use BladL\NovaPoshta\Normalizer\MethodProperties;
+use Grisaia\NovaPoshta\Decorators\Enums\CounterpartyPersonType;
+use Grisaia\NovaPoshta\MethodProperties\Traits\Pageable;
+use Grisaia\NovaPoshta\Normalizer\MethodProperties;
 
 class CounterpartyListProperties extends MethodProperties
 {
