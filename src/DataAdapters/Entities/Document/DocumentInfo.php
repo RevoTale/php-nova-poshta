@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\DataAdapters\Entities\Document;
 
-use Grisaia\NovaPoshta\Decorators\Enums\DocumentStatusCode;
+use Grisaia\NovaPoshta\DataAdapters\Enums\DocumentStatusCode;
 use Grisaia\NovaPoshta\Exception\NoSeatsAmountException;
 use Grisaia\NovaPoshta\DataAdapters\Entity;
 

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Grisaia\NovaPoshta\DataAdapters\Entities\Document;
 
 use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\Ref;
-use Grisaia\NovaPoshta\Decorators\Enums\DocumentStatusCode;
+use Grisaia\NovaPoshta\DataAdapters\Enums\DocumentStatusCode;
 use UnexpectedValueException;
 
 final readonly class DocumentListItem extends DocumentInfo

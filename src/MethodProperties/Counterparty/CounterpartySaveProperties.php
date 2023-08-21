@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\MethodProperties\Counterparty;
 
-use Grisaia\NovaPoshta\Decorators\Enums\CounterpartyPersonType;
-use Grisaia\NovaPoshta\Decorators\Enums\CounterpartyType;
+use Grisaia\NovaPoshta\DataAdapters\Enums\CounterpartyPersonType;
+use Grisaia\NovaPoshta\DataAdapters\Enums\CounterpartyType;
 use Grisaia\NovaPoshta\Normalizer\MethodProperties;
 
 class CounterpartySaveProperties extends MethodProperties

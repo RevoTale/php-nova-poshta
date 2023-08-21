@@ -11,10 +11,13 @@ use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
 final readonly class DocumentListResult extends Result
 {
     /**
-     * @return DocumentListItem
+     * @return list<DocumentListItem>
      */
     public function getDocuments(): array
     {
-        return array_map(static fn (ObjectNormalizer $doc) => new DocumentListItem($doc), $this->container->getDataAsObjectList());
+        return array_map(
+            static fn(ObjectNormalizer $doc) => new DocumentListItem($doc),
+            $this->container->getDataAsObjectList()
+        );
     }
 }

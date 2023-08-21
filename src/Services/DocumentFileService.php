@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\Services;
 
-use Grisaia\NovaPoshta\Decorators\Enums\DocumentPrintType;
+use Grisaia\NovaPoshta\DataAdapters\Enums\DocumentPrintType;
 use Grisaia\NovaPoshta\Exception\QueryFailed\CurlException;
 use Grisaia\NovaPoshta\Exception\QueryFailed\FileSaveException;
 

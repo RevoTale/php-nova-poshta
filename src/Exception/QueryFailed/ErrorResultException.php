@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\Exception\QueryFailed;
 
-use Grisaia\NovaPoshta\Decorators\Enums\ErrorCode;
+use Grisaia\NovaPoshta\DataAdapters\Enums\ErrorCode;
 
 final class ErrorResultException extends QueryFailedException
 {

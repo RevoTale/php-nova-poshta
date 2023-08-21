@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\DataAdapters\Entities\Document;
 
-use Grisaia\NovaPoshta\Decorators\Enums\CounterpartyPersonType;
-use Grisaia\NovaPoshta\Decorators\Enums\DocumentStatusCode;
-use Grisaia\NovaPoshta\Decorators\Enums\PaymentMethod;
-use Grisaia\NovaPoshta\Decorators\Enums\ServiceType;
+use Grisaia\NovaPoshta\DataAdapters\Enums\CounterpartyPersonType;
+use Grisaia\NovaPoshta\DataAdapters\Enums\DocumentStatusCode;
+use Grisaia\NovaPoshta\DataAdapters\Enums\PaymentMethod;
+use Grisaia\NovaPoshta\DataAdapters\Enums\ServiceType;
 use Grisaia\NovaPoshta\Exception\DateParseException;
 use Grisaia\NovaPoshta\Exception\QueryFailed\UnexpectedCounterpartyException;
 use Grisaia\NovaPoshta\NovaPoshtaAPI;

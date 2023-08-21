@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Grisaia\NovaPoshta\Decorators\Enums;
+namespace Grisaia\NovaPoshta\DataAdapters\Enums;
 
 enum ServiceType: string
 {

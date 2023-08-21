@@ -6,7 +6,7 @@ namespace Grisaia\NovaPoshta\DataAdapters\Entities\Counterparty;
 
 use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\Description;
 use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\Ref;
-use Grisaia\NovaPoshta\Decorators\Enums\CounterpartyType;
+use Grisaia\NovaPoshta\DataAdapters\Enums\CounterpartyType;
 use Grisaia\NovaPoshta\DataAdapters\Entity;
 
 readonly class Counterparty extends Entity
