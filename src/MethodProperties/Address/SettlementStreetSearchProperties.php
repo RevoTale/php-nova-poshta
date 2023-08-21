@@ -8,7 +8,7 @@ use Grisaia\NovaPoshta\Normalizer\MethodProperties;
 
 final class SettlementStreetSearchProperties extends MethodProperties
 {
-    public function __construct(int $limit=50)
+    public function __construct(int $limit = 50)
     {
         $this->setLimit($limit);
     }

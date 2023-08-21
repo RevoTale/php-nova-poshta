@@ -24,7 +24,7 @@ final class ErrorResultException extends QueryFailedException
      */
     public function getErrorCodes(): array
     {
-        return array_map(static fn (string $errorCode) =>ErrorCode::from($errorCode), $this->errorCodes);
+        return array_map(static fn (string $errorCode) => ErrorCode::from($errorCode), $this->errorCodes);
     }
 
     /**

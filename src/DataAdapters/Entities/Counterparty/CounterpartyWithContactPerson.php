@@ -9,7 +9,6 @@ use Grisaia\NovaPoshta\DataAdapters\ResponseContainer;
 
 final readonly class CounterpartyWithContactPerson extends Counterparty
 {
-
     public function getContactPersonResult(): ContactPersonResult
     {
         return new ContactPersonResult(new ResponseContainer($this->getField('ContactPerson')->object()));

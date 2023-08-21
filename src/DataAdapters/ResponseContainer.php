@@ -8,7 +8,6 @@ use Grisaia\NovaPoshta\Exception\BadFieldValueException;
 use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
 use Grisaia\NovaPoshta\Normalizer\ValueNormalizer;
 
-
 final readonly class ResponseContainer extends Entity
 {
     /**

@@ -16,7 +16,7 @@ final readonly class SettlementListItem extends Result
     public function toArray(): array
     {
         return array_map(
-            static fn(ObjectNormalizer $data) => new SettlementItem($data),
+            static fn (ObjectNormalizer $data) => new SettlementItem($data),
             $this->container->getDataAsObjectList()
         );
     }

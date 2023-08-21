@@ -16,7 +16,7 @@ final readonly class DocumentListResult extends Result
     public function getDocuments(): array
     {
         return array_map(
-            static fn(ObjectNormalizer $doc) => new DocumentListItem($doc),
+            static fn (ObjectNormalizer $doc) => new DocumentListItem($doc),
             $this->container->getDataAsObjectList()
         );
     }

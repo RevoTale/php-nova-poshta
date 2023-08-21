@@ -15,7 +15,6 @@ final readonly class CityListResult extends Result
      */
     public function getCities(): array
     {
-        return array_map(static fn(ObjectNormalizer $decorator) => new CityListItem($decorator)
-            , $this->container->getDataAsObjectList());
+        return array_map(static fn (ObjectNormalizer $decorator) => new CityListItem($decorator), $this->container->getDataAsObjectList());
     }
 }

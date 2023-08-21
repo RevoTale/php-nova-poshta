@@ -41,4 +41,3 @@ abstract readonly class Entity
         return $this->data->nullableField($key);
     }
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\Services;
@@ -11,7 +12,6 @@ use Grisaia\NovaPoshta\MethodProperties\Address\WarehouseListProperties;
 
 final readonly class WarehouseService extends Service
 {
-
     /**
      * @throws QueryFailedException
      */
