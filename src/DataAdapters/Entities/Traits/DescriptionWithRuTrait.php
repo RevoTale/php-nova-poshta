@@ -7,9 +7,9 @@ namespace Grisaia\NovaPoshta\DataAdapters\Entities\Traits;
 /**
  * @internal
  */
-trait DescriptionWithRu
+trait DescriptionWithRuTrait
 {
-    use Description;
+    use DescriptionTrait;
 
     final public function getDescriptionRu(): string
     {

@@ -7,10 +7,10 @@ namespace Grisaia\NovaPoshta\DataAdapters\Entities\Traits;
 /**
  * @internal
  */
-trait Description
+trait RefTrait
 {
-    final public function getDescription(): string
+    final public function getRef(): string
     {
-        return $this->getField('Description')->string();
+        return $this->getField('Ref')->string();
     }
 }

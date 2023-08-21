@@ -7,7 +7,7 @@ namespace Grisaia\NovaPoshta\DataAdapters\Entities\Traits;
 /**
  * @internal
  */
-trait PartOfArea
+trait PartOfAreaTrait
 {
     final public function getAreaDescription(): string
     {

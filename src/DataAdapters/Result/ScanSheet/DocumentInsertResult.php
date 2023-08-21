@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\DataAdapters\Result\ScanSheet;
 
-use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\Ref;
+use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\RefTrait;
 use Grisaia\NovaPoshta\DataAdapters\Entity;
 
 /**
@@ -12,7 +12,7 @@ use Grisaia\NovaPoshta\DataAdapters\Entity;
  */
 abstract readonly class DocumentInsertResult extends Entity
 {
-    use Ref;
+    use RefTrait;
 
     public function getNumber(): ?string
     {
