@@ -10,10 +10,11 @@
   }],
   "keywords": [
     "Нова Пошта",
-    "API",
-    "Nova Poshta",
-    "АПІ",
-    "2.0"
+    "nova poshta",
+    "2.0",
+    "poshta",
+    "nova",
+    "api"
   ],
   "autoload": {
     "psr-4": {
