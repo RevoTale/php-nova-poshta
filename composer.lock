@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ef192cd8f9529e53ff1b1e57a9edb78d",
+    "content-hash": "ca0fd169191590cf9cf982150f24e643",
     "packages": [
         {
             "name": "grisaia/time",
