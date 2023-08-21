@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\Normalizer;
 
-use Grisaia\NovaPoshta\DataAdapters\Entity;
-use Grisaia\NovaPoshta\Exception\BadFieldValueException;
 use Throwable;
 
 use function is_array;
