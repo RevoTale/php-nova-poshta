@@ -11,6 +11,6 @@ trait DescriptionTrait
 {
     final public function getDescription(): string
     {
-        return $this->getField('DescriptionTrait')->string();
+        return $this->getField('Description')->string();
     }
 }
