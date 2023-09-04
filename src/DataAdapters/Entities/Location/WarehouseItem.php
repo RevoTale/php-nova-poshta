@@ -23,6 +23,36 @@ final readonly class WarehouseItem extends Entity
         return $this->getField('SettlementRef')->string();
     }
 
+    public function getLongitude(): float
+    {
+        return $this->getField('Longitude')->float();
+    }
+
+    public function getLatitude(): float
+    {
+        return $this->getField('Latitude')->float();
+    }
+
+    public function getShortAddress(): string
+    {
+        return $this->getField('ShortAddress')->string();
+    }
+
+    public function isOnlyReceivingParcel(): bool
+    {
+        return $this->getField('OnlyReceivingParcel')->bool();
+    }
+
+    public function isWarehouseForAgent(): bool
+    {
+        return $this->getField('WarehouseForAgent')->bool();
+    }
+
+    public function isBicycleParkingAvailable(): bool
+    {
+        return $this->getField('BicycleParking')->bool();
+    }
+
     public function getSettlementDescription(): string
     {
         return $this->getField('SettlementDescription')->string();
