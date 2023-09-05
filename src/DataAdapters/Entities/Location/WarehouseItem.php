@@ -38,9 +38,9 @@ final readonly class WarehouseItem extends Entity
         return $this->getField('ShortAddress')->string();
     }
 
-    public function isOnlyReceivingParcel(): bool
+    public function isOnlyReceivingParcel(): ?bool
     {
-        return $this->getField('OnlyReceivingParcel')->bool();
+        return $this->getNullableField('OnlyReceivingParcel')->bool();
     }
 
     public function isWarehouseForAgent(): bool
