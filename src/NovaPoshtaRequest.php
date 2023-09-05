@@ -53,8 +53,8 @@ final readonly class NovaPoshtaRequest
         }
         if (isset($resp['errors'])) {
             $errors = $resp['errors'];
-            if (!is_array($errors) || !array_is_list($errors)) {
-                throw new BadBodyException('Errors is not list');
+            if (!is_array($errors)) {
+                throw new BadBodyException('Errors is not array');
             }
             $errorCodes = $resp['errorCodes'];
             if (!is_array($errorCodes) || !array_is_list($errorCodes)) {
@@ -64,6 +64,9 @@ final readonly class NovaPoshtaRequest
                 $this->logger->error('NovaPoshta logical error', [
                     'errors' => $errors,
                 ]);
+                /**
+                 * @var array<string|int,string> $errors
+                 */
                 throw new ErrorResultException($errors, $errorCodes);
             }
         }

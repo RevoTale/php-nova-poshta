@@ -9,7 +9,7 @@ use Grisaia\NovaPoshta\DataAdapters\Enums\ErrorCode;
 final class ErrorResultException extends QueryFailedException
 {
     /**
-     * @param list<string> $errors
+     * @param array<string|int,string> $errors
      * @param list<string> $errorCodes
      */
     public function __construct(
@@ -31,6 +31,14 @@ final class ErrorResultException extends QueryFailedException
      * @return list<string>
      */
     public function getErrorMessages(): array
+    {
+        return array_values($this->errors);
+    }
+
+    /**
+     * @return array<string|int,string> $errors
+     */
+    public function getErrors(): array
     {
         return $this->errors;
     }
