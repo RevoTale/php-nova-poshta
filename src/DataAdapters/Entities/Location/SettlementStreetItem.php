@@ -42,7 +42,7 @@ final readonly class SettlementStreetItem extends Entity
         $index = 0;
         $location = $this->getField('Location')->list();
         if (!isset($location[$index])) {
-            throw new BadFieldValueException('Location has incomplete coordinates');
+            throw new BadFieldValueException('Location has incomplete coordinates',key: 'Location');
         }
         return $location[$index]->integer();
     }
@@ -55,7 +55,7 @@ final readonly class SettlementStreetItem extends Entity
         $index = 1;
         $location = $this->getField('Location')->list();
         if (!isset($location[$index])) {
-            throw new BadFieldValueException('Location has incomplete coordinates');
+            throw new BadFieldValueException('Location has incomplete coordinates',key: 'Location');
         }
         return $location[$index]->integer();
     }

@@ -37,7 +37,7 @@ final readonly class ValueNormalizer
             return new ObjectNormalizer($value, exceptionFactory: $this->exceptionFactory);
         }
 
-        throw  $this->exceptionFactory->createBadFieldException('Field is not object');
+        throw  $this->exceptionFactory->createBadValueException('Field is not object');
     }
 
     /**
@@ -48,7 +48,7 @@ final readonly class ValueNormalizer
     {
         $data = $this->data;
         if (!is_array($data) || !array_is_list($data)) {
-            throw  $this->exceptionFactory->createBadFieldException('Field is not list');
+            throw  $this->exceptionFactory->createBadValueException('Field is not list');
         }
         $list = [];
         foreach ($data as $item) {
@@ -82,7 +82,7 @@ final readonly class ValueNormalizer
         $list = [];
         $data = $this->data;
         if (!is_array($data) || !array_is_list($data)) {
-            throw  $this->exceptionFactory->createBadFieldException('Field is not list');
+            throw  $this->exceptionFactory->createBadValueException('Field is not list');
         }
         foreach ($data as $datum) {
             $list[] = new ValueNormalizer($datum, exceptionFactory: $this->exceptionFactory);
@@ -114,7 +114,7 @@ final readonly class ValueNormalizer
     {
         $value = $this->data;
         if (!is_scalar($value) && null !== $value) {
-            throw  $this->exceptionFactory->createBadFieldException('Field is not scalar');
+            throw  $this->exceptionFactory->createBadValueException('Field is not scalar');
 
         }
         return $value;
@@ -128,7 +128,7 @@ final readonly class ValueNormalizer
     {
         $value = $this->nullableScalar();
         if (null === $value) {
-            throw $this->exceptionFactory->createBadFieldException('Field is null');
+            throw $this->exceptionFactory->createBadValueException('Field is null');
         }
         return $value;
     }

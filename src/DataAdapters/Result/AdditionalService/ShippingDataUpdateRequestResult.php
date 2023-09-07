@@ -29,7 +29,7 @@ final readonly class ShippingDataUpdateRequestResult extends Result
     {
         $objects = $this->container->getDataAsObjectList();
         if (0 === count($objects)) {
-            throw new BadFieldValueException('No single object returned');
+            throw new BadFieldValueException('No single object returned', key: 'Data');
         }
         return $objects[0];
     }

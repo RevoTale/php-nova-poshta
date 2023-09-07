@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\Exception;
 
-use UnexpectedValueException;
-
-final class BadFieldValueException extends UnexpectedValueException
+final class BadFieldValueException extends BadValueException
 {
-    public function __construct(string $message)
+    public function __construct(string $message, private string $key)
     {
         parent::__construct($message);
+    }
+
+    public function getKey(): string
+    {
+        return $this->key;
     }
 }
