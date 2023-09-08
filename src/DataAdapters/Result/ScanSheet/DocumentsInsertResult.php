@@ -6,12 +6,12 @@ namespace Grisaia\NovaPoshta\DataAdapters\Result\ScanSheet;
 
 use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
 use Grisaia\NovaPoshta\DataAdapters\Result;
-use Grisaia\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\Exception\BadValueException;
 
 final readonly class DocumentsInsertResult extends Result
 {
     /**
-     * @return ObjectNormalizer<BadFieldValueException>
+     * @return ObjectNormalizer<BadValueException>
      */
     protected function getScanSheetData(): ObjectNormalizer
     {

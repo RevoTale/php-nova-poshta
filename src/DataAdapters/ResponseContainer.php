@@ -4,30 +4,30 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\DataAdapters;
 
-use Grisaia\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\Exception\BadValueException;
 use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
 use Grisaia\NovaPoshta\Normalizer\ValueNormalizer;
 
 final readonly class ResponseContainer extends Entity
 {
     /**
-     * @throws BadFieldValueException
+     * @throws BadValueException
      */
     public function isSuccess(): bool
     {
         return $this->getField('success')->bool();
     }
     /**
-     * @return ValueNormalizer<BadFieldValueException>
-     * @throws BadFieldValueException
+     * @return ValueNormalizer<BadValueException>
+     * @throws BadValueException
      */
     public function getInfo(): ValueNormalizer
     {
         return $this->getField('info');
     }
     /**
-     * @return ValueNormalizer<BadFieldValueException>
-     * @throws BadFieldValueException
+     * @return ValueNormalizer<BadValueException>
+     * @throws BadValueException
      */
     public function getData(): ValueNormalizer
     {
@@ -35,8 +35,8 @@ final readonly class ResponseContainer extends Entity
     }
 
     /**
-     * @return list<ObjectNormalizer<BadFieldValueException>>
-     * @throws BadFieldValueException
+     * @return list<ObjectNormalizer<BadValueException>>
+     * @throws BadValueException
      */
     public function getDataAsObjectList(): array
     {

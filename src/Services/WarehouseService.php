@@ -7,6 +7,7 @@ namespace Grisaia\NovaPoshta\Services;
 use Grisaia\NovaPoshta\DataAdapters\Entities\Location\WarehouseType;
 use Grisaia\NovaPoshta\DataAdapters\Result\WarehousesResult;
 use Grisaia\NovaPoshta\DataAdapters\Result\WarehouseTypesResult;
+use Grisaia\NovaPoshta\Exception\BadValueException;
 use Grisaia\NovaPoshta\Exception\QueryFailed\QueryFailedException;
 use Grisaia\NovaPoshta\MethodProperties\Address\WarehouseListProperties;
 
@@ -29,7 +30,7 @@ final readonly class WarehouseService extends Service
     }
 
     /**
-     * @throws QueryFailedException
+     * @throws QueryFailedException|BadValueException
      */
     public function getWarehouseTypeByRef(string $ref): WarehouseType
     {

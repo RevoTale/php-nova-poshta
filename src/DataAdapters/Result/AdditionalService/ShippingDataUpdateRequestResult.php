@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Grisaia\NovaPoshta\DataAdapters\Result\AdditionalService;
 
 use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
-use Grisaia\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\Exception\BadValueException;
 use Grisaia\NovaPoshta\DataAdapters\Result;
 
 use function count;
@@ -23,13 +23,13 @@ final readonly class ShippingDataUpdateRequestResult extends Result
     }
 
     /**
-     * @return ObjectNormalizer<BadFieldValueException>
+     * @return ObjectNormalizer<BadValueException>
      */
     private function getData(): ObjectNormalizer
     {
         $objects = $this->container->getDataAsObjectList();
         if (0 === count($objects)) {
-            throw new BadFieldValueException('No single object returned', key: 'Data');
+            throw new BadValueException(message:'No single object returned', key: 'Data', value: $objects);
         }
         return $objects[0];
     }

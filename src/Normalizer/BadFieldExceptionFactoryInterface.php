@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\Normalizer;
 
-use Grisaia\NovaPoshta\Exception\BadFieldValueException;
-use Grisaia\NovaPoshta\Exception\BadValueException;
-use Throwable;
+use Grisaia\NovaPoshta\Exception\Validator\BadValueExceptionInterface;
 
 /**
- * @template T of Throwable
+ * @template T of BadValueExceptionInterface
  */
 interface BadFieldExceptionFactoryInterface
 {
-    public function createBadFieldException(string $message, string $key): BadFieldValueException;
-    public function createBadValueException(string $message):BadValueException;
+    /**
+     * @return T
+     */
+    public function createBadValueException(string $message, mixed $value, ?string $key = null): BadValueExceptionInterface;
 
 }

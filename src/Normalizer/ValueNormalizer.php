@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\Normalizer;
 
-use Throwable;
+use Grisaia\NovaPoshta\Exception\Validator\BadValueExceptionInterface;
 
 use function is_array;
 
 /**
- * @template T of Throwable
+ * @template T of BadValueExceptionInterface
  */
 final readonly class ValueNormalizer
 {
@@ -37,7 +37,7 @@ final readonly class ValueNormalizer
             return new ObjectNormalizer($value, exceptionFactory: $this->exceptionFactory);
         }
 
-        throw  $this->exceptionFactory->createBadValueException('Field is not object');
+        throw  $this->exceptionFactory->createBadValueException('Field is not object', value: $value);
     }
 
     /**
@@ -48,7 +48,7 @@ final readonly class ValueNormalizer
     {
         $data = $this->data;
         if (!is_array($data) || !array_is_list($data)) {
-            throw  $this->exceptionFactory->createBadValueException('Field is not list');
+            throw  $this->exceptionFactory->createBadValueException('Field is not list', value: $data);
         }
         $list = [];
         foreach ($data as $item) {
@@ -82,7 +82,7 @@ final readonly class ValueNormalizer
         $list = [];
         $data = $this->data;
         if (!is_array($data) || !array_is_list($data)) {
-            throw  $this->exceptionFactory->createBadValueException('Field is not list');
+            throw  $this->exceptionFactory->createBadValueException('Field is not list', value: $data);
         }
         foreach ($data as $datum) {
             $list[] = new ValueNormalizer($datum, exceptionFactory: $this->exceptionFactory);
@@ -114,7 +114,7 @@ final readonly class ValueNormalizer
     {
         $value = $this->data;
         if (!is_scalar($value) && null !== $value) {
-            throw  $this->exceptionFactory->createBadValueException('Field is not scalar');
+            throw  $this->exceptionFactory->createBadValueException('Field is not scalar', value: $value);
 
         }
         return $value;
@@ -128,7 +128,7 @@ final readonly class ValueNormalizer
     {
         $value = $this->nullableScalar();
         if (null === $value) {
-            throw $this->exceptionFactory->createBadValueException('Field is null');
+            throw $this->exceptionFactory->createBadValueException('Field is null', value: $value);
         }
         return $value;
     }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Grisaia\NovaPoshta\DataAdapters\Entities\Location;
 
 use Grisaia\NovaPoshta\DataAdapters\Entity;
-use Grisaia\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\Exception\BadValueException;
 
 final readonly class SettlementStreetItem extends Entity
 {
@@ -35,27 +35,27 @@ final readonly class SettlementStreetItem extends Entity
     }
 
     /**
-     * @throws BadFieldValueException
+     * @throws BadValueException
      */
     public function getLocationX(): int
     {
         $index = 0;
         $location = $this->getField('Location')->list();
         if (!isset($location[$index])) {
-            throw new BadFieldValueException('Location has incomplete coordinates',key: 'Location');
+            throw new BadValueException('Location has incomplete coordinates', key: 'Location', value: null);
         }
         return $location[$index]->integer();
     }
 
     /**
-     * @throws BadFieldValueException
+     * @throws BadValueException
      */
     public function getLocationY(): int
     {
         $index = 1;
         $location = $this->getField('Location')->list();
         if (!isset($location[$index])) {
-            throw new BadFieldValueException('Location has incomplete coordinates',key: 'Location');
+            throw new BadValueException('Location has incomplete coordinates', key: 'Location', value: null);
         }
         return $location[$index]->integer();
     }

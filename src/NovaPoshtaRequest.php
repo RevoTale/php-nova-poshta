@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Grisaia\NovaPoshta;
 
 use Grisaia\NovaPoshta\DataAdapters\ResponseContainer;
-use Grisaia\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\Exception\BadValueException;
 use Grisaia\NovaPoshta\Exception\QueryFailed\BadBodyException;
 use Grisaia\NovaPoshta\Exception\QueryFailed\CurlException;
 use Grisaia\NovaPoshta\Exception\QueryFailed\ErrorResultException;
@@ -31,7 +31,7 @@ final readonly class NovaPoshtaRequest
     }
 
     /**
-     * @return ObjectNormalizer<BadFieldValueException>
+     * @return ObjectNormalizer<BadValueException>
      * @throws BadBodyException
      * @throws ErrorResultException
      * @throws JsonParseException
@@ -70,7 +70,7 @@ final readonly class NovaPoshtaRequest
                 throw new ErrorResultException($errors, $errorCodes);
             }
         }
-        return new ObjectNormalizer($resp, exceptionFactory: new BadFieldValueExceptionFactory());
+        return new ObjectNormalizer($resp, exceptionFactory: new DefaultValidatorExceptionFactory());
     }
 
     /**

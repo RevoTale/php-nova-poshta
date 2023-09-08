@@ -7,19 +7,19 @@ namespace Grisaia\NovaPoshta\DataAdapters;
 use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
 use Grisaia\NovaPoshta\Normalizer\ValueNormalizer;
 use Grisaia\NovaPoshta\Normalizer\NullableValueNormalizer;
-use Grisaia\NovaPoshta\Exception\BadFieldValueException;
+use Grisaia\NovaPoshta\Exception\BadValueException;
 
 abstract readonly class Entity
 {
     /**
-     * @param ObjectNormalizer<BadFieldValueException> $data
+     * @param ObjectNormalizer<BadValueException> $data
      */
     public function __construct(private ObjectNormalizer $data)
     {
     }
 
     /**
-     * @return ValueNormalizer<BadFieldValueException>
+     * @return ValueNormalizer<BadValueException>
      */
     public function getField(string $key): ValueNormalizer
     {
@@ -34,7 +34,7 @@ abstract readonly class Entity
         return $this->data->getRaw();
     }
     /**
-     * @return NullableValueNormalizer<BadFieldValueException>
+     * @return NullableValueNormalizer<BadValueException>
      */
     public function getNullableField(string $key): NullableValueNormalizer
     {

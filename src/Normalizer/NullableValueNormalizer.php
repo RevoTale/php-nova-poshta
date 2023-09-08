@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\Normalizer;
 
-use Throwable;
+use Grisaia\NovaPoshta\Exception\Validator\BadValueExceptionInterface;
 
 /**
- * @template T of Throwable
+ * @template T of BadValueExceptionInterface
  */
 final readonly class NullableValueNormalizer
 {
@@ -16,7 +16,8 @@ final readonly class NullableValueNormalizer
      */
     public function __construct(
         private ValueNormalizer $data,
-    ) {
+    )
+    {
     }
 
     /**

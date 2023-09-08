@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\Normalizer;
 
-use Throwable;
+use Grisaia\NovaPoshta\Exception\Validator\BadValueExceptionInterface;
 
 /**
- * @template T of Throwable
+ * @template T of BadValueExceptionInterface
  */
 final readonly class ObjectNormalizer
 {
@@ -27,7 +27,7 @@ final readonly class ObjectNormalizer
     public function field(string $key): ValueNormalizer
     {
         if (!isset($this->data[$key])) {
-            throw $this->exceptionFactory->createBadFieldException('Field key not exist',key: $key);
+            throw $this->exceptionFactory->createBadValueException('Field key not exist',key: $key,value: null);
         }
         return new ValueNormalizer($this->data[$key], $this->exceptionFactory);
     }
