@@ -20,4 +20,8 @@ class CityListProperties extends MethodProperties
     {
         $this->setStr('FindByString', $string);
     }
+    public function setSettlementRef(string $ref): void
+    {
+        $this->setStr('SettlementRef', $ref);
+    }
 }
