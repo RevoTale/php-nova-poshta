@@ -7,6 +7,7 @@ namespace Grisaia\NovaPoshta\DataAdapters\Result;
 use Grisaia\NovaPoshta\DataAdapters\Entities\Location\WarehouseItem;
 use Grisaia\NovaPoshta\DataAdapters\ResponseContainer;
 use Grisaia\NovaPoshta\DataAdapters\Result;
+use Grisaia\NovaPoshta\Exception\BadValueException;
 use Grisaia\NovaPoshta\Normalizer\ObjectNormalizer;
 
 final readonly class WarehousesResult extends Result
@@ -20,6 +21,7 @@ final readonly class WarehousesResult extends Result
 
     /**
      * @return list<WarehouseItem>
+     * @throws BadValueException
      */
     public function toArray(): array
     {

@@ -14,7 +14,7 @@ final class DefaultValidatorExceptionFactory implements BadFieldExceptionFactory
 {
     public function createBadValueException(string $message, mixed $value, string|null $key = null): BadValueException
     {
-        return new BadValueException($message, key: $key, value: $value);
+        return new BadValueException($message, value: $value, key: $key);
     }
 
 }

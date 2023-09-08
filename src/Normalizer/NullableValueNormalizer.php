@@ -16,12 +16,11 @@ final readonly class NullableValueNormalizer
      */
     public function __construct(
         private ValueNormalizer $data,
-    )
-    {
+    ) {
     }
 
     /**
-     * @throws T
+     * @throws BadValueExceptionInterface
      */
     public function integer(): ?int
     {
@@ -29,8 +28,9 @@ final readonly class NullableValueNormalizer
         return '' === (string)$value ? null : (int)$value;
     }
 
+
     /**
-     * @throws T
+     * @throws BadValueExceptionInterface
      */
     public function float(): ?float
     {
@@ -38,8 +38,9 @@ final readonly class NullableValueNormalizer
         return '' === (string)$value ? null : (float)$value;
     }
 
+
     /**
-     * @throws T
+     * @throws BadValueExceptionInterface
      */
     public function bool(): ?bool
     {
@@ -49,7 +50,7 @@ final readonly class NullableValueNormalizer
 
 
     /**
-     * @throws T
+     * @throws BadValueExceptionInterface
      */
     public function string(): ?string
     {
