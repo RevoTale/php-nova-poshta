@@ -2,5 +2,8 @@ includes:
     - phar://phpstan.phar/conf/bleedingEdge.neon
 parameters:
     level: max
+    exceptions:
+    		check:
+    			missingCheckedExceptionInThrows: true
     paths:
         - src
