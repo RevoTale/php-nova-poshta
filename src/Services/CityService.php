@@ -25,6 +25,7 @@ final readonly class CityService extends Service
 
     /**
      * Used to convert settlement to city. NovaPoshta has different meaning for it for some reason.
+     * @throws QueryFailedException|CityBySettlementException
      */
     public function getCityBySettlement(string $settlementRef): CityListItem
     {
