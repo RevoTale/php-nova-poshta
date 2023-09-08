@@ -27,7 +27,7 @@ final readonly class CityService extends Service
      * Used to convert settlement to city. NovaPoshta has different meaning for it for some reason.
      * @throws QueryFailedException|CityBySettlementException
      */
-    public function getCityBySettlement(string $settlementRef): CityListItem
+    public function getCityBySettlement(string $settlementRef): ?CityListItem
     {
         $props = new CityListProperties();
         $props->setPagination(page: 1, recordsPerPage: 2);
@@ -35,7 +35,7 @@ final readonly class CityService extends Service
         $cities = $this->getCityList($props)->getCities();
         if (0 === count($cities)) {
 
-            throw new CityBySettlementException('No cities found for settlement');
+           return null;
 
         }
         if (count($cities) > 1) {
