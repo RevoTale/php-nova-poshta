@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\Services;
 
+use Grisaia\NovaPoshta\DataAdapters\Entities\Location\CityListItem;
 use Grisaia\NovaPoshta\DataAdapters\Result\CityListResult;
+use Grisaia\NovaPoshta\Exception\CityBySettlementException;
 use Grisaia\NovaPoshta\Exception\QueryFailed\QueryFailedException;
 use Grisaia\NovaPoshta\MethodProperties\Address\CityListProperties;
+use function count;
 
 final readonly class CityService extends Service
 {
@@ -20,5 +23,25 @@ final readonly class CityService extends Service
         );
     }
 
+    /**
+     * Used to convert settlement to city. NovaPoshta has different meaning for it for some reason.
+     */
+    public function getCityBySettlement(string $settlementRef): CityListItem
+    {
+        $props = new CityListProperties();
+        $props->setPagination(page: 1, recordsPerPage: 2);
+        $props->setSettlementRef($settlementRef);
+        $cities = $this->getCityList($props)->getCities();
+        if (0 === count($cities)) {
 
+            throw new CityBySettlementException('No cities found for settlement');
+
+        }
+        if (count($cities) > 1) {
+            throw new CityBySettlementException('Too much cities found');
+
+        }
+        [$city] = $cities;
+        return $city;
+    }
 }
