@@ -9,6 +9,7 @@ use Grisaia\NovaPoshta\DataAdapters\Result\CityListResult;
 use Grisaia\NovaPoshta\Exception\CityBySettlementException;
 use Grisaia\NovaPoshta\Exception\QueryFailed\QueryFailedException;
 use Grisaia\NovaPoshta\MethodProperties\Address\CityListProperties;
+
 use function count;
 
 final readonly class CityService extends Service
@@ -35,7 +36,7 @@ final readonly class CityService extends Service
         $cities = $this->getCityList($props)->getCities();
         if (0 === count($cities)) {
 
-           return null;
+            return null;
 
         }
         if (count($cities) > 1) {
