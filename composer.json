@@ -4,10 +4,10 @@
   "type": "library",
   "license": "MIT",
   "authors": [{
-    "homepage": "https://github.com/rusted-love",
-    "name": "Liakhovskyi Vladyslav",
-    "email": "vlad@rusted-labs.org"
-  }],
+      "name": "rusted_love",
+      "email": "rusted_love@revotale.com",
+      "homepage": "https://revotale.com"
+    }],
   "keywords": [
     "Нова Пошта",
     "nova poshta",
