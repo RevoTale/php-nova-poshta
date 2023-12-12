@@ -40,10 +40,6 @@
     "phpstan/phpstan": "^1.10",
     "phpmd/phpmd" : "@stable"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/RevoTale/php-nova-poshta.git"
-  },
   "require": {
     "php": ">=8.2",
     "ext-curl": "*",
