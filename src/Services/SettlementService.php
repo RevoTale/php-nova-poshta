@@ -6,9 +6,9 @@ namespace Grisaia\NovaPoshta\Services;
 
 use Grisaia\NovaPoshta\DataAdapters\Result\SearchSettlementResult;
 use Grisaia\NovaPoshta\DataAdapters\Result\SettlementAreaListResult;
+use Grisaia\NovaPoshta\DataAdapters\Result\SettlementListItem;
 use Grisaia\NovaPoshta\DataAdapters\Result\SettlementRegionListResult;
 use Grisaia\NovaPoshta\DataAdapters\Result\SettlementSearchResult;
-use Grisaia\NovaPoshta\DataAdapters\Result\SettlementListItem;
 use Grisaia\NovaPoshta\Exception\QueryFailed\QueryFailedException;
 use Grisaia\NovaPoshta\MethodProperties\Address\SettlementAreaListProperties;
 use Grisaia\NovaPoshta\MethodProperties\Address\SettlementRegionListProperties;
@@ -19,15 +19,26 @@ final readonly class SettlementService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function getSettlementList(int $page, int $limit): SettlementListItem
+    public function getSettlementList(int $page, int $limit, string $regionRef = null, string $areaRef = null, bool $hasWarehouse = null): SettlementListItem
     {
+        $data = [
+            'Page' => $page,
+            'Limit' => $limit,
+        ];
+        if ($regionRef !== null) {
+            $data['RegionRef'] = $regionRef;
+        }
+        if ($areaRef) {
+            $data['AreRef'] = $areaRef;
+        }
+        if ($hasWarehouse !== null) {
+            $data['Warehouse'] = $hasWarehouse;
+        }
         return new SettlementListItem(
-            $this->api->fetch('AddressGeneral', 'getSettlements', [
-                'Page' => $page,
-                'Limit' => $limit,
-            ])
+            $this->api->fetch('AddressGeneral', 'getSettlements', $data)
         );
     }
+
     /**
      * @throws QueryFailedException
      */
@@ -36,7 +47,8 @@ final readonly class SettlementService extends Service
         string $settlementRef,
         int    $limit,
         int    $page = 1
-    ): SearchSettlementResult {
+    ): SearchSettlementResult
+    {
         return new SearchSettlementResult($this->api->fetch('Address', 'searchSettlementStreets', [
             'StreetName' => $streetName,
             'SettlementRef' => $settlementRef,
