@@ -49,17 +49,17 @@ final readonly class SettlementItem extends Entity
 
     public function getAreaDescriptionRu(): string
     {
-        return $this->getField('AreaDescription')->string();
-    }
-
-    public function getDescriptionTranslit(): string
-    {
-        return $this->getField('AreaDescription')->string();
+        return $this->getField('RegionsDescriptionRu')->string();
     }
 
     public function getAreaDescriptionTranslit(): string
     {
         return $this->getField('AreaDescriptionTranslit')->string();
+    }
+
+    public function getDescriptionTranslit(): string
+    {
+        return $this->getField('DescriptionTranslit')->string();
     }
 
     public function getSettlementTypeDescription(): string
@@ -76,6 +76,6 @@ final readonly class SettlementItem extends Entity
 
     public function getSettlementTypeDescriptionTranslit(): string
     {
-        return $this->getField('SettlementTypeDescriptionRu')->string();
+        return $this->getField('RegionsDescriptionTranslit')->string();
     }
 }
