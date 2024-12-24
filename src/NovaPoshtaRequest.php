@@ -64,23 +64,39 @@ final readonly class NovaPoshtaRequest
                 $this->logger->error('NovaPoshta logical error', [
                     'errors' => $errors,
                 ]);
-                foreach ($errorCodes as $code) {
-                    if (!is_string($code)) {
-                        throw new BadBodyException('Error code is not string');
-                    }
-                }
-                foreach ($errors as $code) {
-                    if (!is_string($code)) {
-                        throw new BadBodyException('Error is not string');
-                    }
-                }
-                /**
-                 * @var array<string|int,string> $errors
-                 */
+                $this->validationErrorCodes($errorCodes);
+                $this->validationErrors($errors);
                 throw new ErrorResultException($errors, $errorCodes);
             }
         }
         return new ObjectNormalizer($resp, exceptionFactory: new DefaultValidatorExceptionFactory());
+    }
+
+    /**
+     * @throws BadBodyException
+     * @var array<string|int,mixed> $errorCodes
+     * @phpstan-assert array<string|int,string> $object
+     */
+    private function validationErrorCodes(array $errorCodes): void
+    {
+        foreach ($errorCodes as $code) {
+            if (!is_string($code)) {
+                throw new BadBodyException('Error code is not string');
+            }
+        }
+    }
+    /**
+     * @throws BadBodyException
+     * @var array<string|int,mixed> $errors
+     * @phpstan-assert array<string|int,string> $object
+     */
+    private function validationErrors(array $errors): void
+    {
+        foreach ($errors as $error) {
+            if (!is_string($error)) {
+                throw new BadBodyException('Error not string');
+            }
+        }
     }
 
     /**

@@ -52,8 +52,8 @@ final readonly class ValueNormalizer
         }
         $list = [];
         foreach ($data as $index=>$item) {
-            if (!is_array($data)) {
-                throw  $this->exceptionFactory->createBadValueException('Item '.$index.' is not array', value: $data);
+            if (!is_array($item)) {
+                throw $this->exceptionFactory->createBadValueException('Item '.$index.' is not array', value: $data);
             }
             $list[] = new ObjectNormalizer($item, exceptionFactory: $this->exceptionFactory);
         }
