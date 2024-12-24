@@ -51,7 +51,10 @@ final readonly class ValueNormalizer
             throw  $this->exceptionFactory->createBadValueException('Field is not list', value: $data);
         }
         $list = [];
-        foreach ($data as $item) {
+        foreach ($data as $index=>$item) {
+            if (!is_array($data)) {
+                throw  $this->exceptionFactory->createBadValueException('Item '.$index.' is not array', value: $data);
+            }
             $list[] = new ObjectNormalizer($item, exceptionFactory: $this->exceptionFactory);
         }
         return $list;

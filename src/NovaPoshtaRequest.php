@@ -64,6 +64,16 @@ final readonly class NovaPoshtaRequest
                 $this->logger->error('NovaPoshta logical error', [
                     'errors' => $errors,
                 ]);
+                foreach ($errorCodes as $code) {
+                    if (!is_string($code)) {
+                        throw new BadBodyException('Error code is not string');
+                    }
+                }
+                foreach ($errors as $code) {
+                    if (!is_string($code)) {
+                        throw new BadBodyException('Error is not string');
+                    }
+                }
                 /**
                  * @var array<string|int,string> $errors
                  */
