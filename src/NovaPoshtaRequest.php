@@ -48,9 +48,8 @@ final readonly class NovaPoshtaRequest
             ]);
             throw new JsonParseException($result, $e);
         }
-        if (!is_array($resp)) {
-            throw new BadBodyException('Response is not array');
-        }
+        $this->validateRespKeyed($resp);
+
         if (isset($resp['errors'])) {
             $errors = $resp['errors'];
             if (!is_array($errors)) {
@@ -74,8 +73,25 @@ final readonly class NovaPoshtaRequest
 
     /**
      * @throws BadBodyException
-     * @var array<string|int,mixed> $errorCodes
-     * @phpstan-assert array<string|int,string> $object
+     * @param mixed $resp
+     * @phpstan-assert array<string,mixed> $resp
+     */
+    private function validateRespKeyed(mixed $resp): void
+    {
+        if (!is_array($resp)) {
+            throw new BadBodyException('Response is not array');
+        }
+        foreach (array_keys($resp) as $key) {
+            if (!is_string($key)) {
+                throw new BadBodyException('Response key '.$key.' is not string');
+            }
+        }
+    }
+
+    /**
+     * @throws BadBodyException
+     * @param array<string|int,mixed> $errorCodes
+     * @phpstan-assert array<string|int,string> $errorCodes
      */
     private function validationErrorCodes(array $errorCodes): void
     {
@@ -87,8 +103,8 @@ final readonly class NovaPoshtaRequest
     }
     /**
      * @throws BadBodyException
-     * @var array<string|int,mixed> $errors
-     * @phpstan-assert array<string|int,string> $object
+     * @param  array<string|int,mixed> $errors
+     * @phpstan-assert array<string|int,string> $errors
      */
     private function validationErrors(array $errors): void
     {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Grisaia\NovaPoshta\Normalizer;
 
+use Grisaia\NovaPoshta\Exception\QueryFailed\BadBodyException;
 use Grisaia\NovaPoshta\Exception\Validator\BadValueExceptionInterface;
 
 use function is_array;
@@ -51,13 +52,28 @@ final readonly class ValueNormalizer
             throw  $this->exceptionFactory->createBadValueException('Field is not list', value: $data);
         }
         $list = [];
-        foreach ($data as $index=>$item) {
+        foreach ($data as $index => $item) {
             if (!is_array($item)) {
                 throw $this->exceptionFactory->createBadValueException('Item '.$index.' is not array', value: $data);
             }
+            $this->validateRespKeyed($item);
             $list[] = new ObjectNormalizer($item, exceptionFactory: $this->exceptionFactory);
         }
         return $list;
+    }
+
+    /**
+     * @param array<string|int,mixed> $item
+     * @phpstan-assert array<string,mixed> $item
+     * @throws BadValueExceptionInterface
+     */
+    private function validateRespKeyed(mixed $item): void
+    {
+        foreach (array_keys($item) as $key) {
+            if (!is_string($key)) {
+                throw  $this->exceptionFactory->createBadValueException('Expected object key '.$key.' to be a string', value: $key);
+            }
+        }
     }
 
     /**
