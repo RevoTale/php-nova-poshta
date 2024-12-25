@@ -62,6 +62,7 @@ final readonly class ValueNormalizer
         return $list;
     }
 
+
     /**
      * @param array<string|int,mixed> $item
      * @phpstan-assert array<string,mixed> $item
