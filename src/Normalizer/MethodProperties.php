@@ -21,7 +21,7 @@ abstract class MethodProperties
 
     protected function setInt(string $key, int $value): void
     {
-        $this->data[$key] = $value;
+        $this->data[$key] = (string)$value; //Convert to string because NovaPoshta API doesn't accept integers for "Page" parameter Since 25 Mar 2025
     }
 
     protected function setBool(string $key, bool $value): void
