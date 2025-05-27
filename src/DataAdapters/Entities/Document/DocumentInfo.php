@@ -8,9 +8,6 @@ use Grisaia\NovaPoshta\DataAdapters\Enums\DocumentStatusCode;
 use Grisaia\NovaPoshta\Exception\NoSeatsAmountException;
 use Grisaia\NovaPoshta\DataAdapters\Entity;
 
-/**
- * @internal
- */
 abstract readonly class DocumentInfo extends Entity
 {
     /**
