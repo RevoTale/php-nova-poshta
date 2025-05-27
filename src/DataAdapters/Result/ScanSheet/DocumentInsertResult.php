@@ -7,9 +7,7 @@ namespace Grisaia\NovaPoshta\DataAdapters\Result\ScanSheet;
 use Grisaia\NovaPoshta\DataAdapters\Entities\Traits\RefTrait;
 use Grisaia\NovaPoshta\DataAdapters\Entity;
 
-/**
- * @internal
- */
+
 abstract readonly class DocumentInsertResult extends Entity
 {
     use RefTrait;
