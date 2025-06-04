@@ -48,6 +48,7 @@ class ChangeEWProperties extends AdditionalServiceSaveProperties
     {
         $this->setStr('RecipientPhone', $phone);
     }
+
     public function setPaymentMethod(PaymentMethod $method): void
     {
         $this->setStr('PaymentMethod', $method->value);

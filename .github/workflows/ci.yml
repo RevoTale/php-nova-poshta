@@ -32,6 +32,16 @@ jobs:
         prefer-lowest: 0
     - name: Run test suite
       run: composer run-script phpmd
+  Rector:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: RevoTale/php-composer-testing-action@v1.0.0
+      with:
+        php-version: 8.4
+        prefer-lowest: 0
+    - name: Run test suite
+      run: composer run-script rector:test
   PHPStan:
     runs-on: ubuntu-latest
     steps:

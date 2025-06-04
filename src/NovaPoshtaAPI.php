@@ -24,6 +24,7 @@ use function is_bool;
 class NovaPoshtaAPI implements LoggerAwareInterface
 {
     private LoggerInterface $logger;
+
     private const  TIME_ZONE = TimeZone::EuropeKyiv;
 
     final public static function getTimeZone(): TimeZone
@@ -55,12 +56,13 @@ class NovaPoshtaAPI implements LoggerAwareInterface
                 'apiKey' => $this->apiKey,
                 'modelName' => $model,
                 'calledMethod' => $method,
-                'methodProperties' => empty($params) ? new stdClass() : $params,
+                'methodProperties' => $params === [] ? new stdClass() : $params,
             ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
             $logger->info('Requested NovaPoshta service', compact('model', 'method', 'params'));
-        } catch (JsonException $e) {
-            throw new JsonEncodeException($e);
+        } catch (JsonException $jsonException) {
+            throw new JsonEncodeException($jsonException);
         }
+
         $request = new NovaPoshtaRequest(payload: $payload, logger: $logger, timeout: $this->timeout);
         return $request->handle();
     }
@@ -71,7 +73,7 @@ class NovaPoshtaAPI implements LoggerAwareInterface
     public function fetchFile(string $path, int $timeout): string
     {
         $curl = curl_init(
-            "https://my.novaposhta.ua/$path/apiKey/$this->apiKey"
+            sprintf('https://my.novaposhta.ua/%s/apiKey/%s', $path, $this->apiKey)
         );
         if (false === $curl) {
             throw new CurlException('Failed to initialize curl connectivity', 0);
@@ -91,6 +93,7 @@ class NovaPoshtaAPI implements LoggerAwareInterface
             ]);
             throw new CurlException($err, $errNo);
         }
+
         curl_close($curl);
         return $result;
     }

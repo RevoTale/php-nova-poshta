@@ -26,7 +26,8 @@
   "scripts": {
     "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon",
     "phpmd": "vendor/bin/phpmd ./src/ text phpmd.ruleset.xml",
-
+    "rector:fix": "vendor/bin/rector process",
+    "rector:test": "vendor/bin/rector process --dry-run",
     "phpunit": "vendor/bin/phpunit",
     "test": [
       "@phpstan",
@@ -34,7 +35,7 @@
       "@phpunit"
     ],
     "fix": [
-
+      "@rector:fix"
     ]
   },
   "prefer-stable": true,
@@ -42,7 +43,9 @@
   "require-dev": {
     "phpstan/phpstan": "^2.0",
     "phpmd/phpmd" : "@stable",
-    "phpunit/phpunit": "^12.1"
+    "phpunit/phpunit": "^12.1",
+    "rector/rector": "^2.0"
+
   },
   "require": {
     "php": "^8.3",

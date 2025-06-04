@@ -20,6 +20,6 @@ final class DocumentNotExists extends Exception
     {
         $this->tracking = $tracking;
         $status = $tracking->getStatusDescription();
-        parent::__construct("ТТН не существует $status");
+        parent::__construct('ТТН не существует ' . $status);
     }
 }

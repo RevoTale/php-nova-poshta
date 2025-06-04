@@ -44,6 +44,7 @@ final readonly class SettlementStreetItem extends Entity
         if (!isset($location[$index])) {
             throw new BadValueException('Location has incomplete coordinates', key: 'Location', value: null);
         }
+
         return $location[$index]->integer();
     }
 
@@ -57,6 +58,7 @@ final readonly class SettlementStreetItem extends Entity
         if (!isset($location[$index])) {
             throw new BadValueException('Location has incomplete coordinates', key: 'Location', value: null);
         }
+
         return $location[$index]->integer();
     }
 

@@ -15,7 +15,6 @@ use function is_array;
 final readonly class ValueNormalizer
 {
     /**
-     * @param mixed $data
      * @param BadFieldExceptionFactoryInterface<T> $exceptionFactory
      */
     public function __construct(
@@ -51,14 +50,17 @@ final readonly class ValueNormalizer
         if (!is_array($data) || !array_is_list($data)) {
             throw  $this->exceptionFactory->createBadValueException('Field is not list', value: $data);
         }
+
         $list = [];
         foreach ($data as $index => $item) {
             if (!is_array($item)) {
                 throw $this->exceptionFactory->createBadValueException('Item '.$index.' is not array', value: $data);
             }
+
             $this->validateRespKeyed($item);
             $list[] = new ObjectNormalizer($item, exceptionFactory: $this->exceptionFactory);
         }
+
         return $list;
     }
 
@@ -104,6 +106,7 @@ final readonly class ValueNormalizer
         if (!is_array($data) || !array_is_list($data)) {
             throw  $this->exceptionFactory->createBadValueException('Field is not list', value: $data);
         }
+
         foreach ($data as $datum) {
             $list[] = new ValueNormalizer($datum, exceptionFactory: $this->exceptionFactory);
         }
@@ -137,6 +140,7 @@ final readonly class ValueNormalizer
             throw  $this->exceptionFactory->createBadValueException('Field is not scalar', value: $value);
 
         }
+
         return $value;
     }
 
@@ -150,6 +154,7 @@ final readonly class ValueNormalizer
         if (null === $value) {
             throw $this->exceptionFactory->createBadValueException('Field is null', value: $value);
         }
+
         return $value;
     }
 

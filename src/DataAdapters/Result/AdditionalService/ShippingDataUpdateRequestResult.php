@@ -28,9 +28,10 @@ final readonly class ShippingDataUpdateRequestResult extends Result
     private function getData(): ObjectNormalizer
     {
         $objects = $this->container->getDataAsObjectList();
-        if (0 === count($objects)) {
+        if ([] === $objects) {
             throw new BadValueException(message:'No single object returned', key: 'Data', value: $objects);
         }
+
         return $objects[0];
     }
 }

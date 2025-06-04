@@ -17,7 +17,7 @@ final readonly class SearchSettlementResult extends Result
     {
         $addresses = ($this->container->getDataAsObjectList()[0])->field('Addresses')->objectList();
         return array_map(
-            static fn (ObjectNormalizer $data) => new SettlementStreetItem($data),
+            static fn (ObjectNormalizer $data): \Grisaia\NovaPoshta\DataAdapters\Entities\Location\SettlementStreetItem => new SettlementStreetItem($data),
             $addresses
         );
     }

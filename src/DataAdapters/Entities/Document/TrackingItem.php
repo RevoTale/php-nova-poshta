@@ -19,6 +19,7 @@ use UnexpectedValueException;
 final readonly class TrackingItem extends DocumentInfo
 {
     public const DOC_TYPE_CARGO_RETURN = 'CargoReturn';
+
     public function getStatusCode(): DocumentStatusCode
     {
         return DocumentStatusCode::from($this->getNullableField('StatusCode')->integer()
@@ -61,8 +62,8 @@ final readonly class TrackingItem extends DocumentInfo
     {
         try {
             return new DateTime($this->getScanDateStr(), NovaPoshtaAPI::getTimeZone()->toNativeDateTimeZone());
-        } catch (Exception $e) {
-            throw new DateParseException($e);
+        } catch (Exception $exception) {
+            throw new DateParseException($exception);
         }
     }
 
@@ -115,13 +116,13 @@ final readonly class TrackingItem extends DocumentInfo
     public function getTrackingUpdateTime(): ?Timestamp
     {
         $date = $this->getNullableField('TrackingUpdateDate')->string();
-        return $date ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
+        return $date !== null && $date !== '' && $date !== '0' ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
     }
 
     public function getActualDeliveryTime(): ?Timestamp
     {
         $date = $this->getNullableField('ActualDeliveryDate')->string();
-        return $date ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
+        return $date !== null && $date !== '' && $date !== '0' ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
     }
 
     public function getStatusDescription(): string
@@ -146,7 +147,7 @@ final readonly class TrackingItem extends DocumentInfo
 
     public function getRedeliveryNumber(): ?string
     {
-        return $this->getNullableField('RedeliveryNum')->string() ?: null;
+        return !in_array($this->getNullableField('RedeliveryNum')->string(), [null, '', '0'], true) ? $this->getNullableField('RedeliveryNum')->string() : null;
     }
 
     public function getStoragePrice(): ?float

@@ -16,7 +16,7 @@ final readonly class SettlementAreaListResult extends Result
     public function getAreas(): array
     {
         return array_map(
-            static fn (ObjectNormalizer $decorator) => new SettlementAreaListItem($decorator),
+            static fn (ObjectNormalizer $decorator): \Grisaia\NovaPoshta\DataAdapters\Entities\Location\SettlementAreaListItem => new SettlementAreaListItem($decorator),
             $this->container->getDataAsObjectList()
         );
     }
