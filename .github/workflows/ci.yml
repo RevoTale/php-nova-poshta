@@ -16,17 +16,53 @@ jobs:
     name: PHP ${{ matrix.php }} - ${{ matrix.prefer-lowest == 1 && 'Lowest' || 'Latest' }} Dependencies
     steps:
     - uses: actions/checkout@v4
-    - uses: RevoTale/php-composer-testing-action@v1.0.0
+    - uses: RevoTale/php-composer-testing-action@v1
       with:
         php-version: ${{ matrix.php }}
         prefer-lowest: ${{ matrix.prefer-lowest }}
     - name: Run test suite
-      run: composer run-script phpunit
+      run: composer run-script phpua# .github/workflows/reusable.yml
+name: PHP Composer package testing action
+description: GitHub CI Action to simplify the process of testing composer packages for PHP.
+inputs:
+  php-version:
+    required: true
+    type: string
+  prefer-lowest:
+    required: true
+    type: string
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ inputs.php-version }}
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+      shell: bash
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v4
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-${{ inputs.php-version }}
+    - name: Install dependencies
+      run: |
+        if [ "${{ inputs.prefer-lowest }}" = "1" ]; then
+          composer update --prefer-lowest --prefer-dist --no-progress
+        else
+          composer install --prefer-dist --no-progress
+        fi
+      shell: bashnit
   PHPMD:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: RevoTale/php-composer-testing-action@v1.0.0
+    - uses: RevoTale/php-composer-testing-action@v1
       with:
         php-version: 8.4
         prefer-lowest: 0
@@ -36,7 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: RevoTale/php-composer-testing-action@v1.0.0
+    - uses: RevoTale/php-composer-testing-action@v1
       with:
         php-version: 8.4
         prefer-lowest: 0
@@ -46,7 +82,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: RevoTale/php-composer-testing-action@v1.0.0
+    - uses: RevoTale/php-composer-testing-action@v1
       with:
         php-version: 8.4
         prefer-lowest: 0
