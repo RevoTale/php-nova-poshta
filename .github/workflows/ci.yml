@@ -41,7 +41,7 @@ jobs:
     - name: Run test suite
       run: composer run-script phpstan
   TestFinalization:
-    needs: [ PHPUnit, Rector, PHPStan ]
+    needs: [ PHPUnit, PHPMD, PHPStan ]
     runs-on: ubuntu-latest
     steps:
       - name: Success
