@@ -19,7 +19,7 @@ final readonly class SettlementService extends Service
     /**
      * @throws QueryFailedException
      */
-    public function getSettlementList(int $page, int $limit, string $regionRef = null, string $areaRef = null, bool $hasWarehouse = null): SettlementListItem
+    public function getSettlementList(int $page, int $limit, ?string $regionRef = null, ?string $areaRef = null, ?bool $hasWarehouse = null): SettlementListItem
     {
         $data = [
             'Page' => $page,
@@ -47,8 +47,7 @@ final readonly class SettlementService extends Service
         string $settlementRef,
         int    $limit,
         int    $page = 1
-    ): SearchSettlementResult
-    {
+    ): SearchSettlementResult {
         return new SearchSettlementResult($this->api->fetch('Address', 'searchSettlementStreets', [
             'StreetName' => $streetName,
             'SettlementRef' => $settlementRef,

@@ -18,16 +18,20 @@
   ],
   "autoload": {
     "psr-4": {
-      "Grisaia\\NovaPoshta\\": "src"
+      "Grisaia\\NovaPoshta\\": "src",
+      "RevoTale\\NovaPoshta\\Tests\\": "./tests"
+
     }
   },
   "scripts": {
     "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon",
     "phpmd": "vendor/bin/phpmd ./src/ text phpmd.ruleset.xml",
     "php-cs": "vendor/bin/php-cs-fixer fix",
+    "phpunit": "vendor/bin/phpunit",
     "test": [
       "@phpstan",
-      "@phpmd"
+      "@phpmd",
+      "@phpunit"
     ],
     "fix": [
       "@php-cs"
@@ -37,11 +41,12 @@
   "minimum-stability": "stable",
   "require-dev": {
     "friendsofphp/php-cs-fixer": ">=3.6",
-    "phpstan/phpstan": "^1.10 || ^2.0",
-    "phpmd/phpmd" : "@stable"
+    "phpstan/phpstan": "^2.0",
+    "phpmd/phpmd" : "@stable",
+    "phpunit/phpunit": "^12.1"
   },
   "require": {
-    "php": ">=8.2",
+    "php": "^8.3",
     "ext-curl": "*",
     "ext-json": "*",
     "grisaia/time": "^0.2.0"
