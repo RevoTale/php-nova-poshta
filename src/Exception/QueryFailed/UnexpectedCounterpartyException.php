@@ -13,6 +13,6 @@ final class UnexpectedCounterpartyException extends UnexpectedValueException
 {
     public function __construct(string $type)
     {
-        parent::__construct("Unexpected counterparty '$type'");
+        parent::__construct(sprintf("Unexpected counterparty '%s'", $type));
     }
 }

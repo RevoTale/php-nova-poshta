@@ -19,13 +19,12 @@ final readonly class SettlementSearchResult extends Result
     {
         $addresses = (($this->container->getDataAsObjectList()[0]))->field('Addresses')->objectList();
         return array_map(
-            static fn (ObjectNormalizer $data) => new SettlementSearchItem($data),
+            static fn (ObjectNormalizer $data): \Grisaia\NovaPoshta\DataAdapters\Entities\Location\SettlementSearchItem => new SettlementSearchItem($data),
             $addresses
         );
     }
 
     /**
-     * @return int
      * @throws BadValueException
      */
     public function getTotalCount(): int

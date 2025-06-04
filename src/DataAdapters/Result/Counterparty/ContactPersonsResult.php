@@ -15,6 +15,6 @@ final readonly class ContactPersonsResult extends Result
      */
     public function getContactPersons(): array
     {
-        return array_map(static fn (ObjectNormalizer $data) => new ContactPerson($data), $this->container->getDataAsObjectList());
+        return array_map(static fn (ObjectNormalizer $data): \Grisaia\NovaPoshta\DataAdapters\Entities\Counterparty\ContactPerson => new ContactPerson($data), $this->container->getDataAsObjectList());
     }
 }

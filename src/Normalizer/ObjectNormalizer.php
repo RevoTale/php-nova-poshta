@@ -30,8 +30,10 @@ final readonly class ObjectNormalizer
         if (!isset($this->data[$key])) {
             throw $this->exceptionFactory->createBadValueException('Field key not exist', key: $key, value: null);
         }
+
         return new ValueNormalizer($this->data[$key], $this->exceptionFactory);
     }
+
     /**
      * @return NullableValueNormalizer<T>
      * @throws T

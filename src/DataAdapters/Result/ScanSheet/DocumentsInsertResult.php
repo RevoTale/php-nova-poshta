@@ -13,7 +13,7 @@ final readonly class DocumentsInsertResult extends Result
     /**
      * @return ObjectNormalizer<BadValueException>
      */
-    protected function getScanSheetData(): ObjectNormalizer
+    private function getScanSheetData(): ObjectNormalizer
     {
         return $this->container->getDataAsObjectList()[0];
     }
@@ -28,7 +28,7 @@ final readonly class DocumentsInsertResult extends Result
      */
     public function isScanSheetOk(): bool
     {
-        return !empty($this->getScanSheetRef());
+        return !in_array($this->getScanSheetRef(), [null, '', '0'], true);
     }
 
     public function getScanSheetNumber(): ?string
@@ -43,7 +43,7 @@ final readonly class DocumentsInsertResult extends Result
     {
         $data =  $this->getScanSheetData()->field('Success')->objectList();
         return (array_map(
-            static fn (ObjectNormalizer $doc) => new DocumentInsertSuccess($doc),
+            static fn (ObjectNormalizer $doc): \Grisaia\NovaPoshta\DataAdapters\Result\ScanSheet\DocumentInsertSuccess => new DocumentInsertSuccess($doc),
             $data
         ));
     }
@@ -55,7 +55,7 @@ final readonly class DocumentsInsertResult extends Result
     {
         $data =  (($this->getScanSheetData()->field('Data')->object()))->field('Errors')->objectList();
         return array_map(
-            static fn (ObjectNormalizer $error) => new DocumentInsertError($error),
+            static fn (ObjectNormalizer $error): \Grisaia\NovaPoshta\DataAdapters\Result\ScanSheet\DocumentInsertError => new DocumentInsertError($error),
             $data
         );
     }
@@ -67,7 +67,7 @@ final readonly class DocumentsInsertResult extends Result
     {
         $data =  (($this->getScanSheetData()->field('Data')->object()))->field('Warnings')->objectList();
         return array_map(
-            static fn (ObjectNormalizer $error) => new DocumentInsertWarning($error),
+            static fn (ObjectNormalizer $error): \Grisaia\NovaPoshta\DataAdapters\Result\ScanSheet\DocumentInsertWarning => new DocumentInsertWarning($error),
             $data
         );
     }

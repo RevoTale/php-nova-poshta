@@ -8,7 +8,7 @@ use Throwable;
 
 final class JsonParseException extends QueryFailedException
 {
-    protected string $payload;
+    private string $payload;
 
     public function getPayload(): string
     {

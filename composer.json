@@ -26,7 +26,8 @@
   "scripts": {
     "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon",
     "phpmd": "vendor/bin/phpmd ./src/ text phpmd.ruleset.xml",
-    "php-cs": "vendor/bin/php-cs-fixer fix",
+    "rector:fix": "vendor/bin/rector process",
+    "rector:test": "vendor/bin/rector process --dry-run",
     "phpunit": "vendor/bin/phpunit",
     "test": [
       "@phpstan",
@@ -34,21 +35,23 @@
       "@phpunit"
     ],
     "fix": [
-      "@php-cs"
+      "@rector:fix"
     ]
   },
   "prefer-stable": true,
   "minimum-stability": "stable",
   "require-dev": {
-    "friendsofphp/php-cs-fixer": ">=3.6",
     "phpstan/phpstan": "^2.0",
     "phpmd/phpmd" : "@stable",
-    "phpunit/phpunit": "^12.1"
+    "phpunit/phpunit": "^12.1",
+    "rector/rector": "^2.0"
+
   },
   "require": {
     "php": "^8.3",
     "ext-curl": "*",
     "ext-json": "*",
-    "grisaia/time": "^0.2.0"
+    "grisaia/time": "^0.2.0",
+    "psr/log":"^3.0"
   }
 }

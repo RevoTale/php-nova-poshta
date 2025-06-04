@@ -33,16 +33,19 @@ final readonly class CityService extends Service
         $props = new CityListProperties();
         $props->setPagination(page: 1, recordsPerPage: 2);
         $props->setSettlementRef($settlementRef);
+
         $cities = $this->getCityList($props)->getCities();
-        if (0 === count($cities)) {
+        if ([] === $cities) {
 
             return null;
 
         }
+
         if (count($cities) > 1) {
             throw new CityBySettlementException('Too much cities found');
 
         }
+
         [$city] = $cities;
         return $city;
     }

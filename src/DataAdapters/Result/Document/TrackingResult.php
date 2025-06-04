@@ -15,6 +15,6 @@ final readonly class TrackingResult extends Result
      */
     public function getDocumentsTracking(): array
     {
-        return array_map(static fn (ObjectNormalizer $doc) => new TrackingItem($doc), $this->container->getDataAsObjectList());
+        return array_map(static fn (ObjectNormalizer $doc): \Grisaia\NovaPoshta\DataAdapters\Entities\Document\TrackingItem => new TrackingItem($doc), $this->container->getDataAsObjectList());
     }
 }

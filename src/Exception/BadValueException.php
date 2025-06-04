@@ -13,10 +13,12 @@ class BadValueException extends UnexpectedValueException implements BadValueExce
     {
         parent::__construct($message);
     }
+
     public function getValidatedFieldKey(): ?string
     {
         return $this->key;
     }
+
     public function getValidatedValue(): mixed
     {
         return $this->value;

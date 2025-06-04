@@ -16,7 +16,7 @@ final readonly class SettlementRegionListResult extends Result
     public function getRegions(): array
     {
         return array_map(
-            static fn (ObjectNormalizer $decorator) => new SettlementRegionItem($decorator),
+            static fn (ObjectNormalizer $decorator): \Grisaia\NovaPoshta\DataAdapters\Entities\Location\SettlementRegionItem => new SettlementRegionItem($decorator),
             $this->container->getDataAsObjectList()
         );
     }

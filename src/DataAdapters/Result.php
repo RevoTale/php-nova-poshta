@@ -9,9 +9,6 @@ namespace Grisaia\NovaPoshta\DataAdapters;
  */
 abstract readonly class Result
 {
-    /**
-     * @param ResponseContainer $container
-     */
     public function __construct(protected ResponseContainer $container)
     {
     }

@@ -18,7 +18,7 @@ final readonly class WarehouseTypesResult extends Result
     public function toArray(): array
     {
         return array_map(
-            static fn (ObjectNormalizer $data) => new WarehouseType($data),
+            static fn (ObjectNormalizer $data): \Grisaia\NovaPoshta\DataAdapters\Entities\Location\WarehouseType => new WarehouseType($data),
             $this->container->getDataAsObjectList()
         );
     }

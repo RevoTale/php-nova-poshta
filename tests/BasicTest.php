@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 final  class BasicTest extends TestCase
 {
-    public function testRequest()
+    public function testRequest(): void
     {
         $api = new NovaPoshtaAPI('');
         $result = $api->getService(SettlementService::class)->getSettlementList(1, 10);

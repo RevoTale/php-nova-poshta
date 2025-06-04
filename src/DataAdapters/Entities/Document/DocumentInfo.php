@@ -22,5 +22,6 @@ abstract readonly class DocumentInfo extends Entity
 
         return $seats;
     }
+
     abstract public function getStatusCode(): DocumentStatusCode;
 }

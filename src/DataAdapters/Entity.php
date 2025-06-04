@@ -33,6 +33,7 @@ abstract readonly class Entity
     {
         return $this->data->getRaw();
     }
+
     /**
      * @return NullableValueNormalizer<BadValueException>
      */

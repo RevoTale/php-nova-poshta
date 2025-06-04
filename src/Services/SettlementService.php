@@ -28,12 +28,15 @@ final readonly class SettlementService extends Service
         if ($regionRef !== null) {
             $data['RegionRef'] = $regionRef;
         }
-        if ($areaRef) {
+
+        if ($areaRef !== null && $areaRef !== '' && $areaRef !== '0') {
             $data['AreRef'] = $areaRef;
         }
+
         if ($hasWarehouse !== null) {
             $data['Warehouse'] = $hasWarehouse;
         }
+
         return new SettlementListItem(
             $this->api->fetch('AddressGeneral', 'getSettlements', $data)
         );

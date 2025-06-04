@@ -41,13 +41,14 @@ final readonly class NovaPoshtaRequest
 
         try {
             $resp = json_decode($result, true, 512, JSON_THROW_ON_ERROR);
-        } catch (JsonException $e) {
+        } catch (JsonException $jsonException) {
             $this->logger->critical('Failed to decode response.', [
                 'output' => $result,
-                'jsonMsg' => $e->getMessage(),
+                'jsonMsg' => $jsonException->getMessage(),
             ]);
-            throw new JsonParseException($result, $e);
+            throw new JsonParseException($result, $jsonException);
         }
+
         $this->validateRespKeyed($resp);
 
         if (isset($resp['errors'])) {
@@ -55,11 +56,13 @@ final readonly class NovaPoshtaRequest
             if (!is_array($errors)) {
                 throw new BadBodyException('Errors is not array');
             }
+
             $errorCodes = $resp['errorCodes'];
             if (!is_array($errorCodes) || !array_is_list($errorCodes)) {
                 throw new BadBodyException('Error codes is not list');
             }
-            if (!empty($errors)) {
+
+            if ($errors !== []) {
                 $this->logger->error('NovaPoshta logical error', [
                     'errors' => $errors,
                 ]);
@@ -68,12 +71,12 @@ final readonly class NovaPoshtaRequest
                 throw new ErrorResultException($errors, $errorCodes);
             }
         }
+
         return new ObjectNormalizer($resp, exceptionFactory: new DefaultValidatorExceptionFactory());
     }
 
     /**
      * @throws BadBodyException
-     * @param mixed $resp
      * @phpstan-assert array<string,mixed> $resp
      */
     private function validateRespKeyed(mixed $resp): void
@@ -81,6 +84,7 @@ final readonly class NovaPoshtaRequest
         if (!is_array($resp)) {
             throw new BadBodyException('Response is not array');
         }
+
         foreach (array_keys($resp) as $key) {
             if (!is_string($key)) {
                 throw new BadBodyException('Response key '.$key.' is not string');
@@ -101,6 +105,7 @@ final readonly class NovaPoshtaRequest
             }
         }
     }
+
     /**
      * @throws BadBodyException
      * @param  array<string|int,mixed> $errors
@@ -142,6 +147,7 @@ final readonly class NovaPoshtaRequest
             ]);
             throw new CurlException($err, $errNo);
         }
+
         $this->logger->debug('NovaPoshta service responded', ['output' => $result]);
 
         return new ResponseContainer($this->validateResponse($result));

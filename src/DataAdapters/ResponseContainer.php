@@ -17,6 +17,7 @@ final readonly class ResponseContainer extends Entity
     {
         return $this->getField('success')->bool();
     }
+
     /**
      * @return ValueNormalizer<BadValueException>
      * @throws BadValueException
@@ -25,6 +26,7 @@ final readonly class ResponseContainer extends Entity
     {
         return $this->getField('info');
     }
+
     /**
      * @return ValueNormalizer<BadValueException>
      * @throws BadValueException

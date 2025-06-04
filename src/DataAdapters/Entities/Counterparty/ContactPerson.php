@@ -21,6 +21,7 @@ final readonly class ContactPerson extends Entity
     {
         return $this->getField('Phones')->string();
     }
+
     /**
      * @throws BadValueException
      */
@@ -28,6 +29,7 @@ final readonly class ContactPerson extends Entity
     {
         return $this->getField('Email')->string();
     }
+
     /**
      * @throws BadValueException
      */
@@ -35,6 +37,7 @@ final readonly class ContactPerson extends Entity
     {
         return $this->getField('LastName')->string();
     }
+
     /**
      * @throws BadValueException
      */
@@ -42,6 +45,7 @@ final readonly class ContactPerson extends Entity
     {
         return $this->getField('FirstName')->string();
     }
+
     /**
      * @throws BadValueException
      */

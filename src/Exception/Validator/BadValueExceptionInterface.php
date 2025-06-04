@@ -9,5 +9,6 @@ use Throwable;
 interface BadValueExceptionInterface extends Throwable
 {
     public function getValidatedFieldKey(): string|null;
+
     public function getValidatedValue(): mixed;
 }
