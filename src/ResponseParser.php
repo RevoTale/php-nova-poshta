@@ -65,6 +65,7 @@ class ResponseParser
             }
         }
     }
+
     /**
      * @throws BadBodyException
      * @throws ErrorResultException

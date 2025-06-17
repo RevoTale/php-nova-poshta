@@ -17,6 +17,7 @@ use function is_bool;
 final readonly class NovaPoshtaRequest
 {
     private ResponseParser $responseParser;
+
     public function __construct(
         private string          $payload,
         private LoggerInterface $logger,
