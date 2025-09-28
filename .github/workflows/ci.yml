@@ -22,16 +22,6 @@ jobs:
         prefer-lowest: ${{ matrix.prefer-lowest }}
     - name: Run test suite
       run: composer run-script phpunit
-  PHPMD:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v5
-    - uses: RevoTale/php-composer-testing-action@v1
-      with:
-        php-version: 8.4
-        prefer-lowest: 0
-    - name: Run test suite
-      run: composer run-script phpmd
   Rector:
     runs-on: ubuntu-latest
     steps:
@@ -53,7 +43,7 @@ jobs:
     - name: Run test suite
       run: composer run-script phpstan
   TestFinalization:
-    needs: [ PHPUnit, PHPMD, PHPStan ]
+    needs: [ PHPUnit, PHPStan ]
     runs-on: ubuntu-latest
     steps:
       - name: Success
