@@ -12,6 +12,7 @@ final readonly class SettlementRegionItem extends Entity
 {
     use RefTrait;
     use DescriptionTrait;
+
     public function getAreaCenterRef(): string
     {
         return $this->getField('AreasCenter')->string();

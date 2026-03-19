@@ -13,6 +13,7 @@ readonly class Counterparty extends Entity
 {
     use RefTrait;
     use DescriptionTrait;
+
     public function getFirstName(): string
     {
         return $this->getField('FirstName')->string();

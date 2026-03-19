@@ -14,6 +14,7 @@ enum CounterpartyType: string
 {
     case PrivatePerson = 'PrivatePerson';
     case Organization = 'Organization';
+
     public function toString(): string
     {
         return $this->value;
