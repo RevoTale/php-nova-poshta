@@ -29,6 +29,7 @@ enum DocumentStatusCode: int
     case ReceivedCreatedReturnDelivery = 106;
     case NotDeliveredNoReceiver = 111;
     case DeliveryTimeChanged = 112;
+
     public function isOneOf(DocumentStatusCode ...$codes): bool
     {
         return in_array($this, $codes, true);
