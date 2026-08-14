@@ -28,7 +28,7 @@ final readonly class ObjectNormalizer
     public function field(string $key): ValueNormalizer
     {
         if (!isset($this->data[$key])) {
-            throw $this->exceptionFactory->createBadValueException('Field key not exist', key: $key, value: null);
+            throw $this->exceptionFactory->createBadValueException('Field key not exist', value: null, key: $key);
         }
 
         return new ValueNormalizer($this->data[$key], $this->exceptionFactory);
