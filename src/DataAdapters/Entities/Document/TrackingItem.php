@@ -116,13 +116,13 @@ final readonly class TrackingItem extends DocumentInfo
     public function getTrackingUpdateTime(): ?Timestamp
     {
         $date = $this->getNullableField('TrackingUpdateDate')->string();
-        return $date !== null && $date !== '' && $date !== '0' ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
+        return !in_array($date, [null, '', '0'], true) ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
     }
 
     public function getActualDeliveryTime(): ?Timestamp
     {
         $date = $this->getNullableField('ActualDeliveryDate')->string();
-        return $date !== null && $date !== '' && $date !== '0' ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
+        return !in_array($date, [null, '', '0'], true) ? Timestamp::fromFormat('Y-m-d H:i:s', $date, NovaPoshtaAPI::getTimeZone()) : null;
     }
 
     public function getStatusDescription(): string

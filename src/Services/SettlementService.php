@@ -29,7 +29,7 @@ final readonly class SettlementService extends Service
             $data['RegionRef'] = $regionRef;
         }
 
-        if ($areaRef !== null && $areaRef !== '' && $areaRef !== '0') {
+        if (!in_array($areaRef, [null, '', '0'], true)) {
             $data['AreRef'] = $areaRef;
         }
 
