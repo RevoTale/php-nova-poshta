@@ -29,6 +29,7 @@ enum DocumentStatusCode: int
     case ReceivedCreatedReturnDelivery = 106;
     case NotDeliveredNoReceiver = 111;
     case DeliveryTimeChanged = 112;
+    case DestroyedAsResultOfAttack = 124;
 
     public function isOneOf(DocumentStatusCode ...$codes): bool
     {
